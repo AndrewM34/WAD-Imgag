@@ -18,16 +18,14 @@ Users are incentivised to upload incredible images indefinitely, as they will se
 
 \begin{center} \large{\underline{User personas:}} \end{center}  
 \underline{Persona One - Petar}  
-Meet Petar. Petar is a university student who loves to procastinate and waste time on social media looking at memes but is not able to find the satisfaction due to
-an increase in number of emotional and "cute animal posts" the sites are offering. He wishes to find something better than 9gag or imgur
-where he can rate on pictures and add his very valuable yet supportive critisism of "git gud scrub" if the memes are not upto his standards.  
+Meet Petar. Petar is a university student who loves to procrastinate and waste time on social media looking at memes but is not able to find the satisfaction due to an increase in number of emotional and "cute animal posts" the sites are offering.  
+He wishes to find something better than 9gag or imgur where he can rate on pictures and add his very valuable yet supportive criticism of "git gud scrub" if the memes are not upto his standards.  
 
 \  
 
 \underline{Persona Two - Dimitri}  
-This is Dimitri. Dimitiri has the sole responsibility to handle all the IT work at a local coffee shop.
-He is very self obsessed and loves to get attention from everyone. He wants to use a platform where he can upload numerous amounts of pictures of himself in various categories
-which can be featured on the home page itself but is currently very disappointed by the censorship these websites enforces.
+This is Dimitri. Dimitri has the sole responsibility to handle all the IT work at a local coffee shop. He is very self obsessed and loves to get attention from everyone.  
+He wants to use a platform where he can upload numerous amounts of pictures of himself in various categories which can be featured on the home page itself but is currently very disappointed by the censorship these websites enforces.
 
 \  
 \  
