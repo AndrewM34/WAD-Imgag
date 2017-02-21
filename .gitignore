@@ -1,2 +1,6 @@
 .atom-build.yml
 .gitignore
+media/
+db.sqlite3
+.idea/
+*.pyc
