@@ -60,9 +60,9 @@ Users are incentivised to upload incredible images indefinitely, as they will se
 \begin{center} \large{\underline{Wireframes:}}\end{center}
 \  
 
-![Categories](WF1.jpg){width=90%}\
-![A view of many posts](WF2.jpg){width=90%}\
-![An image post](WF3.jpg){width=90%}\
+![Categories](viewOfCategories.png)\
+![A view of many posts](viewOfManyPosts.png)\
+![An image post](viewOfPost.png)\
 
 \newpage
 
