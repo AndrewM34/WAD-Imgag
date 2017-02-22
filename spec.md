@@ -6,7 +6,11 @@ Petr Sramek, Archit Gupta, Daniel Šmolík, Andrew Mcnab
 
 ---
 
-\begin{center} \large{\underline{Overview:}} \end{center}  
+\  
+
+\begin{center} \large{\underline{Overview:}} \end{center}
+\  
+
 Imgag is quite possibly the greatest image sharing website ever conceived. It's users may share images and videos, and rate them according to their greatness. By using an ingenious algorithm (score = upvotes - downvotes) we can assure our users they will only see the BEST images and videos from across the world.  
 
 In the unlikely event our algorithm does not show the best images possible, we also offer categories, so Imgag's users may see exactly what they desire.  
@@ -25,31 +29,37 @@ Users are incentivised to upload incredible images indefinitely, as they will se
 
 \newpage
 \begin{center} \large{\underline{Specification:}} \end{center}  
-
+\  
 \begin{itemize}
-\item{Upload and delete images}
+
+\item{Upload and delete images and videos}
 \item{Create and delete accounts}
 \item{Personalise account}
-\item{Like and dislike image posts}
+\item{Like and dislike image and video posts}
 \item{View images}
-\item{View categories of images}
+\item{View categories of images and videos}
+
 \end{itemize}
 
 \newpage
 
 \begin{center} \large{\underline{System Architecture Diagram:}} \end{center}
+\  
 
 ![System architecture diagram](SAD.png)\
 
 \newpage
 
 \begin{center} \large{\underline{ER Diagram:}} \end{center}
+\  
 
 ![ER diagram](ER.png)\
 
 \newpage
 
 \begin{center} \large{\underline{Wireframes:}}\end{center}
+\  
+
 ![Categories](WF1.jpg){width=90%}\
 ![A view of many posts](WF2.jpg){width=90%}\
 ![An image post](WF3.jpg){width=90%}\
@@ -57,6 +67,7 @@ Users are incentivised to upload incredible images indefinitely, as they will se
 \newpage
 
 \begin{center} \large{\underline{Walkthrough:}} \end{center}
+\  
 
 \underline{URLs:}  
 
@@ -68,6 +79,4 @@ Users are incentivised to upload incredible images indefinitely, as they will se
 /account/change-password/  
 /categories/  
 /categories/\<category_name>\/  
-
-\  
-\  
+/post/\<post_name>\/  
