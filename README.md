@@ -1,4 +1,4 @@
-# Web App Development project - Imgag
+# Web App Development project - Imgag 
 
 Imgag is quite possibly the greatest image sharing website ever conceived. It's users may share images and videos, and rate them according to their greatness. By using an ingenious algorithm (score = upvotes - downvotes) we can assure our users they will only see the BEST images and videos from across the world.  
 
