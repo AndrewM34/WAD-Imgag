@@ -60,9 +60,31 @@ Users are incentivised to upload incredible images indefinitely, as they will se
 \begin{center} \large{\underline{Wireframes:}}\end{center}
 \  
 
-![Categories](viewOfCategories.png)\
-![A view of many posts](viewOfManyPosts.png)\
-![An image post](viewOfPost.png)\
+<!-- \underline{View of categories} -->
+\  
+
+![Categories](viewOfCategories.png)
+
+\newpage
+
+<!-- \underline{View of posts} -->
+\  
+
+![A view of many posts](viewOfManyPosts.png)  
+
+\newpage
+
+<!-- \underline{View of a post} -->
+\  
+
+![An image post](viewOfPost.png){width=95%}  
+
+\newpage
+
+<!-- \underline{View of an account} -->
+\  
+
+![A view of an account](viewOfAccount.png)
 
 \newpage
 
