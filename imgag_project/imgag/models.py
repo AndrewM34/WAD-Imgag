@@ -10,7 +10,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
     date_of_birth = models.DateTimeField()
     picture = models.ImageField(upload_to='profile_images', blank=True)
-    website = forms.URLField(max_length=200, help_text="Please enter the URL of the page.")
+    website = models.URLField(max_length=200, help_text="Please enter the URL of the page.")
 
     def __str__(self):
         return self.user.username
