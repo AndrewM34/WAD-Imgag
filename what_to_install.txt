@@ -3,3 +3,4 @@ Install packages:
 – pip install pillow
 – pip install django-registration-redux
 – pip install django-bootstrap-toolkit
+- pip install django-hashid-field
