@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from imgag.forms import CategoryForm, PageForm, UserForm, UserProfileForm
+from imgag.forms import CategoryForm, UserForm, UserProfileForm
 
 #
 def home(request):
@@ -63,14 +63,14 @@ def login(request):
             badlogin = True
             return render(request, 'imgag/login.html', {"username": username, "badlogin":badlogin})
 
-else:
-    return render(request, 'imgag/login.html', {'badlogin': badlogin})
+    else:
+        return render(request, 'imgag/login.html', {'badlogin': badlogin})
 
 # log out the current user
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('index'))
+    return HttpResponseRedirect(reverse('home'))
 
 
 # view to reset the password
