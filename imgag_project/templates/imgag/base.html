@@ -1,13 +1,19 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
-
-    <head>
-        <title>Imgag</title>
-    </head>
+	<head>
+		<title>
+			Imgag -
+			{% block title_block %} 
+			{% endblock %}
+		</title>
+	</head>
 
     <body>
-
-      </div>
+		<div>
+			{% block body_block %}
+			{% endblock %}
+		</div>
     </body>
 
 </html>
