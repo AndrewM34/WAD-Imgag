@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from imgag import views
+from imgag import views 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.base, name="index"),
+	url(r'^$', views.index, name="index")
 ]
