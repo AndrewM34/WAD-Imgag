@@ -29,6 +29,7 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class Upload(models.Model):
     header = models.CharField(max_length=140)
     user = models.ForeignKey(UserProfile)
@@ -37,6 +38,7 @@ class Upload(models.Model):
     upVote = models.IntegerField(default=0)
     downVote = models.IntegerField(default=0)
     url_hash = HashidField()
+
 
 class Comment(models.Model):
     date_stamp = models.DateField(auto_now_add=True)
@@ -49,6 +51,3 @@ class Comment(models.Model):
 
     def __unicode__(self):
         return self.text
-
-
-
