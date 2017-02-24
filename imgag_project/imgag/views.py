@@ -3,10 +3,10 @@ from django.contrib.auth.decorators import login_required
 from imgag.forms import CategoryForm, PageForm, UserForm, UserProfileForm
 
 #
-def index(request):
+def home(request):
     context = {}
 
-    return render(request, 'imgag/index.html', context)
+    return render(request, 'imgag/home.html', context)
 
 
 # view for registering a user
