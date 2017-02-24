@@ -29,6 +29,14 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
 
+class Upload(models.Model):
+    header = models.CharField(max_length=140)
+    user = models.ForeignKey(UserProfile)
+    category = models.ForeignKey(Category)
+    file = models.FileField(upload_to='uploads', blank=False)
+    upVote = models.IntegerField(default=0)
+    downVote = models.IntegerField(default=0)
+    url_hash = HashidAutoField()
 
 class Comment(models.Model):
     date_stamp = models.DateField(auto_now_add=True)
@@ -43,11 +51,4 @@ class Comment(models.Model):
         return self.text
 
 
-class Upload(models.Model):
-    header = models.CharField(max_length=140)
-    user = models.ForeignKey(UserProfile)
-    category = models.ForeignKey(Category)
-    file = models.FileField(upload_to='uploads', blank=False)
-    upVote = models.IntegerField(default=0)
-    downVote = models.IntegerField(default=0)
-    url_hash = HashidAutoField()
+
