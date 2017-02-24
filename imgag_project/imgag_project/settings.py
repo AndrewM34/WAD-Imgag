@@ -29,6 +29,7 @@ LOGIN_URL = '/accounts/login/'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '7z%*n8w(qd0xvq$w+mfhcaqr9m$=xrscyo)cao+tyw@w9o1m*b'
+HASHID_FIELD_SALT = "as%2d3kvnq751+bucw%rc+x0b*qf*xdfty(fzmb(7a7wp6zn)l"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
