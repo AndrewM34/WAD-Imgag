@@ -34,9 +34,9 @@ class Upload(models.Model):
     header = models.CharField(max_length=140)
     user = models.ForeignKey(UserProfile)
     category = models.ForeignKey(Category)
-    file = models.FileField(upload_to='uploads', blank=False)
-    upVote = models.IntegerField(default=0)
-    downVote = models.IntegerField(default=0)
+    media = models.FileField(upload_to='uploads', blank=False)
+    upVotes = models.IntegerField(default=0)
+    downVotes = models.IntegerField(default=0)
     url_hash = HashidField()
 
 
