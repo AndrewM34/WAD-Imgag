@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
-from hashid_field import HashidAutoField
+from hashid_field import HashidField
 
 
 class UserProfile(models.Model):
@@ -36,7 +36,7 @@ class Upload(models.Model):
     file = models.FileField(upload_to='uploads', blank=False)
     upVote = models.IntegerField(default=0)
     downVote = models.IntegerField(default=0)
-    url_hash = HashidAutoField()
+    url_hash = HashidField()
 
 class Comment(models.Model):
     date_stamp = models.DateField(auto_now_add=True)
