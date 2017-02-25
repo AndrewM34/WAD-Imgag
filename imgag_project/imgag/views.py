@@ -10,13 +10,13 @@ from imgag.models import UserProfile, Category, Upload, Comment
 #
 def home(request):
     context = {}
-
-    return render(request, 'imgag/index.html', context)
+    return render(request, 'imgag/home.html', context)
 
 
 #
 def about(request):
-    pass
+    context = {}
+    return render(request, 'imgag/about.html', context)
 
 
 # view for registering a user
@@ -93,7 +93,7 @@ def reset_pass(request):
 # view to show account (details)
 @login_required
 def account(request):
-    pass
+    return render(request, {})
 
 
 # view to change password
