@@ -15,11 +15,13 @@ from imgag.models import UserProfile, Category, Comment, Upload
 
 def populate():
     categories_list = [
-        "People are awesome",
+        "People Are Awesome",
+        "Not So Awesome People",
         "Deep",
         "I Cri Evritiem",
         "Crazy",
-        "Next level shieeet",
+        "Next Level Shieeet",
+        "Bad Ass",
         "NSFW",
     ]
     users_list = [
@@ -88,8 +90,86 @@ def populate():
         ],
     }
 
+    bad_ass_uploads = {
+        "Pyotr": [
+            {
+                "header": "M3 g4ing 14jk 4 b055 m4j c0mr4d3",
+                "path_to_file": os.path.join("population_data", os.path.join("uploads", "me_going_with_bag.mp4")),
+                "upvotes": 0,
+                "downvotes": 50,
+                "comments": [
+                    {
+                        "authors_name": "tomator",
+                        "text": "Don't act as you would be tough, I know you are a good guy, Pyotr.",
+                        "created_date": "2017-2-25 15:45:17"
+                    },
+                    {
+                        "authors_name": "herp",
+                        "text": "This is shit...",
+                        "created_date": "2017-2-25 20:45:37"
+                    },
+                    {
+                        "authors_name": "Pyotr",
+                        "text": "R45h B, 5uk4 b1y4t",
+                        "created_date": "2017-2-25 00:45:25"
+                    },
+                ]
+            },
+        ],
+    }
+
+    not_so_awesome_people_uploads = {
+        "darth_procrastinator": [
+            {
+                "header": "Me running from responsibilities",
+                "path_to_file": os.path.join("population_data",
+                                             os.path.join("uploads", "me_running_from_responsibilities.mp4")),
+                "upvotes": 100,
+                "downvotes": 1,
+                "comments": [
+                    {
+                        "authors_name": "tomator",
+                        "text": "Very nice post, dear Procrastinator. I feel with you, my friend.",
+                        "created_date": "2017-2-25 18:41:45"
+                    },
+                    {
+                        "authors_name": "herp",
+                        "text": "This is shit...",
+                        "created_date": "2017-2-26 20:49:11"
+                    },
+                    {
+                        "authors_name": "Pyotr",
+                        "text": "R45h B, 1 s33 m4js31f 1n th15, c0mr4d3, 5uk4 b1y4t",
+                        "created_date": "2017-2-27 00:50:25"
+                    },
+                ]
+            },
+            {
+                "header": "When someone does a shitty work for me.",
+                "path_to_file": os.path.join("population_data",
+                                             os.path.join("uploads", "i_wanted_to_do_it.mp4")),
+                "upvotes": 201,
+                "downvotes": 17,
+                "comments": [
+                    {
+                        "authors_name": "tomator",
+                        "text": "I have not enjoyed this post so much, Mr Procrastinator. But keep up!",
+                        "created_date": "2017-2-25 18:47:10"
+                    },
+                    {
+                        "authors_name": "herp",
+                        "text": "This is shit...",
+                        "created_date": "2017-2-26 21:15:05"
+                    },
+                ]
+            },
+        ],
+    }
+
     categories_dict = {
-        "People are awesome": people_are_awesome_uploads,
+        "People Are Awesome": people_are_awesome_uploads,
+        "Bad Ass": bad_ass_uploads,
+        "Not So Awesome People": not_so_awesome_people_uploads,
     }
 
     users_dict = {}
