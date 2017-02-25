@@ -1,13 +1,14 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 from hashid_field import HashidField
 
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
-    date_of_birth = models.DateTimeField()
+    date_of_birth = models.DateTimeField(blank=True)
     picture = models.ImageField(upload_to='profile_images', blank=True)
 
     def __str__(self):
@@ -19,6 +20,11 @@ class UserProfile(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=140, unique=True)
+    slug = models.SlugField(unique=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Category, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name_plural = "Categories"
@@ -34,7 +40,7 @@ class Upload(models.Model):
     header = models.CharField(max_length=140)
     user = models.ForeignKey(UserProfile)
     category = models.ForeignKey(Category)
-    file = models.FileField(upload_to='uploads', blank=False)
+    uploaded_file = models.FileField(upload_to='uploads', blank=False)
     upVote = models.IntegerField(default=0)
     downVote = models.IntegerField(default=0)
     url_hash = HashidField()
