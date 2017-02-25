@@ -25,7 +25,7 @@ from imgag import views
 
 class MyRegistrationView(RegistrationView):
 	def get_success_url(self, user):
-		return '/rango/'
+		return '/imgag/'
 
 
 urlpatterns = [

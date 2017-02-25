@@ -8,7 +8,7 @@ from imgag.models import UserProfile, Category, Upload, Comment
 
 
 #
-def index(request):
+def home(request):
     context = {}
 
     return render(request, 'imgag/index.html', context)
