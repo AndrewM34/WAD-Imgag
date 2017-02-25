@@ -58,11 +58,12 @@ class Upload(models.Model):
     up_votes = models.IntegerField(default=0)
     down_votes = models.IntegerField(default=0)
     hashid = HashidAutoField(primary_key=True)
-    created_date = models.DateField(blank=True)
+    created_date = models.DateTimeField(blank=True)
 
     def save(self, *args, **kwargs):
-        self.created_date = timezone.make_aware(datetime.now(),
-                                                timezone.get_current_timezone())
+        if not self.created_date:
+            self.created_date = timezone.make_aware(datetime.now(),
+                                                    timezone.get_current_timezone())
         super(Upload, self).save(*args, **kwargs)
 
 
@@ -70,11 +71,12 @@ class Comment(models.Model):
     author = models.ForeignKey(UserProfile)
     upload = models.ForeignKey(Upload)
     text = models.CharField(max_length=1000)
-    created_date = models.DateField(blank=True)
+    created_date = models.DateTimeField(blank=True)
 
     def save(self, *args, **kwargs):
-        self.created_date = timezone.make_aware(datetime.now(),
-                                                timezone.get_current_timezone())
+        if not self.created_date:
+            self.created_date = timezone.make_aware(datetime.now(),
+                                                    timezone.get_current_timezone())
         super(Comment, self).save(*args, **kwargs)
 
     def __str__(self):

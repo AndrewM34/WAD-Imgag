@@ -65,19 +65,23 @@ def populate():
                 "comments": [
                     {
                         "authors_name": "tomator",
-                        "text": "Hope you'll like this guys <3"
+                        "text": "Hope you'll like this guys <3",
+                        "created_date": "2017-2-24 20:31:15"
                     },
                     {
                         "authors_name": "herp",
-                        "text": "This is shit..."
+                        "text": "This is shit...",
+                        "created_date": "2017-2-24 20:35:21"
                     },
                     {
                         "authors_name": "tomator",
-                        "text": "Why so salty?"
+                        "text": "Why so salty?",
+                        "created_date": "2017-2-24 20:36:38"
                     },
                     {
                         "authors_name": "herp",
-                        "text": "I don't like you."
+                        "text": "I don't like you.",
+                        "created_date": "2017-2-24 20:45:05"
                     }
                 ]
             },
@@ -89,38 +93,40 @@ def populate():
     }
 
     users_dict = {}
-    for user_dict in users_list:
-        username = user_dict["nickname"]
-        email = user_dict["email"]
-        date_of_birth = user_dict["date_of_birth"]
-        path_to_picture = user_dict["path_to_picture"]
+    for u_dict in users_list:
+        username = u_dict["nickname"]
+        email = u_dict["email"]
+        date_of_birth = u_dict["date_of_birth"]
+        path_to_picture = u_dict["path_to_picture"]
         u = add_user(username, email, date_of_birth, path_to_picture)
-        user_dict[username] = u
-        print("Added user: " + u.user.username)
+        users_dict[username] = u
+        print("Added user: '" + u.user.username + "'")
 
     for category_name in categories_list:
         category = add_category(category_name)
-        print("Added category: " + category.name)
+        print("Added category: '" + category.name + "'")
 
         uploads_in_category = categories_dict.get(category.name, {})
-        print(uploads_in_category)
-        for upload_data in uploads_in_category:
-            for username, upload_dict in upload_data.items():
+        for username, users_uploads_in_category in uploads_in_category.items():
+            for upload_dict in users_uploads_in_category:
                 user = users_dict[username]
                 header = upload_dict["header"]
                 path_to_file = upload_dict["path_to_file"]
                 up_votes = upload_dict["upvotes"]
                 down_votes = upload_dict["downvotes"]
                 upload = add_upload(user, category, header, path_to_file, up_votes, down_votes)
-                print("Added upload: " + upload.header)
+                print("Added upload: '" + upload.header +
+                      "' by '" + upload.author.user.username + "'")
 
                 comments_list = upload_dict["comments"]
                 for comment_dict in comments_list:
                     authors_name = comment_dict["authors_name"]
-                    author = user_dict[authors_name]
+                    author = users_dict[authors_name]
                     text = comment_dict["text"]
-                    comment = add_comment(author, upload, text)
-                    print("Added comment: " + comment.author.username)
+                    created_date = comment_dict["created_date"]
+                    comment = add_comment(author, upload, text, created_date)
+                    print("Added comment: '" + comment.text +
+                          "' by '" + comment.author.user.username + "'")
 
 
 def add_category(name):
@@ -164,8 +170,13 @@ def add_upload(author, category, header, path_to_file, up_votes=0, down_votes=0)
     return upload
 
 
-def add_comment(author, upload, text):
+def add_comment(author, upload, text, created_date=None):
     comment = Comment.objects.get_or_create(author=author, upload=upload, text=text)[0]
+    if created_date is not None:
+        created_date = timezone.make_aware(datetime.strptime(created_date, "%Y-%m-%d %H:%M:%S"),
+                                           timezone.get_current_timezone())
+        comment.created_date = created_date
+        comment.save()
     return comment
 
 

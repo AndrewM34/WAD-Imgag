@@ -24,6 +24,7 @@ ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/login/'
+FORMAT_MODULE_PATH = 'imgag_project.formats'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
