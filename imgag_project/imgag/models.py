@@ -5,6 +5,8 @@ from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 from django.core.files.storage import FileSystemStorage
 from hashid_field import HashidAutoField
+from datetime import datetime
+from django.utils import timezone
 
 
 # Overriding FileSystemStorage class, because Django by default doesn't remove files with the same name => tons of
@@ -63,10 +65,15 @@ class Upload(models.Model):
 
 
 class Comment(models.Model):
-    date_stamp = models.DateField(auto_now_add=True)
     user = models.ForeignKey(UserProfile)
     upload = models.ForeignKey(Upload)
     text = models.CharField(max_length=1000)
+    created_date = models.DateField(blank=True)
+
+    def save(self, *args, **kwargs):
+        self.created_date = timezone.make_aware(datetime.now(),
+                                                timezone.get_current_timezone())
+        super(Comment, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.text
