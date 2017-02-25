@@ -23,6 +23,6 @@ from imgag import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index, name="index"),
+    url(r'^$', views.home, name='home'),
     url(r'^', include('imgag.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
