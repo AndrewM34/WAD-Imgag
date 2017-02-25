@@ -7,6 +7,7 @@ import django
 
 django.setup()
 from datetime import datetime
+from django.utils import timezone
 from django.core.files import File
 from django.contrib.auth.models import User
 from imgag.models import UserProfile, Category, Comment, Upload
@@ -70,25 +71,26 @@ def add_category(name):
     return c
 
 
-def add_user(name, email, date_of_birth, path_to_picture=""):
+def add_user(name, email, date_of_birth,
+             path_to_picture=os.path.join("population_data", os.path.join("profile_pictures", "default.png"))):
     user = User.objects.get_or_create(email=email)[0]
     user.username = name
     user.save()
 
-    profile = UserProfile.objects.get_or_create(user=user)[0]
-    profile.date_of_birth = datetime.strptime(date_of_birth, "%b %d %Y")
-    print(profile)
+    my_datetime = datetime.strptime(date_of_birth, "%b %d %Y")
+    profile = \
+        UserProfile.objects.get_or_create(user=user,
+                                          date_of_birth=timezone.make_aware(my_datetime,
+                                                                            timezone.get_current_timezone()))[0]
 
     print(profile)
-    if path_to_picture != "":
-        imopen = open(path_to_picture, "rb")
-        django_file = File(imopen)
-        filename = os.path.join(name, os.path.basename(path_to_picture))
-        profile.picture.save(filename, django_file, save=True)
 
-        print(UserProfile.objects.all()[0])
-    else:
-        profile.save()
+    imopen = open(path_to_picture, "rb")
+    django_file = File(imopen)
+    filename = os.path.join(name, os.path.basename(path_to_picture))
+    profile.picture.save(filename, django_file, save=True)
+
+    print(UserProfile.objects.all())
 
 
 if __name__ == '__main__':

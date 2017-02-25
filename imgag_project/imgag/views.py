@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from imgag.forms import CategoryForm, UserForm, UserProfileForm
+from imgag.forms import UserForm, UserProfileForm
 from imgag.models import UserProfile, Category, Upload, Comment
 
 
@@ -119,8 +119,8 @@ def post(request):
     context = {}
     context['header'] = Upload.header
     context['category'] = Upload.category
-    context['upVotes'] = Upload.upVotes
-    context['downVotes'] = Upload.downVotes
+    context['upVotes'] = Upload.up_votes
+    context['downVotes'] = Upload.down_votes
     context['user'] = Upload.user
     context['media'] = Upload.media
 

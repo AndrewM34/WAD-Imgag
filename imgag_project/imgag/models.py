@@ -9,9 +9,8 @@ from django import forms
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
-    date_of_birth = models.DateTimeField(blank=True)
+    date_of_birth = models.DateTimeField()
     picture = models.ImageField(upload_to='profile_images', blank=True)
-    website = models.URLField(max_length=200, help_text="Please enter the URL of the page.")
 
     def __str__(self):
         return self.user.username
@@ -44,7 +43,7 @@ class Upload(models.Model):
     category = models.ForeignKey(Category)
     uploaded_file = models.FileField(upload_to='uploads', blank=False)
     up_votes = models.IntegerField(default=0)
-    dow_votes = models.IntegerField(default=0)
+    down_votes = models.IntegerField(default=0)
     url_hash = HashidField()
 
 
