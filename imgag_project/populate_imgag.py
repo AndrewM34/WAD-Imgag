@@ -16,18 +16,12 @@ from imgag.models import UserProfile, Category, Comment, Upload
 def populate():
     # do = datetime.strptime(users[0].get("date_of_birth"), "%b %d %Y")
     category = [
-        {
-            "name": "Hot",
-        },
-        {
-            "name": "Trending",
-        },
-        {
-            "name": "People are awesome"
-        },
-        {
-            "name": "NFSW"
-        },
+        "People are awesome",
+        "Deep",
+        "I Cri Evritiem",
+        "Crazy",
+        "Next level shieeet",
+        "NSFW",
     ]
     users = [
         {
@@ -35,6 +29,18 @@ def populate():
             "email": "tomator@google.com",
             "date_of_birth": "Jun 1 1997",
             "path_to_picture": os.path.join("population_data", os.path.join("profile_pictures", "tomator.png"))
+        },
+        {
+            "nickname": "BlueDoge",
+            "email": "dogeswin@google.com",
+            "date_of_birth": "May 30 1990",
+            "path_to_picture": os.path.join("population_data", os.path.join("profile_pictures", "blue_doge.jpg"))
+        },
+        {
+            "nickname": "darth_procrastinator",
+            "email": "red@saber.fr",
+            "date_of_birth": "Jun 1 1985",
+            "path_to_picture": None
         },
     ]
 
@@ -62,7 +68,8 @@ def populate():
         email = user["email"]
         date_of_birth = user["date_of_birth"]
         path_to_picture = user["path_to_picture"]
-        add_user(username, email, date_of_birth, path_to_picture)
+        u = add_user(username, email, date_of_birth, path_to_picture)
+        print("Added user: " + u.user.username)
 
 
 def add_category(name):
@@ -71,7 +78,14 @@ def add_category(name):
     return c
 
 
-def add_user(name, email, date_of_birth,
+def add_user(name, email, date_of_birth, path_to_picture):
+    if path_to_picture is not None:
+        return _add_user(name, email, date_of_birth, path_to_picture)
+    else:
+        return _add_user(name, email, date_of_birth)
+
+
+def _add_user(name, email, date_of_birth,
              path_to_picture=os.path.join("population_data", os.path.join("profile_pictures", "default.png"))):
     user = User.objects.get_or_create(email=email)[0]
     user.username = name
@@ -82,15 +96,19 @@ def add_user(name, email, date_of_birth,
         UserProfile.objects.get_or_create(user=user,
                                           date_of_birth=timezone.make_aware(my_datetime,
                                                                             timezone.get_current_timezone()))[0]
-
-    print(profile)
-
     imopen = open(path_to_picture, "rb")
     django_file = File(imopen)
     filename = os.path.join(name, os.path.basename(path_to_picture))
     profile.picture.save(filename, django_file, save=True)
+    return profile
 
-    print(UserProfile.objects.all())
+
+def add_post():
+    pass
+
+
+def add_comment():
+    pass
 
 
 if __name__ == '__main__':

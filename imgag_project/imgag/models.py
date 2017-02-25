@@ -4,7 +4,6 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 from hashid_field import HashidField
-from django import forms
 
 
 class UserProfile(models.Model):
@@ -41,7 +40,7 @@ class Upload(models.Model):
     header = models.CharField(max_length=140)
     user = models.ForeignKey(UserProfile)
     category = models.ForeignKey(Category)
-    uploaded_file = models.FileField(upload_to='uploads', blank=False)
+    uploaded_file = models.FileField(upload_to='uploads')
     up_votes = models.IntegerField(default=0)
     down_votes = models.IntegerField(default=0)
     url_hash = HashidField()
