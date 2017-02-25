@@ -1,7 +1,8 @@
-Install packages:
+Packages to install:
+
 - Python3.x
 – pip install -U django==1.10
 – pip install pillow
 – pip install django-registration-redux
 – pip install django-bootstrap-toolkit
-- pip install django-hashid-field
+- pip install django-hashid-field 
