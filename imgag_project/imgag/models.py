@@ -52,20 +52,22 @@ class Category(models.Model):
 
 class Upload(models.Model):
     header = models.CharField(max_length=140)
-    user = models.ForeignKey(UserProfile)
+    author = models.ForeignKey(UserProfile)
     category = models.ForeignKey(Category)
     uploaded_file = models.FileField(upload_to='uploads', storage=OverwriteStorage(), blank=True)
     up_votes = models.IntegerField(default=0)
     down_votes = models.IntegerField(default=0)
     hashid = HashidAutoField(primary_key=True)
+    created_date = models.DateField(blank=True)
 
-    # def __init__(self, *args, **kwargs):
-    #     super(Upload, self).__init__(*args, **kwargs)
-    #     self.fields['uploaded_file'].required = True
+    def save(self, *args, **kwargs):
+        self.created_date = timezone.make_aware(datetime.now(),
+                                                timezone.get_current_timezone())
+        super(Upload, self).save(*args, **kwargs)
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(UserProfile)
+    author = models.ForeignKey(UserProfile)
     upload = models.ForeignKey(Upload)
     text = models.CharField(max_length=1000)
     created_date = models.DateField(blank=True)
