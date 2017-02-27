@@ -234,7 +234,7 @@ def _add_user(name, email, date_of_birth,
                                                                             timezone.get_current_timezone()))[0]
     imopen = open(path_to_picture, "rb")
     django_file = File(imopen)
-    filename = os.path.join(name, os.path.basename(path_to_picture))
+    filename = os.path.basename(path_to_picture)
     profile.picture.save(filename, django_file, save=True)
     return profile
 
@@ -244,8 +244,7 @@ def add_upload(author, category, header, path_to_file, up_votes=0, down_votes=0)
                                           down_votes=down_votes)[0]
     imopen = open(path_to_file, "rb")
     django_file = File(imopen)
-    filename = os.path.join(author.user.username,
-                            upload.hashid.hashid + os.path.basename(path_to_file))
+    filename = os.path.basename(path_to_file)
     upload.uploaded_file.save(filename, django_file, save=True)
     return upload
 

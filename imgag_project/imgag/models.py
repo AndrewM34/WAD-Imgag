@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+import os
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
@@ -20,16 +21,25 @@ class OverwriteStorage(FileSystemStorage):
         return name
 
 
+def upload_to(instance, filename):
+    path, prefix = instance.get_upload_dir_and_prefix()
+    filename = prefix + filename
+    return os.path.join(path, filename)
+
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     date_of_birth = models.DateTimeField()
-    picture = models.ImageField(upload_to='profile_images', storage=OverwriteStorage(), blank=True)
+    picture = models.ImageField(upload_to=upload_to, storage=OverwriteStorage(), blank=True)
 
     def __str__(self):
         return self.user.username
 
     def __unicode__(self):
         return self.user.username
+
+    def get_upload_dir_and_prefix(self):
+        return os.path.join("profile_images", self.user.username), ""
 
 
 class Category(models.Model):
@@ -54,7 +64,7 @@ class Upload(models.Model):
     header = models.CharField(max_length=140)
     author = models.ForeignKey(UserProfile)
     category = models.ForeignKey(Category)
-    uploaded_file = models.FileField(upload_to='uploads', storage=OverwriteStorage(), blank=True)
+    uploaded_file = models.FileField(upload_to=upload_to, storage=OverwriteStorage(), blank=True)
     up_votes = models.IntegerField(default=0)
     down_votes = models.IntegerField(default=0)
     hashid = HashidAutoField(primary_key=True)
@@ -65,6 +75,9 @@ class Upload(models.Model):
             self.created_date = timezone.make_aware(datetime.now(),
                                                     timezone.get_current_timezone())
         super(Upload, self).save(*args, **kwargs)
+
+    def get_upload_dir_and_prefix(self):
+        return os.path.join("uploads", self.author.user.username), self.hashid.hashid
 
 
 class Comment(models.Model):
