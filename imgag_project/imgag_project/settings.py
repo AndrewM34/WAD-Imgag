@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'imgag',
     'registration',
-    'bootstrap_toolkit'
+    'bootstrap_toolkit',
+    'django_cleanup'
 ]
 
 MIDDLEWARE = [

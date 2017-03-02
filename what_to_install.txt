@@ -1,5 +1,5 @@
 Packages to install:
-- Python3.x
+- Python3.3+
 – pip install -U django==1.10
 – pip install pillow
 – pip install django-registration-redux

@@ -8,6 +8,7 @@ from django.core.files.storage import FileSystemStorage
 from hashid_field import HashidAutoField
 from datetime import datetime
 from django.utils import timezone
+from django.core.files import File
 from django.conf import settings
 
 
@@ -40,6 +41,15 @@ class UserProfile(models.Model):
 
     def __unicode__(self):
         return self.user.username
+
+    def save(self, *args, **kwargs):
+        if os.path.basename(self.picture.name) == "default.png":
+            imopen = open(os.path.join(settings.MEDIA_ROOT, self.picture.name), "rb")
+            django_file = File(imopen)
+            old_filename, extension = os.path.splitext(self.picture.name)
+            filename = self.user.username + extension
+            self.picture.save(filename, django_file, save=False)
+        super(UserProfile, self).save(*args, **kwargs)
 
     def get_upload_dir_and_prefix(self):
         return os.path.join("profile_images", self.user.username), ""
