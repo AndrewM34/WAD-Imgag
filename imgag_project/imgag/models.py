@@ -77,7 +77,9 @@ class Upload(models.Model):
     header = models.CharField(max_length=140)
     author = models.ForeignKey(UserProfile)
     category = models.ForeignKey(Category)
-    uploaded_file = models.FileField(upload_to=upload_to, storage=OverwriteStorage(), blank=True)
+    uploaded_file = models.FileField(upload_to=upload_to, storage=OverwriteStorage(),
+                                     default=os.path.join("default",
+                                                          os.path.join("uploads", "default.png")))
     up_votes = models.IntegerField(default=0)
     down_votes = models.IntegerField(default=0)
     hashid = HashidAutoField(primary_key=True)
@@ -88,6 +90,12 @@ class Upload(models.Model):
             self.created_date = timezone.make_aware(datetime.now(),
                                                     timezone.get_current_timezone())
         super(Upload, self).save(*args, **kwargs)
+
+        if os.path.basename(self.uploaded_file.name) == "default.png":
+            imopen = open(os.path.join(settings.MEDIA_ROOT, self.uploaded_file.name), "rb")
+            django_file = File(imopen)
+            filename = datetime.utcnow().strftime('%M%S%f') + os.path.basename(self.uploaded_file.name)
+            self.uploaded_file.save(filename, django_file, save=True)
 
     def get_upload_dir_and_prefix(self):
         return os.path.join("uploads", self.author.user.username), self.hashid.hashid
