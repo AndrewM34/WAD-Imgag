@@ -5,6 +5,7 @@ Packages to install:
 – pip install django-registration-redux
 – pip install django-bootstrap-toolkit
 - pip install django-hashid-field 
+- pip install django-cleanup
 
 You can use:
 pip install -r requirements.txt
