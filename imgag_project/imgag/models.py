@@ -8,6 +8,7 @@ from django.core.files.storage import FileSystemStorage
 from hashid_field import HashidAutoField
 from datetime import datetime
 from django.utils import timezone
+from django.conf import settings
 
 
 # Overriding FileSystemStorage class, because Django by default doesn't remove files with the same name => tons of
@@ -30,7 +31,9 @@ def upload_to(instance, filename):
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     date_of_birth = models.DateTimeField()
-    picture = models.ImageField(upload_to=upload_to, storage=OverwriteStorage(), blank=True)
+    picture = models.ImageField(upload_to=upload_to, storage=OverwriteStorage(),
+                                default=os.path.join("default",
+                                                     os.path.join("profile_images", "default.png")))
 
     def __str__(self):
         return self.user.username
