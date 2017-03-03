@@ -172,6 +172,9 @@ def populate():
         "Not So Awesome People": not_so_awesome_people_uploads,
     }
 
+    u, pswd = add_superuser()
+    print("Added superuser: '" + u.username + "' and password iiiiiiiiis: '" + pswd + "'")
+
     users_dict = {}
     for u_dict in users_list:
         username = u_dict["nickname"]
@@ -214,17 +217,19 @@ def add_category(name):
     return category
 
 
-def add_user(name, email, date_of_birth, path_to_picture):
-    if path_to_picture is not None:
-        return _add_user(name, email, date_of_birth, path_to_picture)
-    else:
-        return _add_user(name, email, date_of_birth)
+def add_superuser(username="admin", password="admin123"):
+    u = User.objects.get_or_create(username=username)[0]
+    u.set_password(password)
+    u.is_superuser = True
+    u.is_staff = True
+    u.save()
+    return u, password
 
 
-def _add_user(name, email, date_of_birth,
-              path_to_picture=os.path.join("population_data", os.path.join("profile_pictures", "default.png"))):
+def add_user(username, email, date_of_birth, path_to_picture):
     user = User.objects.get_or_create(email=email)[0]
-    user.username = name
+    user.username = username
+    user.set_password(username)
     user.save()
 
     my_datetime = datetime.strptime(date_of_birth, "%b %d %Y")
@@ -232,10 +237,12 @@ def _add_user(name, email, date_of_birth,
         UserProfile.objects.get_or_create(user=user,
                                           date_of_birth=timezone.make_aware(my_datetime,
                                                                             timezone.get_current_timezone()))[0]
-    imopen = open(path_to_picture, "rb")
-    django_file = File(imopen)
-    filename = os.path.basename(path_to_picture)
-    profile.picture.save(filename, django_file, save=True)
+    if path_to_picture is not None:
+        imopen = open(path_to_picture, "rb")
+        django_file = File(imopen)
+        filename = os.path.basename(path_to_picture)
+        profile.picture.save(filename, django_file)
+    profile.save()
     return profile
 
 
