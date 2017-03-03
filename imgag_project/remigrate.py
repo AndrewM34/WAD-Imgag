@@ -9,7 +9,7 @@ if __name__ == '__main__':
 
     RM_DB_ARGS = [RM, "db.sqlite3"]
     RM_UPLOADED_FILES = [RM, "-rfv", "profile_images", "uploads"]
-    RM_MIGRATIONS_ARGS = [RM, glob.glob(join("imgag", "migrations") + "*.py")]
+    RM_MIGRATIONS_ARGS = [RM] + glob.glob(join(join("imgag", "migrations"), "*.py"))
     MAKE_MIGRATE_ARGS = [PYTHON, MANAGE_PY, "makemigrations", "imgag"]
     MIGRATE_ARGS = [PYTHON, MANAGE_PY, "migrate"]
     CREATE_SUPER_USER_ARGS = [PYTHON, MANAGE_PY, "createsuperuser"]
