@@ -10,7 +10,7 @@ from datetime import datetime
 from django.utils import timezone
 from django.core.files import File
 from django.contrib.auth.models import User
-from imgag.models import UserProfile, Category, Comment, Upload
+from imgag.models import UserProfile, Category, Comment, Upload, Vote
 
 
 def populate():
@@ -266,6 +266,23 @@ def add_comment(author, upload, text, created_date=None):
     return comment
 
 
+def add_vote(user, upload, vote=1):
+    v = Vote.objects.get_or_create(user=user, upload=upload, vote=vote)
+    return v
+
+
+def tryf():
+    u = add_user("karel", "kadfdf@com.cz", "Jun 1 1985", None)
+    c = add_category("test")
+    up = add_upload(u, c, "header", os.path.join("population_data",
+                                                 os.path.join("uploads", "i_wanted_to_do_it.mp4")))
+    v = add_vote(u, up, 1)
+    print(v)
+    v = add_vote(u, up, -1)
+    print(v)
+    print(Vote.objects.all())
+
 if __name__ == '__main__':
     print("Starting populating ImGag. Seat comfortably, please, this is gonna take some time.")
-    populate()
+    # populate()
+    tryf()

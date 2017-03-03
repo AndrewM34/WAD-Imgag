@@ -118,3 +118,9 @@ class Comment(models.Model):
 
     def __unicode__(self):
         return self.text
+
+
+class Vote(models.Model):
+    user = models.ForeignKey(UserProfile)
+    upload = models.ForeignKey(Upload)
+    vote = models.IntegerField(default=0)
