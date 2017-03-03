@@ -272,18 +272,6 @@ def add_vote(user, upload, vote=1):
     return v
 
 
-def tryf():
-    u = add_user("karel", "kadfdf@com.cz", "Jun 1 1985", None)
-    c = add_category("test")
-    up = add_upload(u, c, "header", os.path.join("population_data",
-                                                 os.path.join("uploads", "i_wanted_to_do_it.mp4")))
-    v = add_vote(u, up)
-    print(v)
-    v = add_vote(u, up)
-    print(v)
-    print(Vote.objects.all())
-
 if __name__ == '__main__':
     print("Starting populating ImGag. Seat comfortably, please, this is gonna take some time.")
-    # populate()
-    tryf()
+    populate()
