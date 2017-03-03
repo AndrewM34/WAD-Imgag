@@ -14,6 +14,7 @@ from imgag.models import UserProfile, Category, Comment, Upload, Vote
 
 
 def populate():
+    print("Starting populating ImGag. Seat comfortably, please, this is gonna take some time.")
     categories_list = [
         "People Are Awesome",
         "Not So Awesome People",
@@ -246,9 +247,8 @@ def add_user(username, email, date_of_birth, path_to_picture):
     return profile
 
 
-def add_upload(author, category, header, path_to_file, up_votes=0, down_votes=0):
-    upload = Upload.objects.get_or_create(author=author, category=category, header=header, up_votes=up_votes,
-                                          down_votes=down_votes)[0]
+def add_upload(author, category, header, path_to_file):
+    upload = Upload.objects.get_or_create(author=author, category=category, header=header)[0]
     imopen = open(path_to_file, "rb")
     django_file = File(imopen)
     filename = os.path.basename(path_to_file)
@@ -269,9 +269,37 @@ def add_comment(author, upload, text, created_date=None):
 def add_vote(user, upload, vote=1):
     v = Vote.objects.get_or_create(user=user, upload=upload)[0]
     v.vote = vote
+    v.save()
     return v
 
 
 if __name__ == '__main__':
-    print("Starting populating ImGag. Seat comfortably, please, this is gonna take some time.")
     populate()
+
+    # up1 = Upload.objects.all()[0]
+    # up2 = Upload.objects.all()[1]
+    # up3 = Upload.objects.all()[2]
+    # u1 = UserProfile.objects.all()[0]
+    # u2 = UserProfile.objects.all()[1]
+    # u3 = UserProfile.objects.all()[2]
+    # v = add_vote(u1, up1, 1)
+    # v = add_vote(u2, up1, -1)
+    # v = add_vote(u3, up1, 1)
+    # v = add_vote(u1, up2, -1)
+    # v = add_vote(u2, up2, -1)
+    # v = add_vote(u3, up2, -1)
+    # v = add_vote(u1, up3, -1)
+    # v = add_vote(u2, up3, -1)
+    # v = add_vote(u3, up3, 1)
+    #
+    # print("Upload: " + str(up1) +
+    #       "\nUpvotes: " + str(Vote.objects.filter(upload__hashid=up1.hashid.hashid).filter(vote=1).count()) +
+    #       "\nDownvotes: " + str(Vote.objects.filter(upload__hashid=up1.hashid.hashid).filter(vote=-1).count()))
+    #
+    # print("Upload: " + str(up2) +
+    #       "\nUpvotes: " + str(Vote.objects.filter(upload__hashid=up2.hashid.hashid).filter(vote=1).count()) +
+    #       "\nDownvotes: " + str(Vote.objects.filter(upload__hashid=up2.hashid.hashid).filter(vote=-1).count()))
+    #
+    # print("Upload: " + str(up3) +
+    #       "\nUpvotes: " + str(Vote.objects.filter(upload__hashid=up3.hashid.hashid).filter(vote=1).count()) +
+    #       "\nDownvotes: " + str(Vote.objects.filter(upload__hashid=up3.hashid.hashid).filter(vote=-1).count()))

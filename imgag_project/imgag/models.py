@@ -80,8 +80,6 @@ class Upload(models.Model):
     uploaded_file = models.FileField(upload_to=upload_to, storage=OverwriteStorage(),
                                      default=os.path.join("default",
                                                           os.path.join("uploads", "default.png")))
-    up_votes = models.IntegerField(default=0)
-    down_votes = models.IntegerField(default=0)
     hashid = HashidAutoField(primary_key=True)
     created_date = models.DateTimeField(blank=True)
 
@@ -99,6 +97,12 @@ class Upload(models.Model):
 
     def get_upload_dir_and_prefix(self):
         return os.path.join("uploads", self.author.user.username), self.hashid.hashid
+
+    def __str__(self):
+        return self.header
+
+    def __unicode__(self):
+        return self.header
 
 
 class Comment(models.Model):
@@ -124,3 +128,9 @@ class Vote(models.Model):
     user = models.ForeignKey(UserProfile)
     upload = models.ForeignKey(Upload)
     vote = models.IntegerField(default=0)
+
+    def __str__(self):
+        return "User '" + str(self.user) + "' gave '" + str(self.upload) + "': " + str(self.vote)
+
+    def __unicode__(self):
+        return "User '" + str(self.user) + "' gave '" + str(self.upload) + "': " + str(self.vote)
