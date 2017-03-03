@@ -267,7 +267,8 @@ def add_comment(author, upload, text, created_date=None):
 
 
 def add_vote(user, upload, vote=1):
-    v = Vote.objects.get_or_create(user=user, upload=upload, vote=vote)
+    v = Vote.objects.get_or_create(user=user, upload=upload)[0]
+    v.vote = vote
     return v
 
 
@@ -276,9 +277,9 @@ def tryf():
     c = add_category("test")
     up = add_upload(u, c, "header", os.path.join("population_data",
                                                  os.path.join("uploads", "i_wanted_to_do_it.mp4")))
-    v = add_vote(u, up, 1)
+    v = add_vote(u, up)
     print(v)
-    v = add_vote(u, up, -1)
+    v = add_vote(u, up)
     print(v)
     print(Vote.objects.all())
 
