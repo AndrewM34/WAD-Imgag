@@ -17,6 +17,10 @@ from django.conf import settings
 class OverwriteStorage(FileSystemStorage):
     def _save(self, name, content):
         self.delete(name)
+        # Delete default file if there was such
+        filename, extension = os.path.splitext(os.path.basename(name))
+        hashid = filename[:-10]
+        self.delete(os.path.join(os.path.dirname(name), hashid + "defaultdef.png"))
         return super(OverwriteStorage, self)._save(name, content)
 
     def get_available_name(self, name, max_length=None):
@@ -25,7 +29,10 @@ class OverwriteStorage(FileSystemStorage):
 
 def upload_to(instance, filename):
     path, prefix = instance.get_upload_dir_and_prefix()
-    filename = prefix + filename
+    filename, extension = os.path.splitext(filename)
+    # There are exactly 10 characters between extension and after hashid
+    filename = (filename * (10 // len(filename) + 1))[:10]
+    filename = prefix + filename + extension
     return os.path.join(path, filename)
 
 
@@ -58,10 +65,21 @@ class UserProfile(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=140, unique=True)
     slug = models.SlugField(unique=True)
+    picture = models.ImageField(upload_to=upload_to, storage=OverwriteStorage(),
+                                default=os.path.join("default",
+                                                     os.path.join("uploads", "default.png")))
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
+        if os.path.basename(self.picture.name) == "default.png":
+            imopen = open(os.path.join(settings.MEDIA_ROOT, self.picture.name), "rb")
+            django_file = File(imopen)
+            filename = os.path.basename(self.picture.name)
+            self.picture.save(filename, django_file, save=False)
         super(Category, self).save(*args, **kwargs)
+
+    def get_upload_dir_and_prefix(self):
+        return os.path.join("category_images", self.slug), ""
 
     class Meta:
         verbose_name_plural = "Categories"
@@ -80,8 +98,6 @@ class Upload(models.Model):
     uploaded_file = models.FileField(upload_to=upload_to, storage=OverwriteStorage(),
                                      default=os.path.join("default",
                                                           os.path.join("uploads", "default.png")))
-    up_votes = models.IntegerField(default=0)
-    down_votes = models.IntegerField(default=0)
     hashid = HashidAutoField(primary_key=True)
     created_date = models.DateTimeField(blank=True)
 
@@ -94,11 +110,17 @@ class Upload(models.Model):
         if os.path.basename(self.uploaded_file.name) == "default.png":
             imopen = open(os.path.join(settings.MEDIA_ROOT, self.uploaded_file.name), "rb")
             django_file = File(imopen)
-            filename = datetime.utcnow().strftime('%M%S%f') + os.path.basename(self.uploaded_file.name)
+            filename = os.path.basename(self.uploaded_file.name)
             self.uploaded_file.save(filename, django_file, save=True)
 
     def get_upload_dir_and_prefix(self):
         return os.path.join("uploads", self.author.user.username), self.hashid.hashid
+
+    def __str__(self):
+        return self.header
+
+    def __unicode__(self):
+        return self.header
 
 
 class Comment(models.Model):
@@ -118,3 +140,15 @@ class Comment(models.Model):
 
     def __unicode__(self):
         return self.text
+
+
+class Vote(models.Model):
+    user = models.ForeignKey(UserProfile)
+    upload = models.ForeignKey(Upload)
+    vote = models.IntegerField(default=0)
+
+    def __str__(self):
+        return "User '" + str(self.user) + "' gave '" + str(self.upload) + "': " + str(self.vote)
+
+    def __unicode__(self):
+        return "User '" + str(self.user) + "' gave '" + str(self.upload) + "': " + str(self.vote)

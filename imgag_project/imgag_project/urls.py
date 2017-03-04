@@ -25,18 +25,19 @@ from imgag import views
 
 
 class MyRegistrationView(RegistrationView):
-	def get_success_url(self, user):
-		return '/imgag/'
-		
+    def get_success_url(self, user):
+        return '/imgag/'
+
+
 class MyActivationView(ActivationView):
-	def get_success_url(self, user):
-		return '/imgag'
+    def get_success_url(self, user):
+        return '/imgag'
 
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-	url(r'^$', views.home, name="home"),
-	url(r'^imgag/', include('imgag.urls')),
-	url(r'^accounts/register/$', MyRegistrationView.as_view(), name='registration_register'),
-	url(r'^accounts/', include('registration.backends.default.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                  url(r'^admin/', admin.site.urls),
+                  url(r'^$', views.home, name="home"),
+                  url(r'^accounts/register/$', MyRegistrationView.as_view(), name='registration_register'),
+                  url(r'^accounts/', include('registration.backends.default.urls')),
+                  url(r'^', include('imgag.urls')),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
