@@ -3,7 +3,7 @@ import os
 categories_list = [
     {
         "name": "People Are Awesome",
-        "path_to_picture": os.path.join("population_data", os.path.join("profile_pictures", "people_are_awesome.png"))
+        "path_to_picture": os.path.join("population_data", os.path.join("category_images", "people_are_awesome.png"))
     },
     {
         "name": "Not So Awesome People",
@@ -39,19 +39,19 @@ users_list = [
         "nickname": "tomator",
         "email": "tomator@google.com",
         "date_of_birth": "Jun 1 1997",
-        "path_to_picture": os.path.join("population_data", os.path.join("profile_pictures", "tomator.png"))
+        "path_to_picture": os.path.join("population_data", os.path.join("profile_images", "tomator.png"))
     },
     {
         "nickname": "Pyotr",
         "email": "pyotr.pyotrovic@yandex.com",
         "date_of_birth": "Dec 31 1993",
-        "path_to_picture": os.path.join("population_data", os.path.join("profile_pictures", "pyotr.png"))
+        "path_to_picture": os.path.join("population_data", os.path.join("profile_images", "pyotr.png"))
     },
     {
         "nickname": "BlueDoge",
         "email": "dogeswin@google.com",
         "date_of_birth": "May 30 1990",
-        "path_to_picture": os.path.join("population_data", os.path.join("profile_pictures", "blue_doge.jpg"))
+        "path_to_picture": os.path.join("population_data", os.path.join("profile_images", "blue_doge.jpg"))
     },
     {
         "nickname": "darth_procrastinator",
