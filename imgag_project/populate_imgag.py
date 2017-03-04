@@ -64,7 +64,7 @@ def add_category(name, path_to_picture=None):
         imopen = open(path_to_picture, "rb")
         django_file = File(imopen)
         filename = os.path.basename(path_to_picture)
-        category.picture.save(filename, django_file)
+        category.picture.save(filename, django_file, save=True)
     return category
 
 
@@ -92,7 +92,7 @@ def add_user(username, email, date_of_birth, path_to_picture):
         imopen = open(path_to_picture, "rb")
         django_file = File(imopen)
         filename = os.path.basename(path_to_picture)
-        profile.picture.save(filename, django_file)
+        profile.picture.save(filename, django_file, save=False)
     profile.save()
     return profile
 
