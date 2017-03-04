@@ -8,7 +8,8 @@ if __name__ == '__main__':
     RM = "rm"
 
     RM_DB_ARGS = [RM, "db.sqlite3"]
-    RM_UPLOADED_FILES = [RM, "-rfv", "profile_images", "uploads"]
+    UPLOADED_FILES = [join("media", folder) for folder in ["profile_images", "uploads", "category_images"]]
+    RM_UPLOADED_FILES = [RM, "-rfv"] + UPLOADED_FILES
     RM_MIGRATIONS_ARGS = [RM] + glob.glob(join(join("imgag", "migrations"), "*.py"))
     MAKE_MIGRATE_ARGS = [PYTHON, MANAGE_PY, "makemigrations", "imgag"]
     MIGRATE_ARGS = [PYTHON, MANAGE_PY, "migrate"]
@@ -17,7 +18,7 @@ if __name__ == '__main__':
     print("Removing DB...")
     p = Popen(RM_DB_ARGS, stdout=DEVNULL, stderr=STDOUT)
     p.communicate(input=None)
-    print("Removing file from media/uploads and media/profile_images...")
+    print("Removing file from media/uploads,media/profile_images and media/categories...")
     p = Popen(RM_UPLOADED_FILES, stdout=DEVNULL, stderr=STDOUT)
     p.communicate(input=None)
     print("Removing migrations...")

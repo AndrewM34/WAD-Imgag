@@ -9,80 +9,80 @@ from imgag.models import UserProfile, Category, Upload, Comment
 
 #
 def home(request):
-	context = {}
-	return render(request, 'imgag/home.html', context)
+    context = {}
+    return render(request, 'imgag/home.html', context)
 
 
 #
 def about(request):
-	context = {}
-	return render(request, 'imgag/about.html', context)
+    context = {}
+    return render(request, 'imgag/about.html', context)
 
 
 # view for registering a user
 def register(request):
-	registered = False
+    registered = False
 
-	if request.method == 'POST':
-		user_form = UserForm(data=request.POST)
-		profile_form = UserProfileForm(data=request.POST)
+    if request.method == 'POST':
+        user_form = UserForm(data=request.POST)
+        profile_form = UserProfileForm(data=request.POST)
 
-		if user_form.is_valid() and profile_form.is_valid():
-			user = user_form.save()
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save()
 
-			user.set_password(user.password)
-			user.save()
+            user.set_password(user.password)
+            user.save()
 
-			profile = profile_form.save(commit=False)
-			profile.user = user
+            profile = profile_form.save(commit=False)
+            profile.user = user
 
-			if 'picture' in request.FILES:
-				profile.picture = request.FILES['picture']
+            if 'picture' in request.FILES:
+                profile.picture = request.FILES['picture']
 
-			profile.save()
-			registered = True
+            profile.save()
+            registered = True
 
-		else:
-			print(user_form.errors, profile_form.errors)
+        else:
+            print(user_form.errors, profile_form.errors)
 
-	else:
-		user_form = UserForm()
-		profile_form = UserProfileForm()
+    else:
+        user_form = UserForm()
+        profile_form = UserProfileForm()
 
-	return render(request, 'imgag/register.html',
-				  {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+    return render(request, 'imgag/register.html',
+                  {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
 
 
 # view for a user to login
 def user_login(request):
-	badlogin = False
-	if request.method == 'POST':
-		username = request.POST.get('username')
-		password = request.POST.get('password')
+    badlogin = False
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-		user = authenticate(username=username, password=password)
+        user = authenticate(username=username, password=password)
 
-		if user:
-			if user.is_active:
-				login(request, user)
-				return HttpResponseRedirect(reverse('home'))
+        if user:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect(reverse('home'))
 
-			else:
-				return HttpResponse("Your Imgag account is disabled.")  # naughty user probably got banned
+            else:
+                return HttpResponse("Your Imgag account is disabled.")  # naughty user probably got banned
 
-		else:
-			badlogin = True
-			return render(request, 'imgag/login.html', {"username": username, "badlogin": badlogin})
+        else:
+            badlogin = True
+            return render(request, 'imgag/login.html', {"username": username, "badlogin": badlogin})
 
-	else:
-		return render(request, 'imgag/login.html', {'badlogin': badlogin})
+    else:
+        return render(request, 'imgag/login.html', {'badlogin': badlogin})
 
 
 # log out the current user
 @login_required
 def user_logout(request):
-	logout(request)
-	return HttpResponseRedirect(reverse('home'))
+    logout(request)
+    return HttpResponseRedirect(reverse('home'))
 
 
 # view to reset the password
@@ -97,12 +97,12 @@ def user_logout(request):
 # view to show account (details)
 # should pass the username, profile picture and all posts by that user
 @login_required
-def account(request, user): # takes username as an arg
-	context = {}
-	context['username'] = user
-	context['posts'] = Upload.objects.get(username=user)
+def account(request, user):  # takes username as an arg
+    context = {}
+    context['username'] = user
+    context['posts'] = Upload.objects.get(username=user)
 
-	return render(request, 'imgag/account.html', context)
+    return render(request, 'imgag/account.html', context)
 
 
 # view to change password
@@ -114,32 +114,36 @@ def account(request, user): # takes username as an arg
 
 # view to show all categories
 def categories(request, category_name_slug):
-	context_dict = {}
+    context_dict = {}
 
-	try:
-		category = Category.objects.get(slug=category_name_slug)
-		uploads = Upload.objects.filter(category=category)
+    try:
+        category = Category.objects.get(slug=category_name_slug)
+        uploads = Upload.objects.filter(category=category)
 
-		context_dict['uploads'] = uploads
-		context_dict['category'] = category
+        context_dict['uploads'] = uploads
+        context_dict['category'] = category
 
-	except Category.DoesNotExist:
-		context_dict['uploads'] = None
-		context_dict['category'] = None
+    except Category.DoesNotExist:
+        context_dict['uploads'] = None
+        context_dict['category'] = None
 
-	return render(request, 'imgag/category.html', context_dict)
+    return render(request, 'imgag/category.html', context_dict)
 
 
 # view of a post
 def post(request, hashid):
-	post = Upload.objects.get(hashid=hashid)
-	post_url = post.url_hash
-	context = {}
-	context['header'] = post.header
-	context['category'] = post.category
-	context['upVotes'] = post.up_votes
-	context['downVotes'] = post.down_votes
-	context['user'] = post.user
-	context['media'] = post.media
+    post = Upload.objects.get(hashid=hashid)
+    post_url = post.url_hash
+    context = {}
+    context['header'] = post.header
+    context['category'] = post.category
+    context['upVotes'] = post.up_votes
+    context['downVotes'] = post.down_votes
+    context['user'] = post.user
+    context['media'] = post.media
 
-	return render(request, 'imgag/'+post_url+'/', context)
+    return render(request, 'imgag/' + post_url + '/', context)
+
+
+def test(request):
+    return render(request, 'imgag/test.html', {})

@@ -58,10 +58,21 @@ class UserProfile(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=140, unique=True)
     slug = models.SlugField(unique=True)
+    picture = models.ImageField(upload_to=upload_to, storage=OverwriteStorage(),
+                                default=os.path.join("default",
+                                                     os.path.join("uploads", "default.png")))
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
+        if os.path.basename(self.picture.name) == "default.png":
+            imopen = open(os.path.join(settings.MEDIA_ROOT, self.picture.name), "rb")
+            django_file = File(imopen)
+            filename = os.path.basename(self.picture.name)
+            self.picture.save(filename, django_file, save=False)
         super(Category, self).save(*args, **kwargs)
+
+    def get_upload_dir_and_prefix(self):
+        return os.path.join("category_images", self.slug), ""
 
     class Meta:
         verbose_name_plural = "Categories"
