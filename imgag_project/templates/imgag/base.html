@@ -34,11 +34,11 @@
 		<div id="topbar">
 			<div class="header-center">
 			<div class="dropdown">
-			<a href="http://Imgag.com/">
+			<a href="{% url 'home' %}">
 			<button class="dropbtn"></button>
 			</a>
 			  <div class="dropdown-content">
-                    <a href="http://Imgag.com/about">About Imgag</a>
+                    <a href="{% url 'about' %}">About Imgag</a>
                     <a href="http://store.Imgag.com/">Contact US</a>
 					<a href="http://Imgag.com/jobs">we're hiring!</a>
                     <a href="http://help.Imgag.com/hc/en-us">need help?</a>
@@ -53,14 +53,15 @@
 		   </div>
 			<div id="secondary-nav">
 				<ul class="user-nav">
-
-					<li class="signin-link">
-						<a class="topbar-icon signin-register " href="https://Imgag.com/signin?invokedBy=regularSignIn">Sign in</a>
-						<div id="FlipInfo-Container"></div>
-					</li>
-					<li id="register"><a class="topbar-icon signin-register " href="https://Imgag.com/register?invokedBy=regularSignIn">Sign up</a>
-					</li>
-
+					{% if user.is_authenticated %}
+					{% else %}
+					          <li class="nav-item">
+					<a class="nav-link" href="{% url 'registration_register' %}">Sign Up</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="{% url 'auth_login' %}">Sign In</a>
+				  </li>
+				  {% endif %}
 				</ul>
 			</div>
 			<!-- #secondary-nav -->
@@ -71,292 +72,10 @@
 	<div id="cta-container-placeholder"></div>
 	<div id="cta-lightbox-placeholder"></div>
 
-	<div id="upload-global">
-		<div data-reactroot="" class="upload-global-layout">
-			<div class="total-upload-progress" style="transform: scaleX(0); transform-origin: 100% 100% 0px;"></div>
-			<div>
-				<div contenteditable="true" class="ff-paste-hack"></div><span></span>
-			</div><span></span>
-		</div>
-	</div>
+ {% block body_block %}
+{% endblock %}
+	
 
-	<div class="nodisplay">
-		<div id="colorbox-confirm" class="popup">
-			<h3 id="colorbox-confirm-title"></h3>
-
-			<div class="textbox" id="colorbox-confirm-message"></div>
-
-			<div class="margin-top">
-				<div class="left">
-					<a href="javascript:;" class="colorbox-no-confirm" id="colorbox-confirm-no">No way!</a>
-				</div>
-
-				<div class="right">
-					<div class="small-loader"></div>
-					<a href="javascript:;" class="colorbox-confirm" id="colorbox-confirm-yes">I'm sure</a>
-				</div>
-
-				<div class="clear"></div>
-			</div>
-		</div>
-	</div>
-
-
-	<div id="content" class="outside main">
-		<div class="sentence-sorting">
-			<span class="before-text">
-    The
-</span>
-			<div id="section" class="combobox front-page-section sorting-text-align" name="section">
-				<div class="selection">
-					<div data-type="base" data-value="hot">
-						<span class="name">Most Viral</span>
-					</div>
-
-				</div>
-
-				<div class="options nano">
-					<div class="js-galleries content">
-						<div class="combobox-header-current">current:
-							<div class="combobox-current green bold">
-								Most Viral
-
-							</div>
-						</div>
-						<ul>
-							<li class="bold item nodisplay" data-type="base" data-value="hot">
-								<a href="http://Imgag.com/hot/viral" class="name" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@hot@@,@@gallerySort@@:@@viral@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">Most Viral</a>
-							</li>
-							<li class="bold item" data-type="base" data-value="new">
-								<a href="http://Imgag.com/new/viral" class="name" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@new@@,@@gallerySort@@:@@viral@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">User Submitted</a>
-
-							</li>
-							<li class="combobox-hairline"></li>
-							<li class="item" data-value="Funny">
-								<a href="http://Imgag.com/t/Funny" class="name" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@topic@@,@@gallerySort@@:@@viral@@,@@topicTag@@:@@Funny@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">Funny</a>
-							</li>
-
-							<li class="item" data-value="The More You Know">
-								<a href="http://Imgag.com/t/The_More_You_Know" class="name" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@topic@@,@@gallerySort@@:@@viral@@,@@topicTag@@:@@The More You Know@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">The More You Know</a>
-							</li>
-
-							<li class="item" data-value="Science and Tech">
-								<a href="http://Imgag.com/t/Science_and_Tech" class="name" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@topic@@,@@gallerySort@@:@@viral@@,@@topicTag@@:@@Science and Tech@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">Science and Tech</a>
-							</li>
-
-							<li class="item" data-value="Gaming">
-								<a href="http://Imgag.com/t/Gaming" class="name" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@topic@@,@@gallerySort@@:@@viral@@,@@topicTag@@:@@Gaming@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">Gaming</a>
-							</li>
-
-							<li class="item" data-value="Eat What You Want">
-								<a href="http://Imgag.com/t/Eat_What_You_Want" class="name" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@topic@@,@@gallerySort@@:@@viral@@,@@topicTag@@:@@Eat What You Want@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">Eat What You Want</a>
-							</li>
-
-							<li class="item" data-value="Aww">
-								<a href="http://Imgag.com/t/Aww" class="name" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@topic@@,@@gallerySort@@:@@viral@@,@@topicTag@@:@@Aww@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">Aww</a>
-							</li>
-
-							<li class="item" data-value="Inspiring">
-								<a href="http://Imgag.com/t/Inspiring" class="name" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@topic@@,@@gallerySort@@:@@viral@@,@@topicTag@@:@@Inspiring@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">Inspiring</a>
-							</li>
-
-							<li class="item" data-value="Awesome">
-								<a href="http://Imgag.com/t/Awesome" class="name" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@topic@@,@@gallerySort@@:@@viral@@,@@topicTag@@:@@Awesome@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">Awesome</a>
-							</li>
-
-							<li class="item" data-value="Creativity">
-								<a href="http://Imgag.com/t/Creativity" class="name" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@topic@@,@@gallerySort@@:@@viral@@,@@topicTag@@:@@Creativity@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">Creativity</a>
-							</li>
-
-							<li class="item" data-value="The Great Outdoors">
-								<a href="http://Imgag.com/t/The_Great_Outdoors" class="name" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@topic@@,@@gallerySort@@:@@viral@@,@@topicTag@@:@@The Great Outdoors@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">The Great Outdoors</a>
-							</li>
-
-							<li class="item" data-value="Storytime">
-								<a href="http://Imgag.com/t/Storytime" class="name" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@topic@@,@@gallerySort@@:@@viral@@,@@topicTag@@:@@Storytime@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">Storytime</a>
-							</li>
-
-							<li class="item" data-value="Movies and TV">
-								<a href="http://Imgag.com/t/Movies_and_TV" class="name" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@topic@@,@@gallerySort@@:@@viral@@,@@topicTag@@:@@Movies and TV@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">Movies and TV</a>
-							</li>
-
-							<li class="item" data-value="Reaction">
-								<a href="http://Imgag.com/t/Reaction" class="name" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@topic@@,@@gallerySort@@:@@viral@@,@@topicTag@@:@@Reaction@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">Reaction</a>
-							</li>
-
-							<li class="item" data-value="Current Events">
-								<a href="http://Imgag.com/t/Current_Events" class="name" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@topic@@,@@gallerySort@@:@@viral@@,@@topicTag@@:@@Current Events@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">Current Events</a>
-							</li>
-
-							<li class="item" data-value="Staff Picks">
-								<a href="http://Imgag.com/t/Staff_Picks" class="name" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@topic@@,@@gallerySort@@:@@viral@@,@@topicTag@@:@@Staff Picks@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">Staff Picks</a>
-							</li>
-
-							<li class="item" data-value="A Day In The Life">
-								<a href="http://Imgag.com/t/A_Day_In_The_Life" class="name" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@topic@@,@@gallerySort@@:@@viral@@,@@topicTag@@:@@A Day In The Life@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">A Day In The Life</a>
-							</li>
-
-
-							<li class="item" data-value="Uplifting">
-								<a href="http://Imgag.com/t/Uplifting" class="name" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@topic@@,@@gallerySort@@:@@viral@@,@@topicTag@@:@@Uplifting@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">Uplifting</a>
-							</li>
-
-
-						</ul>
-					</div>
-					<div id="custom-group" class="item new-group"><a href="http://Imgag.com/gallery/custom" data-jafo="{@@event@@:@@gallerySortChange@@,@@meta@@:{@@location@@:@@outside@@,@@galleryType@@:@@custom@@,@@gallerySort@@:@@viral@@,@@previousSort@@:@@viral@@,@@previousType@@:@@hot@@,@@inSearch@@:@@@@}}">Custom Gallery</a>
-					</div>
-				</div>
-				<input type="hidden" name="section" value="hot">
-			</div><span class="middle-text"> <!-- intentionally not closed -->
-
-    images on the Internet,
-
-
-        sorted by
-
-    </span>
-			<!-- .middle-text -->
-
-
-			<div id="sort" class="combobox">
-				<div class="selection">
-					popularity
-				</div>
-				<div class="options sorting-text-align">
-					<div class="combobox-header-current">current:
-						<div class="combobox-current green bold">
-							popularity
-						</div>
-					</div>
-					<ul>
-						<li class="item nodisplay" value="viral">
-							<a href="http://Imgag.com/hot/viral">popularity</a>
-
-						</li>
-						<li class="item" value="time">
-							<a href="http://Imgag.com/hot/time">newest first</a>
-
-						</li>
-						<li class="item" value="top">
-							<a href="http://Imgag.com/top">highest scoring</a>
-
-						</li>
-
-
-					</ul>
-				</div>
-				<input type="hidden" name="sort" value="viral">
-			</div>
-
-
-
-			<div class="sort-options">
-				<ul>
-					<li><a href="http://Imgag.com/gallery/random" id="random-button" class="title-n" original-title="random mode"><span></span></a>
-					</li>
-
-					<li><a href="javascript:void(0)" id="past-link" class="title-n" original-title="past images"><span></span></a>
-					</li>
-				</ul>
-
-			</div>
-			<h1 id="user-gallery-message">
-                    Today's most popular posts.
-
-    </h1>
-		</div>
-
-		<div class="panel hidden">
-			<div id="imagelist" class="home-gallery">
-
-				<div class="posts br5 first-child">
-
-					<div class="outside-loader"></div>
-
-					<div class="cards">
-						<div id="4tF2g" class="post" data-tag1="" data-tag2="">
-							<a class="image-list-link" href="http://Imgag.com/gallery/4tF2g" data-page="0">
-								<img alt="" src="./Imgag_ The most awesome images on the Internet_files/HLjmg1Ab.jpg" original-title="">
-
-
-								<div class="point-info gradient-transparent-black transition">
-									<div class="relative">
-										<div class="pa-bottom">
-											<div class="arrows">
-												<div title="like" class="pointer arrow-up icon-upvote-outline" data="4tF2g" type="image" data-up="6382"></div>
-												<div title="dislike" class="pointer arrow-down icon-downvote-outline" data="4tF2g" type="image" data-downs="173"></div>
-												<div class="clear"></div>
-											</div>
-
-											<div class="point-info-points" title="points">
-												<span class="points-4tF2g">6,209</span>
-												<span class="points-text-4tF2g">points</span>
-											</div>
-										</div>
-									</div>
-								</div>
-
-							</a>
-							<div class="hover">
-								<p>Drown out all the pain</p>
-
-
-								<div class="post-info">
-									album · 134,145 views
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="clear"></div>
-
-				</div>
-				<div class="page-divider"><a href="javascript:;" class="scroll-top-text">back to top</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="clear"></div>
-	</div>
-
-	<div class="tag-group-selector-container"></div>
-	<div id="top-tag-container"></div>
-
-	<div id="humanMsg" class="humanMsg">
-		<p></p>
-	</div>
-	<div id="cboxOverlay" style="display: none;"></div>
-	<div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;">
-		<div id="cboxWrapper">
-			<div>
-				<div id="cboxTopLeft" style="float: left;"></div>
-				<div id="cboxTopCenter" style="float: left;"></div>
-				<div id="cboxTopRight" style="float: left;"></div>
-			</div>
-			<div style="clear: left;">
-				<div id="cboxMiddleLeft" style="float: left;"></div>
-				<div id="cboxContent" style="float: left;">
-					<div id="cboxTitle" style="float: left;"></div>
-					<div id="cboxCurrent" style="float: left;"></div>
-					<button type="button" id="cboxPrevious"></button>
-					<button type="button" id="cboxNext"></button>
-					<button id="cboxSlideshow"></button>
-					<div id="cboxLoadingOverlay" style="float: left;"></div>
-					<div id="cboxLoadingGraphic" style="float: left;"></div>
-				</div>
-				<div id="cboxMiddleRight" style="float: left;"></div>
-			</div>
-			<div style="clear: left;">
-				<div id="cboxBottomLeft" style="float: left;"></div>
-				<div id="cboxBottomCenter" style="float: left;"></div>
-				<div id="cboxBottomRight" style="float: left;"></div>
-			</div>
-		</div>
-		<div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div>
-	</div>
-	<iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./Imgag_ The most awesome images on the Internet_files/saved_resource.html"></iframe>
-	<iframe src="./Imgag_ The most awesome images on the Internet_files/pd.html" width="0" height="0" style="display:none;"></iframe>
 </body>
 
 </html>
