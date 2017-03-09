@@ -8,6 +8,12 @@
 	<div class="page-header">
 		<h1>{{selecteduser.username}} Profile</h1>
 	</div>
+	<form class="dropzone" id="uploadingBox" action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<div class="dropzone-previews"></div>
+		<input type="text" name="header" />
+	</form>
+	<button type="submit" id="submitFile" >UPLOAD</button>
     {% if userprofile.picture %}
     <img src="{{ MEDIA_URL }}{{userprofile.picture }}" width="300" height="300" alt="{{user.username}}" />
     {% else %}
@@ -26,4 +32,22 @@
 		<p><strong>Website:</strong> <a href="{{userprofile.website}}">{{userprofile.website}}</a></p>
 		{% endif %}
 	</div>
+	<script src="{% static 'js/dropzone.js' %}"></script>
+	<script type="text/javascript">
+		Dropzone.options.uploadingBox = {
+			maxFileSize : 15,
+			paramName : "file",
+			clickable : true,
+			autoProcessQueue : false,
+			maxFiles : 1,
+			
+			init : function(){
+				var dropThis = this;
+				var submitting = document.querySelector("#submitFile");
+				submitting.addEventListener("click", function() {
+					dropThis.processQueue();
+					});
+			}
+		}
+	</script>
 {% endblock %}

@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^post/$', views.post, name='post'),
 	url(r'^search/$', views.search, name='search'),
     url(r'^test/$', views.test, name='test'),
+	url(r'^upload/$', views.upload, name='upload'),
 ]

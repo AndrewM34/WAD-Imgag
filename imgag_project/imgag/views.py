@@ -150,4 +150,8 @@ def vote(request):
 
 def test(request):
 	return render(request, 'imgag/test.html', {})
+	
+def upload(request):
+	upload = Upload.objects.get_or_create(author=request.user, header=request.header, uploaded_file=request['FILES'].file)
+	upload.save()
 
