@@ -5,6 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from imgag.forms import UserForm, UserProfileForm
 from imgag.models import UserProfile, Category, Upload, Comment
+from imgag.webhose_search import run_query
 
 
 #
@@ -143,3 +144,15 @@ def post(request, hashid):
 	context['media'] = post.media
 
 	return render(request, 'imgag/'+post_url+'/', context)
+	
+
+# view for search
+def search(request):
+	result_list = []
+	query_human = ""
+	if request.method == 'POST':
+		query_human = request.POST['query']
+		query = query_human.strip()
+		if query:
+			result_list = run_query(query)
+	return render(request, 'imgag/search.html', {'result_list' : result_list, 'query_human':query_human})

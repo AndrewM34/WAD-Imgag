@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^account/(?P<username>[\w\-]+)/$', views.account, name='account'),
     url(r'^category/(?P<category_name_slug>[\w\-]+)/$', views.categories, name='categories'),
     url(r'^post/$', views.post, name='post'),
+	url(r'^search/$', views.search, name='search'),
 ]
