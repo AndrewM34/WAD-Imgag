@@ -1,0 +1,16 @@
+<svg width="780" height="500" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="502" width="782" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path style="vector-effect: non-scaling-stroke;" id="svg_1" d="m389.943729,119.07061l238.06247,0l0,0c31.186861,0 56.468746,59.098442 56.468746,132.000029c0,72.901561 -25.281897,131.999977 -56.468746,131.999977l-238.06247,0l0,0c-31.186826,0 -56.468746,-59.098416 -56.468746,-131.999977c0,-72.901613 25.281921,-132.000029 56.468746,-132.000029z" stroke-width="1.5" fill="#ff7f00"/>
+  <text font-weight="bold" stroke="null" transform="matrix(7.11139277817591,0,0,9.232721440871924,-1782.0340414098537,-1307.7889179500603) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_2" y="176" x="298" stroke-width="0" fill="#000000">Gag</text>
+  <text font-weight="bold" stroke="null" transform="matrix(7.828605358574394,0,0,7.6996785036475694,-728.199408283122,-569.2630820889445) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_3" y="115.528303" x="106.902327" stroke-opacity="null" stroke-width="0" fill="#ffffff">Im</text>
+ </g>
+</svg>

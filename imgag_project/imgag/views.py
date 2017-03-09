@@ -8,16 +8,12 @@ from imgag.models import UserProfile, Category, Upload, Comment
 from imgag.webhose_search import run_query
 
 
-#
 def home(request):
-	context = {}
-	return render(request, 'imgag/home.html', context)
+	return render(request, 'imgag/home.html', {})
 
 
-#
 def about(request):
-	context = {}
-	return render(request, 'imgag/about.html', context)
+	return render(request, 'imgag/about.html', {})
 
 
 # view for registering a user
@@ -86,31 +82,15 @@ def user_logout(request):
 	return HttpResponseRedirect(reverse('home'))
 
 
-# view to reset the password
-# def reset_pass(request):
-# 	context = {}
-# 	if request.method == 'POST':
-# 		context['username'] = request.POST.get('username')
-#
-# 	return render(request, 'imgag/reset_password.html', context)
-
-
 # view to show account (details)
 # should pass the username, profile picture and all posts by that user
 @login_required
-def account(request, user): # takes username as an arg
+def account(request): # takes username as an arg
 	context = {}
-	context['username'] = user
+	context['username'] = request.user
 	context['posts'] = Upload.objects.get(username=user)
 
 	return render(request, 'imgag/account.html', context)
-
-
-# view to change password
-# https://github.com/macdhuibh/django-registration-templates/tree/master/registration
-# @login_required
-# def change_pass(request):
-# 	pass
 
 
 # view to show all categories
@@ -136,6 +116,10 @@ def post(request, hashid):
 	post = Upload.objects.get(hashid=hashid)
 	post_url = post.url_hash
 	context = {}
+
+	voteOnPost = Vote.objects.get_or_create(user=request.user, upload=hashid)
+
+	context['vote'] = voteOnPost.vote # either -1, 0, 1
 	context['header'] = post.header
 	context['category'] = post.category
 	context['upVotes'] = post.up_votes
@@ -144,7 +128,6 @@ def post(request, hashid):
 	context['media'] = post.media
 
 	return render(request, 'imgag/'+post_url+'/', context)
-	
 
 # view for search
 def search(request):
@@ -156,3 +139,15 @@ def search(request):
 		if query:
 			result_list = run_query(query)
 	return render(request, 'imgag/search.html', {'result_list' : result_list, 'query_human':query_human})
+
+
+# TODO
+# this view will accept an ajax request, and will change the vote
+# on the post accordingly
+def vote(request):
+	pass
+
+
+def test(request):
+	return render(request, 'imgag/test.html', {})
+
