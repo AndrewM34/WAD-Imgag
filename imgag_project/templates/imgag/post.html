@@ -1,0 +1,57 @@
+{% extends 'imgag/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    {% if header %}
+        {{ header }}
+    {% endif %}
+{% endblock %}
+
+{% block body_block %}
+    {% if header %}
+        <div>
+            <div>
+                <h1>
+                    {{ header }}
+                </h1>
+                {% if video %}
+                    <video autoplay loop>
+                        <source src="{{ upload.url }}" type="video/mp4" />
+                    </video>
+                {% else %}
+                    <img src="{{ upload.url }}" />
+                {% endif %}
+                <br />
+
+                <form>
+                    <button type="submit"><img src="somesrc" alt="Upvotes" /></button>
+                    <span>{{ up_votes }}</span>
+                </form>
+                <form>
+                    <button type="submit"><img src="somesrc" alt="Downvotes" /></button>
+                    <span>{{ down_votes }}</span>
+                </form>
+                <span>By {{ author }}</span>
+                <span>Created on {{ posted_date }}</span>
+            </div>
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'post' post_hashid=hashid %}">
+                    {% csrf_token %}
+                    <textarea name="comment-text" placeholder="Type your comment here." required></textarea>
+                    <input type="submit" value="Post" />
+                </form>
+            {% endif %}
+            <div>
+                {% for comment in comments %}
+                    <span>{{ comment.author }}</span>
+                    <span>{{ comment.created_date }}</span>
+                    <textarea>{{ comment.text }}</textarea>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <h1>
+            There is no such post.
+        </h1>
+    {% endif %}
+{% endblock %}
