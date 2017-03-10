@@ -243,7 +243,7 @@ textarea.placeholder {
     display: none;
     position: absolute;
     background-color: #efefef;
-    min-width: 160px;
+    min-width: 120px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
@@ -253,7 +253,6 @@ textarea.placeholder {
 	float: left;
     color: black;
     padding: 12px 16px;
-	margin: auto;
     text-decoration: none;
     display: block;
 }
@@ -265,7 +264,8 @@ textarea.placeholder {
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
-    display: block;
+    display: inline-block;
+	
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */

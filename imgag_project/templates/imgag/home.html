@@ -1,45 +1,15 @@
 {% extends 'imgag/base.html' %}
 {% load staticfiles %}
+{% load imgag_template_tags %}
 
 <div>
 	{% block title_block %}
-		Index
 	{% endblock %}
 
 	{% block body_block %}
-		 <div id="content" class="outside main">
+		<div id="content" class="outside main">
 		<div class="sentence-sorting">
-			<span class="before-text">
-				The
-			</span>
-			<div id="section" class="combobox front-page-section sorting-text-align" name="section">
-				<div class="selection">
-					<div data-type="base" data-value="hot">
-						<span class="name">Most Viral</span>
-					</div>
-
-				</div>
-
-				<div class="options nano">
-					<div class="js-galleries content">
-						<div class="combobox-header-current">current:
-							<div class="combobox-current green bold">
-								Most Viral
-							</div>
-						</div>
-						<ul>
-						<li class="item">
-						<a>{{ category.name }}</a></li>
-						</ul>
-					</div>
-				</div>
-			</div><span class="middle-text"> <!-- intentionally not closed -->
-
-    images on the Internet.
-
-    </span>
-			<!-- .middle-text -->
-
+		
 			<h1 id="user-gallery-message">
                     Today's most popular posts.
 
