@@ -16,9 +16,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge;">
 
 	<link rel="icon" href="{% static 'imgag/favicon.svg' %}">
-
-	<link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'css/gallery.css' %}" />
+	<link rel="stylesheet" type="text/css" href="//s.imgur.com/min/global.css?1489087397" />
+    <link rel="stylesheet" type="text/css" href="//s.imgur.com/min/gallery.css?1489087397" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/imgag.css' %}" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+          
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
 
 	<link rel="canonical" href="http://Imgag.com/">
@@ -38,7 +41,7 @@
 			<a href="{% url 'home' %}">
 			<button class="dropbtn"></button>
 			</a>
-			  <div class="dropdown-content">
+			  <div class="dropdown-content1">
                     <a href="{% url 'about' %}">About Imgag</a>
                     <a href="http://store.Imgag.com/">Contact US</a>
 					<a href="http://Imgag.com/jobs">we're hiring!</a>
@@ -48,8 +51,12 @@
 			
 			<div class="dropdown">
 			 <button class="dropbtn2">Categories</button>
-			 <div class="dropdown-content">
+			 <div class="dropdown-content1">
+			  <div class="row">
+				
 			   {% get_category_list %}
+			
+			 </div>
 			 </div>
 		   </div>
 			<div id="secondary-nav">
