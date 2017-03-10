@@ -86,10 +86,13 @@ def user_logout(request):
 @login_required
 def account(request): # takes username as an arg
 	context = {}
+	user = UserProfile.objects.get(user=request.user)
+	print (user)
 	context['username'] = request.user
-	context['posts'] = Upload.objects.get(username=user)
+	print (request.user)
+	context['posts'] = Upload.objects.filter(author=user)
 
-	return render(request, 'imgag/account.html', context)
+	return render(request, 'imgag/profile.html', context)
 
 
 # view to show all categories
