@@ -88,9 +88,9 @@ def user_logout(request):
 def account(request): # takes username as an arg
 	context = {}
 	user = UserProfile.objects.get(user=request.user)
-	print (user)
+	#print (user)
 	context['username'] = request.user
-	print (request.user)
+	#print (request.user)
 	context['posts'] = Upload.objects.filter(author=user)
 
 	return render(request, 'imgag/profile.html', context)
@@ -155,6 +155,11 @@ def test(request):
 	return render(request, 'imgag/test.html', {})
 	
 def upload(request):
-	upload = Upload.objects.get_or_create(author=request.user, header=request.header, uploaded_file=request['FILES'].file)
+	conte
+	user = UserProfile.objects.get(user=request.user)
+	cat = Category.objects.get(name="Deep")
+	upload = Upload.objects.get_or_create(author=user, header=request.POST['header'], category=cat)[0]
+	upload.uploaded_file=request.FILES['file']
 	upload.save()
+	return post(request, upload.hashid.hashid)
 
