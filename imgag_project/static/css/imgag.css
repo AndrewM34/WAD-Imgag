@@ -80,6 +80,7 @@
 .search-wrapper .input-holder {    
     height: 50px;
     width:50px;
+	right:15px;
     overflow: hidden;
     background: rgba(255,255,255,0);
     border-radius:6px;
@@ -182,7 +183,7 @@
     transition-delay: 0.2s;
 }
 .search-wrapper.active .close {
-    right:-30px;
+    right:-10px;
 	top: 15px;
     transform: rotate(45deg);
     transition: all .6s cubic-bezier(0.000, 0.105, 0.035, 1.570);
