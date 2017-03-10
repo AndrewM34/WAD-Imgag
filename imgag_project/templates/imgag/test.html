@@ -1,5 +1,10 @@
 {% load imgag_template_tags %}
+{% load staticfiles %}
 
+<header>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{% static 'js/add_comment.js' %}"></script>
+</header>
 {% block title_block %}
     DerpTest
 {% endblock %}
@@ -9,5 +14,13 @@
 {% endblock %}
 
 {% block body_block %}
-    This is shit
+    <div>
+        <form id="add-comment" action="/test/" method="POST">
+            {% csrf_token %}
+            <textarea>
+
+            </textarea>
+            <input type="submit" value="Post"/>
+        </form>
+    </div>
 {% endblock %}

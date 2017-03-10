@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from imgag.forms import UserForm, UserProfileForm
-from imgag.models import UserProfile, Category, Upload, Comment
+from imgag.models import UserProfile, Category, Upload, Comment, Vote
 from imgag.webhose_search import run_query
 
 
@@ -115,22 +115,35 @@ def categories(request, category_name_slug):
 
 
 # view of a post
-def post(request, hashid):
-	post = Upload.objects.get(hashid=hashid)
-	post_url = post.url_hash
-	context = {}
+def post(request, post_hashid):
+	try:
+		context_dict = {}
+		post = Upload.objects.get(hashid=post_hashid)
+		author = post.author.user.username
+		if request.user.is_authenticated() and request.method ==  'POST':
+			comment = Comment()
+			comment.author = UserProfile.objects.get(user=request.user)
+			comment.upload = post
+			comment.text = request.POST['comment-text']
+			comment.save()
+		context_dict['hashid'] = post_hashid
+		context_dict['header'] = post.header
+		context_dict['author'] = author
+		context_dict['posted_date'] = post.created_date
+		context_dict['upload'] = post.uploaded_file
+		context_dict['up_votes'] = Vote.objects.filter(upload__hashid=post_hashid).filter(vote__gte=1).count()
+		context_dict['down_votes'] = Vote.objects.filter(upload__hashid=post_hashid).filter(vote__lte=-1).count()
+		context_dict['comments'] = Comment.objects.filter(upload=post).order_by("created_date")
+		if post.uploaded_file.name.endswith(".mp4"):
+			context_dict['video'] = True
+		else:
+			context_dict['video'] = False
+	except(TypeError, Upload.DoesNotExist):
+		pass
+	return render(request, 'imgag/post.html', context_dict)
 
-	voteOnPost = Vote.objects.get_or_create(user=request.user, upload=hashid)
-
-	context['vote'] = voteOnPost.vote # either -1, 0, 1
-	context['header'] = post.header
-	context['category'] = post.category
-	context['upVotes'] = post.up_votes
-	context['downVotes'] = post.down_votes
-	context['user'] = post.user
-	context['media'] = post.media
-
-	return render(request, 'imgag/'+post_url+'/', context)
+def vote(request):
+	pass
 
 # view for search
 def search(request):
@@ -144,15 +157,11 @@ def search(request):
 	return render(request, 'imgag/search.html', {'result_list' : result_list, 'query_human':query_human})
 
 
-# TODO
-# this view will accept an ajax request, and will change the vote
-# on the post accordingly
-def vote(request):
-	pass
-
-
 def test(request):
 	return render(request, 'imgag/test.html', {})
+
+	
+
 @login_required	
 def upload(request):
 	user = UserProfile.objects.get(user=request.user)
