@@ -43,8 +43,6 @@
 			</a>
 			  <div class="dropdown-content1">
                     <a href="{% url 'about' %}">About Imgag</a>
-                    <a href="http://store.Imgag.com/">Contact US</a>
-					<a href="http://Imgag.com/jobs">we're hiring!</a>
                     <a href="http://help.Imgag.com/hc/en-us">need help?</a>
 			  </div>
 			</div>
@@ -62,8 +60,11 @@
 			<div id="secondary-nav">
 				<ul class="user-nav">
 					{% if user.is_authenticated %}
+					<li class="nav-item">
+					<a class="nav-link" href="{% url 'account' %}">Profile</a>
+					</li>
 					{% else %}
-					          <li class="nav-item">
+					<li class="nav-item">
 					<a class="nav-link" href="{% url 'registration_register' %}">Sign Up</a>
 				  </li>
 				  <li class="nav-item">
