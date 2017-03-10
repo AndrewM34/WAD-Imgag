@@ -1,16 +1,16 @@
-<svg width="780" height="500" xmlns="http://www.w3.org/2000/svg">
+<svg width="650" height="295" xmlns="http://www.w3.org/2000/svg">
  <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
  <g>
   <title>background</title>
-  <rect fill="none" id="canvas_background" height="502" width="782" y="-1" x="-1"/>
+  <rect fill="none" id="canvas_background" height="297" width="652" y="-1" x="-1"/>
   <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
    <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
   </g>
  </g>
  <g>
   <title>Layer 1</title>
-  <path style="vector-effect: non-scaling-stroke;" id="svg_1" d="m389.943729,119.07061l238.06247,0l0,0c31.186861,0 56.468746,59.098442 56.468746,132.000029c0,72.901561 -25.281897,131.999977 -56.468746,131.999977l-238.06247,0l0,0c-31.186826,0 -56.468746,-59.098416 -56.468746,-131.999977c0,-72.901613 25.281921,-132.000029 56.468746,-132.000029z" stroke-width="1.5" fill="#ff7f00"/>
-  <text font-weight="bold" stroke="null" transform="matrix(7.11139277817591,0,0,9.232721440871924,-1782.0340414098537,-1307.7889179500603) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_2" y="176" x="298" stroke-width="0" fill="#000000">Gag</text>
-  <text font-weight="bold" stroke="null" transform="matrix(7.828605358574394,0,0,7.6996785036475694,-728.199408283122,-569.2630820889445) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_3" y="115.528303" x="106.902327" stroke-opacity="null" stroke-width="0" fill="#ffffff">Im</text>
+  <text style="cursor: move;" font-weight="bold" stroke="#000" transform="matrix(7.9641180297916625,0,0,8.26984831189723,-883.739975075654,-1029.699847740894) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_2" y="150.606354" x="110.967284" stroke-width="0" fill="#ffffff">Im</text>
+  <path stroke="#000" id="svg_5" d="m300.077868,5.906604l274.009253,0l0,0c35.895992,0 64.995373,63.127889 64.995373,141.000047c0,77.872131 -29.099395,140.999992 -64.995373,140.999992l-274.009253,0l0,0c-35.895951,0 -64.995373,-63.127861 -64.995373,-140.999992c0,-77.872186 29.099422,-141.000047 64.995373,-141.000047z" stroke-opacity="null" stroke-width="0" fill="#ff7f00"/>
+  <text stroke="#000" transform="matrix(7.406961785268434,0,0,8.969892452694333,-3015.5025495931563,-1594.9020969820915) " font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_6" y="202.435472" x="441.947748" stroke-opacity="null" stroke-width="0" fill="#000000">Gag</text>
  </g>
 </svg>

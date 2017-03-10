@@ -1,7 +1,6 @@
 
     {% if cats %}
         {% for c in cats %}
-            <li class="nav-item">
             {% if c == act_cat %}
                 <strong>
                     <a href="{% url 'categories' c.slug %}">{{ c.name }}</a>
@@ -9,10 +8,8 @@
             {% else %}
                 <a href="{% url 'categories' c.slug %}">{{ c.name }}</a>
             {% endif %}
-            </li>
             <img src="{{ c.picture.url }}" alt="{{ c.name }}" width="150" height="100"/>
         {% endfor %}
     {% else %}
-        <li><strong>There are no categories present.</strong></li>
+        <strong>There are no categories present.</strong>
     {% endif %}
-

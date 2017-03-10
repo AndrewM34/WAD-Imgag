@@ -1,0 +1,12 @@
+<svg width="400" height="370" xmlns="http://www.w3.org/2000/svg" style="vector-effect: non-scaling-stroke;" stroke="null">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <g stroke="null">
+  <title stroke="null">background</title>
+  <rect stroke="null" fill="none" id="canvas_background" height="372" width="402" y="-1" x="-1"/>
+ </g>
+ <g stroke="null">
+  <title stroke="null">Layer 1</title>
+  <path stroke="#ffffff" style="vector-effect: non-scaling-stroke;" id="svg_1" d="m66.41581,7.075368l268.583315,0l0,0c35.185178,0 63.708333,80.141063 63.708333,179.000025c0,98.858927 -28.523168,178.999955 -63.708333,178.999955l-268.583315,0l0,0c-35.185138,0 -63.708333,-80.141028 -63.708333,-178.999955c0,-98.858997 28.523194,-179.000025 63.708333,-179.000025z" stroke-width="0" fill="#ff7f00"/>
+  <text stroke="#ffffff" font-weight="bold" transform="matrix(13.775735175072949,0,0,14.834322671234538,-138.85356220852267,-4788.753978060704) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_3" y="344.104468" x="12.5" stroke-opacity="null" stroke-width="0" fill="#000000">IG</text>
+ </g>
+</svg>
