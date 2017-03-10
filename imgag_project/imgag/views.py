@@ -155,7 +155,6 @@ def test(request):
 	return render(request, 'imgag/test.html', {})
 	
 def upload(request):
-	conte
 	user = UserProfile.objects.get(user=request.user)
 	cat = Category.objects.get(name="Deep")
 	upload = Upload.objects.get_or_create(author=user, header=request.POST['header'], category=cat)[0]
