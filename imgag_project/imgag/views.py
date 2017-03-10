@@ -132,8 +132,21 @@ def post(request, hashid):
 # TODO
 # this view will accept an ajax request, and will change the vote
 # on the post accordingly
+# what will be sent in the request?
 def vote(request):
-	pass
+	voteObj = None # TODO
+	if request.method == 'POST':
+		# written like this so a user can't send a POST for 10k upvotes
+		if request.vote == 1:
+			voteObj.vote = 1
+		elif request.vote == -1:
+			voteObj.vote = -1
+		else:
+			voteObj.vote = 0
+
+		voteObj.save()
+
+	return None
 
 
 def test(request):
