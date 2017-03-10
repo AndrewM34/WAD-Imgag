@@ -1,0 +1,34 @@
+{% extends 'imgag/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    {% if header %}
+        {{ header }}
+    {% endif %}
+{% endblock %}
+
+{% block body_block %}
+    {% if header %}
+        <div>
+            <h1>
+                {{ header }}
+            </h1>
+            <h2>
+                By {{ author }}
+            </h2>
+            {% if video %}
+                <video autoplay loop>
+                    <source src="{{ upload.url }}" type="video/mp4">
+                </video>
+            {% else %}
+                <img src="{{ upload.url }}" />
+            {% endif %}
+            Upvoted: {{ up_votes }}
+            Downvotes: {{ down_votes }}
+        </div>
+    {% else %}
+        <h1>
+            There is no such post.
+        </h1>
+    {% endif %}
+{% endblock %}

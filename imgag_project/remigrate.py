@@ -1,3 +1,4 @@
+import sys
 from os.path import join
 from subprocess import Popen, DEVNULL, STDOUT
 import glob
