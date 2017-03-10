@@ -1,6 +1,8 @@
 {% extends "imgag/base.html" %}
 {% load staticfiles %}
 {% block body_block %}
+	<div class="w3-display-container w3-black" style="height:700px;">
+	<div class="w3-display-middle">
 	<div class="jumbotron">
 		<h1 class = " display-3">Login</h1>
 	</div>
@@ -17,4 +19,6 @@
 		Not a member?
 		<a href="{% url 'registration_register' %}">Register!</a>
 	</p>
+	</div>
+	</div>
 {% endblock %}
