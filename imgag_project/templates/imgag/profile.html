@@ -3,7 +3,7 @@
 {% block title %}
 	{{ user.username }} Profile
 {% endblock %}
-
+	<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 {% block body_block %}
 	<div class="page-header">
 		<h1>{{selecteduser.username}} Profile</h1>
@@ -32,14 +32,15 @@
 		<p><strong>Website:</strong> <a href="{{userprofile.website}}">{{userprofile.website}}</a></p>
 		{% endif %}
 	</div>
+	
 	<script src="{% static 'js/dropzone.js' %}"></script>
 	<script type="text/javascript">
 		Dropzone.options.uploadingBox = {
-			maxFileSize : 15,
-			paramName : "file",
-			clickable : true,
-			autoProcessQueue : false,
-			maxFiles : 1,
+			maxFilesize: 15,
+			paramName: "file",
+			clickable: true,
+			autoProcessQueue: false,
+			maxFiles: 1,
 			
 			init : function(){
 				var dropThis = this;
@@ -47,6 +48,9 @@
 				submitting.addEventListener("click", function() {
 					dropThis.processQueue();
 					});
+				this.on("maxfilesexceeded", function(file){
+					this.removeFile(file);
+				});
 			}
 		}
 	</script>

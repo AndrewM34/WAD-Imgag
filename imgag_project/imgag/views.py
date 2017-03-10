@@ -153,7 +153,7 @@ def vote(request):
 
 def test(request):
 	return render(request, 'imgag/test.html', {})
-	
+@login_required	
 def upload(request):
 	user = UserProfile.objects.get(user=request.user)
 	cat = Category.objects.get(name="Deep")
