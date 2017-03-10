@@ -1,3 +1,4 @@
+<div class="col s4">
 
     {% if cats %}
         {% for c in cats %}
@@ -9,7 +10,9 @@
                 <a href="{% url 'categories' c.slug %}">{{ c.name }}</a>
             {% endif %}
             <img src="{{ c.picture.url }}" alt="{{ c.name }}" width="150" height="100"/>
+		
         {% endfor %}
     {% else %}
         <strong>There are no categories present.</strong>
     {% endif %}
+</div>
