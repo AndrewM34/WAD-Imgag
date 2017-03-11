@@ -1,4 +1,8 @@
-function comment_answer(json) {
+function redirectToLogin() {
+    window.location.replace("/login/?next=" + window.location.pathname)
+}
+
+function commentAnswer(json) {
     if (json.hasOwnProperty("ok")) {
         $("#comment_form textarea").val("");
         jQuery.each(json.comments, function(index, comment) {
@@ -10,28 +14,28 @@ function comment_answer(json) {
                         '</div>');
                         });
     } else {
-        window.location.replace("/accounts/login/?next=" + window.location.href)
+        redirectToLogin()
     }
 }
 
-function add_comment(e) {
+function addComment(e) {
     e.preventDefault();
     number_of_comments = $("div[name=comment").length;
     $.ajax({
       type: 'post',
       url: ($(e.target).attr("action") + "comments-count/" + number_of_comments + "/ajax"),
       data: $(e.target).serialize(),
-      success: comment_answer,
+      success: commentAnswer,
     });
 }
 var ob;
 
-function vote_answer(json) {
+function voteAnswer(json) {
     if (json.hasOwnProperty("ok")) {
         $("#up_votes").text(json.up_votes);
         $("#down_votes").text(json.down_votes);
     } else {
-        window.location.replace("/accounts/login/?next=" + window.location.href)
+        redirectToLogin()
     }
 }
 
@@ -41,12 +45,12 @@ function vote(e) {
       type: 'post',
       url: ($(e.target).attr("action") + "ajax"),
       data: $(e.target).serialize(),
-      success: vote_answer,
+      success: voteAnswer,
     });
 }
 
 function init() {
-	$("#comment_form").submit(add_comment);
+	$("#comment_form").submit(addComment);
 	$("#up_vote_form").submit(vote);
 	$("#down_vote_form").submit(vote);
 }
