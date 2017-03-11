@@ -154,12 +154,14 @@ def add_comment(request, post_hashid):
 
 @login_required
 def vote(request, post_hashid, users_vote):
-	if request.method == 'Post':
+	print("**df**dff*dfd*fd*fd*df*fd*********")
+	if request.method == 'POST':
 		user = UserProfile.objects.get(user=request.user)
 		post = Upload.objects.get(hashid=post_hashid)
-		vote = Vote.objects.get_or_create(author=user, upload=post)[0]
+		vote = Vote.objects.get_or_create(user=user, upload=post)[0]
 		vote.vote = users_vote
 		vote.save()
+		print("*********************************************")
 		print(vote)
 	return HttpResponseRedirect(reverse('post', kwargs={'post_hashid': post_hashid}))
 
