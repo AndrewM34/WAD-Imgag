@@ -15,7 +15,8 @@ urlpatterns = [
     url(r'^post/(?P<post_hashid>[\w]+)/vote/(?P<users_vote>-?1)/(?P<ajax>ajax)?$', views.vote, name='vote'),
     url(r'^add_comment/(?P<post_hashid>[\w]+)/(comments-count/(?P<comments_count>[0-9]+)/(?P<ajax>ajax))?$',
         views.add_comment, name='add_comment'),
-    url(r'^search/$', views.search, name='search'),
+    url(r'^search/(?P<query>[^/]+)/$', views.searchArg, name='searchArg'),
+	url(r'^search/$', views.search, name='search'),
     url(r'^test/$', views.test, name='test'),
     url(r'^upload/$', views.upload, name='upload'),
 ]

@@ -191,6 +191,14 @@ def search(request):
 				print (res['title'])
 	return render(request, 'imgag/search.html', {'result_list' : result_list, 'query_human':query_human})
 
+@csrf_exempt
+def searchArg(request, query):
+	result_list = []
+	human_readable = query.replace('_', ' ')
+	value = human_readable.strip()
+	if value:
+		result_list = run_query(value)
+	return render(request, 'imgag/search.html', {'result_list' : result_list, 'query_human':human_readable})
 
 def test(request):
 	return render(request, 'imgag/test.html', {})
