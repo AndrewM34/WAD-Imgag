@@ -141,6 +141,12 @@ class Comment(models.Model):
     def __unicode__(self):
         return self.text
 
+    def as_json(self):
+        return dict(author=str(self.author),
+                    upload_hashid=self.upload.hashid.hashid,
+                    text=str(self.text),
+                    created_date=str(self.created_date))
+
 
 class Vote(models.Model):
     user = models.ForeignKey(UserProfile)

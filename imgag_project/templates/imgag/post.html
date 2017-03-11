@@ -1,11 +1,9 @@
 {% extends 'imgag/base.html' %}
 {% load staticfiles %}
 
-{% block title_block %}
-    {% if header %}
-        {{ header }}
-    {% endif %}
-{% endblock %}
+{% block head_block %}
+    <script src="{% static 'js/post.js' %}"></script>
+{% endblock%}
 
 {% block body_block %}
     {% if header %}
@@ -23,29 +21,38 @@
                 {% endif %}
                 <br />
 
-                <form>
-                    <button type="submit"><img src="somesrc" alt="Upvotes" /></button>
-                    <span>{{ up_votes }}</span>
+                <form id="up_vote_form" method="post" action="{% url 'vote' post_hashid=hashid users_vote=1 %}">
+                    {% csrf_token %}
+                    <button type="submit" src="somesrc" alt="Upvotes" /></button>
+                    <span id="up_votes">{{ up_votes }}</span>
                 </form>
-                <form>
-                    <button type="submit"><img src="somesrc" alt="Downvotes" /></button>
-                    <span>{{ down_votes }}</span>
+                <form id="down_vote_form" method="post" action="{% url 'vote' post_hashid=hashid users_vote=-1 %}">
+                    {% csrf_token %}
+                    <button type="submit" src="somesrc" alt="Downvotes" /></button>
+                    <span id="down_votes">{{ down_votes }}</span>
                 </form>
                 <span>By {{ author }}</span>
                 <span>Created on {{ posted_date }}</span>
             </div>
-            {% if user.is_authenticated %}
-                <form method="post" action="{% url 'post' post_hashid=hashid %}">
-                    {% csrf_token %}
-                    <textarea name="comment-text" placeholder="Type your comment here." required></textarea>
-                    <input type="submit" value="Post" />
-                </form>
-            {% endif %}
-            <div>
+            <form id="comment_form" method="post" action="{% url 'add_comment' post_hashid=hashid %}">
+                {% csrf_token %}
+                {% for hidden in comment_form.hidden_fields %}
+                    {{ hidden }}
+                {% endfor %}
+                {% for field in comment_form.visible_fields %}
+                    {{ field.errors }}
+                    {{ field.help_text }}
+                    {{ field }}
+                {% endfor %}
+                <input type="submit" value="Post" />
+            </form>
+            <div id="comments">
                 {% for comment in comments %}
-                    <span>{{ comment.author }}</span>
-                    <span>{{ comment.created_date }}</span>
-                    <textarea>{{ comment.text }}</textarea>
+                    <div name="comment">
+                        <span>{{ comment.author }}</span>
+                        <span>{{ comment.created_date }}</span>
+                        <textarea disabled>{{ comment.text }}</textarea>
+                    </div>
                 {% endfor %}
             </div>
         </div>
