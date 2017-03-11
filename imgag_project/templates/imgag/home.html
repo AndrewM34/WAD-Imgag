@@ -5,8 +5,16 @@
 	{% if posts %}
 		{% for post in posts %}
 			<div name="post">
-				<h2>{{ post.header }}</h2>
-
+				<a href="{% url 'post' post_hashid=post.hashid %}">
+                	<h1>{{ post.header }}</h1>
+				</a>
+                {% if post.is_video %}
+                    <video autoplay loop muted onclick="this.paused ? this.play() : this.pause();">
+                        <source src="{{ post.upload_url }}" type="video/mp4" />
+                    </video>
+                {% else %}
+                    <img src="{{ post.upload_url }}" />
+                {% endif %}
 			</div>
 		{% endfor %}
 	{% else %}

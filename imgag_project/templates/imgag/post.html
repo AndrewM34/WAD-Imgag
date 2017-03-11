@@ -9,17 +9,14 @@
     {% if post %}
         <div>
             <div>
-                <h1>
-                    {{ post.header }}
-                </h1>
+                <h1>{{ post.header }}</h1>
                 {% if post.is_video %}
-                    <video autoplay loop>
+                    <video autoplay loop muted onclick="this.paused ? this.play() : this.pause();">
                         <source src="{{ post.upload_url }}" type="video/mp4" />
                     </video>
                 {% else %}
                     <img src="{{ post.upload_url }}" />
                 {% endif %}
-                <br />
 
                 <form id="up_vote_form" method="post" action="{% url 'vote' post_hashid=post.hashid users_vote=1 %}">
                     {% csrf_token %}

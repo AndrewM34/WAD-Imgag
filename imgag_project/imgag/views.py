@@ -132,12 +132,6 @@ def post(request, post_hashid):
 	try:
 		context_dict = {'comment_form': CommentForm()}
 		post = Upload.objects.get(hashid=post_hashid)
-		author = post.author.user.username
-		# context_dict['hashid'] = post_hashid
-		# context_dict['header'] = post.header
-		# context_dict['author'] = author
-		# context_dict['posted_date'] = post.created_date
-		# context_dict['upload'] = post.uploaded_file
 		context_dict['post'] = post.as_json()
 		context_dict['up_votes'] = Vote.objects.filter(upload__hashid=post_hashid).filter(vote__gte=1).count()
 		context_dict['down_votes'] = Vote.objects.filter(upload__hashid=post_hashid).filter(vote__lte=-1).count()
