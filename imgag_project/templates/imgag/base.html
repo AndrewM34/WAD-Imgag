@@ -13,7 +13,7 @@
 
 	<meta name="copyright" content="Copyright 2017 Imgag, Inc.">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge;">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 	<link rel="icon" href="{% static 'imgag/favicon.svg' %}">
 	<link rel="stylesheet" type="text/css" href="//s.imgur.com/min/global.css?1489087397" />
@@ -24,6 +24,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
 	<link rel="prefetch" href="http://tpc.googlesyndication.com/safeframe/1-0-6/html/container.html">
+	{% block head_block %}{% endblock%}
 	
 <script type="text/javascript">
         function searchToggle(obj, evt){

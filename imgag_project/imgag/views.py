@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from imgag.webhose_search import run_query
+import json
 from imgag.forms import UserForm, UserProfileForm, CommentForm
 from imgag.models import UserProfile, Category, Upload, Comment, Vote
 
@@ -137,7 +138,7 @@ def post(request, post_hashid):
 	return render(request, 'imgag/post.html', context_dict)
 
 @login_required
-def add_comment(request, post_hashid):
+def add_comment(request, post_hashid, comments_count=0, ajax=None):
 	if request.method == 'POST':
 		form = CommentForm(request.POST)
 		if form.is_valid():
@@ -150,19 +151,25 @@ def add_comment(request, post_hashid):
 				pass
 		else:
 			print(form.errors)
+	if ajax == "ajax":
+		new_comments = Comment.objects.filter(upload__hashid=post_hashid).order_by("created_date")[int(comments_count):]
+		json_dict = [c.as_json() for c in new_comments]
+		return HttpResponse(json.dumps(json_dict), content_type="application/json")
 	return HttpResponseRedirect(reverse('post', kwargs={'post_hashid': post_hashid}))
 
 @login_required
-def vote(request, post_hashid, users_vote):
-	print("**df**dff*dfd*fd*fd*df*fd*********")
+def vote(request, post_hashid, users_vote, ajax=None):
 	if request.method == 'POST':
 		user = UserProfile.objects.get(user=request.user)
 		post = Upload.objects.get(hashid=post_hashid)
 		vote = Vote.objects.get_or_create(user=user, upload=post)[0]
 		vote.vote = users_vote
 		vote.save()
-		print("*********************************************")
-		print(vote)
+	if ajax == "ajax":
+		up_votes = Vote.objects.filter(upload__hashid=post_hashid).filter(vote__gte=1).count()
+		down_votes = Vote.objects.filter(upload__hashid=post_hashid).filter(vote__lte=-1).count()
+		json_dict = {"up_votes": up_votes, "down_votes": down_votes}
+		return HttpResponse(json.dumps(json_dict), content_type="application/json")
 	return HttpResponseRedirect(reverse('post', kwargs={'post_hashid': post_hashid}))
 
 # view for search
