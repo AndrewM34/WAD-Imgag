@@ -117,15 +117,9 @@ def categories(request, category_name_slug):
 # view of a post
 def post(request, post_hashid):
 	try:
-		context_dict = {'form': CommentForm()}
+		context_dict = {'comment_form': CommentForm()}
 		post = Upload.objects.get(hashid=post_hashid)
 		author = post.author.user.username
-		# if request.user.is_authenticated() and request.method ==  'POST':
-		# 	comment = Comment()
-		# 	comment.author = UserProfile.objects.get(user=request.user)
-		# 	comment.upload = post
-		# 	comment.text = request.POST['comment-text']
-		# 	comment.save()
 		context_dict['hashid'] = post_hashid
 		context_dict['header'] = post.header
 		context_dict['author'] = author
@@ -159,8 +153,14 @@ def add_comment(request, post_hashid):
 	return HttpResponseRedirect(reverse('post', kwargs={'post_hashid': post_hashid}))
 
 @login_required
-def vote(request, post_hashid):
-	print("VOTING MATHAFUCKA")
+def vote(request, post_hashid, users_vote):
+	if request.method == 'Post':
+		user = UserProfile.objects.get(user=request.user)
+		post = Upload.objects.get(hashid=post_hashid)
+		vote = Vote.objects.get_or_create(author=user, upload=post)[0]
+		vote.vote = users_vote
+		vote.save()
+		print(vote)
 	return HttpResponseRedirect(reverse('post', kwargs={'post_hashid': post_hashid}))
 
 # view for search
