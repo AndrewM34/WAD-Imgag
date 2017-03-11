@@ -32,6 +32,8 @@
 
             if(!container.hasClass('active')){
                   container.addClass('active');
+				  $(obj).find('.search-input').focus();
+				  $(obj).find('.search-input').select();
                   evt.preventDefault();
             }
             else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
@@ -44,19 +46,23 @@
         }
 
         function submitFn(obj, evt){
-            value = $(obj).find('.search-input').val().trim();
+            value = $(obj).find('.search-input').val();
+			url = $(obj).attr('succeedurl');
 
-            _html = "Yup yup! Your search text sounds like this: ";
-            if(!value.length){
-                _html = "Yup yup! Add some text friend :D";
+            _html = "";
+			var check = value.trim();
+			value = value.replace(/\s+/g, '_');
+            if(!check.length){
+                _html = "Bro, you try to search nothing?";
+				$(obj).find('.result-container').html('<span>' + _html + '</span>');
+				$(obj).find('.result-container').fadeIn(100);
+				$(obj).find('.search-input').val("");
+				$(obj).find('.search-input').attr("placeholder", "Type to search");
             }
             else{
-                _html += "<b>" + value + "</b>";
+				window.location = url + value;
             }
-
-            $(obj).find('.result-container').html('<span>' + _html + '</span>');
             $(obj).find('.result-container').fadeIn(100);
-
             evt.preventDefault();
         }
 		 $('.collapsible').collapsible({
@@ -94,10 +100,10 @@
 			<div id="secondary-nav">
 				<ul class="nav navbar-nav navbar-right">
 				<li class="nav-item">
-					   <form onsubmit="submitFn(this, event);">
+					   <form onsubmit="submitFn(this, event);" succeedurl="{% url 'search' %}">
 							<div class="search-wrapper">
 								<div class="input-holder">
-									<input type="text" class="search-input" placeholder="Type to search" />
+									<input type="text" class="search-input" placeholder="Type to search" name="value" id="query" />
 									<button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
 								</div>
 								<span class="close" onclick="searchToggle(this, event);"></span>

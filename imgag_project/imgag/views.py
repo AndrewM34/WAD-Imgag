@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from imgag.webhose_search import run_query
+from django.views.decorators.csrf import csrf_exempt
 import json
 from imgag.forms import UserForm, UserProfileForm, CommentForm
 from imgag.models import UserProfile, Category, Upload, Comment, Vote
@@ -173,20 +174,38 @@ def vote(request, post_hashid, users_vote, ajax=None):
 	return HttpResponseRedirect(reverse('post', kwargs={'post_hashid': post_hashid}))
 
 # view for search
+@csrf_exempt
 def search(request):
 	result_list = []
+	print ("Gets to search method...")
 	query_human = ""
 	if request.method == 'POST':
-		query_human = request.POST['query']
+		query_human = request.POST['value']
+		print ("Gets the query...")
+		print ("The query is " + query_human)
 		query = query_human.strip()
 		if query:
 			result_list = run_query(query)
+			print ("Runs query...")
+			for res in result_list:
+				print (res['title'])
 	return render(request, 'imgag/search.html', {'result_list' : result_list, 'query_human':query_human})
 
+@csrf_exempt
+def searchArg(request, query):
+	result_list = []
+	human_readable = query.replace('_', ' ')
+	value = human_readable.strip()
+	if value:
+		result_list = run_query(value)
+	return render(request, 'imgag/search.html', {'result_list' : result_list, 'query_human':human_readable})
 
 def test(request):
 	return render(request, 'imgag/test.html', {})
 
+	
+
+@login_required	
 def upload(request):
 	user = UserProfile.objects.get(user=request.user)
 	cat = Category.objects.get(name="Deep")
