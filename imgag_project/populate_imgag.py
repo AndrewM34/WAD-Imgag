@@ -125,31 +125,3 @@ def add_vote(user, upload, vote=1):
 
 if __name__ == '__main__':
     populate()
-
-    # up1 = Upload.objects.all()[0]
-    # up2 = Upload.objects.all()[1]
-    # up3 = Upload.objects.all()[2]
-    # u1 = UserProfile.objects.all()[0]
-    # u2 = UserProfile.objects.all()[1]
-    # u3 = UserProfile.objects.all()[2]
-    # v = add_vote(u1, up1, 1)
-    # v = add_vote(u2, up1, -1)
-    # v = add_vote(u3, up1, 1)
-    # v = add_vote(u1, up2, -1)
-    # v = add_vote(u2, up2, -1)
-    # v = add_vote(u3, up2, -1)
-    # v = add_vote(u1, up3, -1)
-    # v = add_vote(u2, up3, -1)
-    # v = add_vote(u3, up3, 1)
-    #
-    # print("Upload: " + str(up1) +
-    #       "\nUpvotes: " + str(Vote.objects.filter(upload__hashid=up1.hashid.hashid).filter(vote=1).count()) +
-    #       "\nDownvotes: " + str(Vote.objects.filter(upload__hashid=up1.hashid.hashid).filter(vote=-1).count()))
-    #
-    # print("Upload: " + str(up2) +
-    #       "\nUpvotes: " + str(Vote.objects.filter(upload__hashid=up2.hashid.hashid).filter(vote=1).count()) +
-    #       "\nDownvotes: " + str(Vote.objects.filter(upload__hashid=up2.hashid.hashid).filter(vote=-1).count()))
-    #
-    # print("Upload: " + str(up3) +
-    #       "\nUpvotes: " + str(Vote.objects.filter(upload__hashid=up3.hashid.hashid).filter(vote=1).count()) +
-    #       "\nDownvotes: " + str(Vote.objects.filter(upload__hashid=up3.hashid.hashid).filter(vote=-1).count()))

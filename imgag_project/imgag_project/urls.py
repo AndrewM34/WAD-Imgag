@@ -41,6 +41,8 @@ urlpatterns = [
                   url(r'^login/$', auth_views.login, name='login'),
                   url(r'^register/$', MyRegistrationView.as_view(), name='register'),
                   url(r'^accounts/register/$', MyRegistrationView.as_view(), name='registration_register'),
+                # url(r'^reset_password/$', views.reset_pass, name='reset'),
+                # url(r'^change_password/$', views.change_pass, name='change'),
                   url(r'^accounts/', include('registration.backends.default.urls')),
                   url(r'^', include('imgag.urls')),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
