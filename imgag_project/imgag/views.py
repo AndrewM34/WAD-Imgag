@@ -3,9 +3,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from imgag.forms import UserForm, UserProfileForm
-from imgag.models import UserProfile, Category, Upload, Comment, Vote
 from imgag.webhose_search import run_query
+from imgag.forms import UserForm, UserProfileForm, CommentForm
+from imgag.models import UserProfile, Category, Upload, Comment, Vote
 
 
 def home(request):
@@ -117,15 +117,15 @@ def categories(request, category_name_slug):
 # view of a post
 def post(request, post_hashid):
 	try:
-		context_dict = {}
+		context_dict = {'form': CommentForm()}
 		post = Upload.objects.get(hashid=post_hashid)
 		author = post.author.user.username
-		if request.user.is_authenticated() and request.method ==  'POST':
-			comment = Comment()
-			comment.author = UserProfile.objects.get(user=request.user)
-			comment.upload = post
-			comment.text = request.POST['comment-text']
-			comment.save()
+		# if request.user.is_authenticated() and request.method ==  'POST':
+		# 	comment = Comment()
+		# 	comment.author = UserProfile.objects.get(user=request.user)
+		# 	comment.upload = post
+		# 	comment.text = request.POST['comment-text']
+		# 	comment.save()
 		context_dict['hashid'] = post_hashid
 		context_dict['header'] = post.header
 		context_dict['author'] = author
@@ -142,8 +142,26 @@ def post(request, post_hashid):
 		pass
 	return render(request, 'imgag/post.html', context_dict)
 
-def vote(request):
-	pass
+@login_required
+def add_comment(request, post_hashid):
+	if request.method == 'POST':
+		form = CommentForm(request.POST)
+		if form.is_valid():
+			comment = form.save(commit=False)
+			comment.author = UserProfile.objects.get(user=request.user)
+			try:
+				comment.upload = Upload.objects.get(hashid=post_hashid)
+				comment.save()
+			except(TypeError, Upload.DoesNotExist):
+				pass
+		else:
+			print(form.errors)
+	return HttpResponseRedirect(reverse('post', kwargs={'post_hashid': post_hashid}))
+
+@login_required
+def vote(request, post_hashid):
+	print("VOTING MATHAFUCKA")
+	return HttpResponseRedirect(reverse('post', kwargs={'post_hashid': post_hashid}))
 
 # view for search
 def search(request):
