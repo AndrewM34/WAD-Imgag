@@ -44,13 +44,14 @@
 
         function submitFn(obj, evt){
             value = $(obj).find('.search-input').val().trim();
+			url = $(obj).attr('succeedurl');
 
             _html = "Yup yup! Your search text sounds like this: ";
             if(!value.length){
                 _html = "Yup yup! Add some text friend :D";
             }
             else{
-                _html += "<b>" + value + "</b>";
+                $.post(url,{value : value});
             }
 
             $(obj).find('.result-container').html('<span>' + _html + '</span>');
@@ -93,10 +94,10 @@
 			<div id="secondary-nav">
 				<ul class="nav navbar-nav navbar-right">
 				<li class="nav-item">
-					   <form onsubmit="submitFn(this, event);">
+					   <form onsubmit="submitFn(this, event);" succeedurl="{% url 'search' %}">
 							<div class="search-wrapper">
 								<div class="input-holder">
-									<input type="text" class="search-input" placeholder="Type to search" />
+									<input type="text" class="search-input" placeholder="Type to search" name="query" id="query" />
 									<button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
 								</div>
 								<span class="close" onclick="searchToggle(this, event);"></span>

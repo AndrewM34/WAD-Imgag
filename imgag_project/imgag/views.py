@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 from imgag.forms import UserForm, UserProfileForm
 from imgag.models import UserProfile, Category, Upload, Comment, Vote
 from imgag.webhose_search import run_query
+from django.views.decorators.csrf import csrf_exempt
 
 
 def home(request):
@@ -146,14 +147,21 @@ def vote(request):
 	pass
 
 # view for search
+@csrf_exempt
 def search(request):
 	result_list = []
+	print ("Gets to search method...")
 	query_human = ""
 	if request.method == 'POST':
-		query_human = request.POST['query']
+		query_human = request.POST['value']
+		print ("Gets the query...")
+		print ("The query is " + query_human)
 		query = query_human.strip()
 		if query:
 			result_list = run_query(query)
+			print ("Runs query...")
+			for res in result_list:
+				print (res['title'])
 	return render(request, 'imgag/search.html', {'result_list' : result_list, 'query_human':query_human})
 
 
