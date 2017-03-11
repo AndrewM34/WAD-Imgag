@@ -1,72 +1,15 @@
 {% extends 'imgag/base.html' %}
 {% load staticfiles %}
-{% load imgag_template_tags %}
 
-<div>
-	{% block title_block %}
-	{% endblock %}
+{% block body_block %}
+	{% if posts %}
+		{% for post in posts %}
+			<div name="post">
+				<h2>{{ post.header }}</h2>
 
-	{% block body_block %}
-		<div id="content" class="outside main">
-		<div class="sentence-sorting">
-		
-			<h1 id="user-gallery-message">
-                    Today's most popular posts.
-
-    </h1>
-		</div>
-
-		<div class="panel hidden">
-			<div id="imagelist" class="home-gallery">
-
-				<div class="posts br5 first-child">
-
-					<div class="outside-loader"></div>
-
-					<div class="cards">
-						<div id="4tF2g" class="post" data-tag1="" data-tag2="">
-							<a class="image-list-link" href="http://Imgag.com/gallery/4tF2g" data-page="0">
-								<img alt="" src="./Imgag_ The most awesome images on the Internet_files/HLjmg1Ab.jpg" original-title="">
-
-
-								<div class="point-info gradient-transparent-black transition">
-									<div class="relative">
-										<div class="pa-bottom">
-											<div class="arrows">
-												<div title="like" class="pointer arrow-up icon-upvote-outline" data="4tF2g" type="image" data-up="6382"></div>
-												<div title="dislike" class="pointer arrow-down icon-downvote-outline" data="4tF2g" type="image" data-downs="173"></div>
-												<div class="clear"></div>
-											</div>
-
-											<div class="point-info-points" title="points">
-												<span class="points-4tF2g">6,209</span>
-												<span class="points-text-4tF2g">points</span>
-											</div>
-										</div>
-									</div>
-								</div>
-
-							</a>
-							<div class="hover">
-								<p>Drown out all the pain</p>
-
-
-								<div class="post-info">
-									album · 134,145 views
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="clear"></div>
-
-				</div>
-				<div class="page-divider"><a href="javascript:;" class="scroll-top-text">back to top</a>
-				</div>
 			</div>
-		</div>
-
-		<div class="clear"></div>
-	</div>
-	{% endblock %}
-</div>
+		{% endfor %}
+	{% else %}
+		There are no posts yet. :(
+	{% endif %}
+{% endblock %}

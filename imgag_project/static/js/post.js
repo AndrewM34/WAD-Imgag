@@ -1,13 +1,17 @@
 function comment_answer(json) {
-    $("#comment_form textarea").val("");
-    jQuery.each(json, function(index, comment) {
-        $("#comments").append(
-                    '<div name="comment">' +
-                        '<span>' + comment.author + '</span>' +
-                        '<span>' + comment.created_date + '</span>' +
-                        '<textarea disabled>' + comment.text + '</textarea>' +
-                    '</div>');
-                    });
+    if (json.hasOwnProperty("ok")) {
+        $("#comment_form textarea").val("");
+        jQuery.each(json.comments, function(index, comment) {
+            $("#comments").append(
+                        '<div name="comment">' +
+                            '<span>' + comment.author + '</span> ' +
+                            '<span>' + comment.created_date + '</span>' +
+                            '<textarea disabled>' + comment.text + '</textarea>' +
+                        '</div>');
+                        });
+    } else {
+        window.location.replace("/accounts/login/?next=" + window.location.href)
+    }
 }
 
 function add_comment(e) {
@@ -23,8 +27,12 @@ function add_comment(e) {
 var ob;
 
 function vote_answer(json) {
-    $("#up_votes").text(json.up_votes);
-    $("#down_votes").text(json.down_votes);
+    if (json.hasOwnProperty("ok")) {
+        $("#up_votes").text(json.up_votes);
+        $("#down_votes").text(json.down_votes);
+    } else {
+        window.location.replace("/accounts/login/?next=" + window.location.href)
+    }
 }
 
 function vote(e) {

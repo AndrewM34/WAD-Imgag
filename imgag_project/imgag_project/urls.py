@@ -26,12 +26,12 @@ from imgag import views
 
 class MyRegistrationView(RegistrationView):
     def get_success_url(self, user):
-        return '/imgag/'
+        return '/home/'
 
 
 class MyActivationView(ActivationView):
     def get_success_url(self, user):
-        return '/imgag'
+        return '/home/'
 
 
 urlpatterns = [

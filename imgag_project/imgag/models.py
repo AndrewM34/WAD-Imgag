@@ -122,6 +122,15 @@ class Upload(models.Model):
     def __unicode__(self):
         return self.header
 
+    def as_json(self):
+        return dict(author=str(self.author),
+                    header=str(self.header),
+                    category=str(self.category),
+                    created_date=self.created_date.strftime("%Y-%m-%d %H:%M"),
+                    upload_url=str(self.uploaded_file.url),
+                    hashid=str(self.hashid.hashid),
+                    is_video=str(self.uploaded_file.name).endswith(".mp4"))
+
 
 class Comment(models.Model):
     author = models.ForeignKey(UserProfile)
@@ -145,7 +154,7 @@ class Comment(models.Model):
         return dict(author=str(self.author),
                     upload_hashid=self.upload.hashid.hashid,
                     text=str(self.text),
-                    created_date=str(self.created_date))
+                    created_date=self.created_date.strftime("%Y-%m-%d %H:%M"))
 
 
 class Vote(models.Model):

@@ -10,8 +10,14 @@ from imgag.forms import UserForm, UserProfileForm, CommentForm
 from imgag.models import UserProfile, Category, Upload, Comment, Vote
 
 
-def home(request):
-	return render(request, 'imgag/home.html', {})
+def home(request, page=1, ajax=None):
+	page = int(page) - 1;
+	posts = Upload.objects.all().order_by('-created_date')[page:(page + 10)]
+	posts_dict = [p.as_json() for p in posts]
+	if ajax == "ajax":
+		pass
+	context_dict = {"posts": posts_dict}
+	return render(request, 'imgag/home.html', context_dict)
 
 
 def about(request):
@@ -55,6 +61,7 @@ def register(request):
 # view for a user to login
 def user_login(request):
 	badlogin = False
+	print("ejeej")
 	if request.method == 'POST':
 		username = request.POST.get('username')
 		password = request.POST.get('password')
@@ -64,6 +71,10 @@ def user_login(request):
 		if user:
 			if user.is_active:
 				login(request, user)
+				if "next" in request.GET:
+					print("next here")
+					return HttpResponseRedirect(request.GET["next"])
+				print("next noooooooooooooot here")
 				return HttpResponseRedirect(reverse('home'))
 
 			else:
@@ -122,14 +133,15 @@ def post(request, post_hashid):
 		context_dict = {'comment_form': CommentForm()}
 		post = Upload.objects.get(hashid=post_hashid)
 		author = post.author.user.username
-		context_dict['hashid'] = post_hashid
-		context_dict['header'] = post.header
-		context_dict['author'] = author
-		context_dict['posted_date'] = post.created_date
-		context_dict['upload'] = post.uploaded_file
+		# context_dict['hashid'] = post_hashid
+		# context_dict['header'] = post.header
+		# context_dict['author'] = author
+		# context_dict['posted_date'] = post.created_date
+		# context_dict['upload'] = post.uploaded_file
+		context_dict['post'] = post.as_json()
 		context_dict['up_votes'] = Vote.objects.filter(upload__hashid=post_hashid).filter(vote__gte=1).count()
 		context_dict['down_votes'] = Vote.objects.filter(upload__hashid=post_hashid).filter(vote__lte=-1).count()
-		context_dict['comments'] = Comment.objects.filter(upload=post).order_by("created_date")
+		context_dict['comments'] = [c.as_json() for c in Comment.objects.filter(upload=post).order_by("created_date")]
 		if post.uploaded_file.name.endswith(".mp4"):
 			context_dict['video'] = True
 		else:
@@ -154,7 +166,8 @@ def add_comment(request, post_hashid, comments_count=0, ajax=None):
 			print(form.errors)
 	if ajax == "ajax":
 		new_comments = Comment.objects.filter(upload__hashid=post_hashid).order_by("created_date")[int(comments_count):]
-		json_dict = [c.as_json() for c in new_comments]
+		comments_json_dict = [c.as_json() for c in new_comments]
+		json_dict = {"ok": True, "comments": comments_json_dict}
 		return HttpResponse(json.dumps(json_dict), content_type="application/json")
 	return HttpResponseRedirect(reverse('post', kwargs={'post_hashid': post_hashid}))
 
@@ -169,7 +182,7 @@ def vote(request, post_hashid, users_vote, ajax=None):
 	if ajax == "ajax":
 		up_votes = Vote.objects.filter(upload__hashid=post_hashid).filter(vote__gte=1).count()
 		down_votes = Vote.objects.filter(upload__hashid=post_hashid).filter(vote__lte=-1).count()
-		json_dict = {"up_votes": up_votes, "down_votes": down_votes}
+		json_dict = {"ok": True, "up_votes": up_votes, "down_votes": down_votes}
 		return HttpResponse(json.dumps(json_dict), content_type="application/json")
 	return HttpResponseRedirect(reverse('post', kwargs={'post_hashid': post_hashid}))
 
