@@ -1,6 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
- {% load staticfiles %}
- {% load imgag_template_tags %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> {% load staticfiles %} {% load imgag_template_tags %}
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -17,94 +15,100 @@
 
 	<link rel="icon" href="{% static 'imgag/favicon.svg' %}">
 	<link rel="stylesheet" type="text/css" href="//s.imgur.com/min/global.css?1489087397" />
-    <link rel="stylesheet" type="text/css" href="//s.imgur.com/min/gallery.css?1489087397" />
+	<link rel="stylesheet" type="text/css" href="//s.imgur.com/min/gallery.css?1489087397" />
 	<link rel="stylesheet" type="text/css" href="{% static 'css/imgag.css' %}" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
-	<link rel="prefetch" href="http://tpc.googlesyndication.com/safeframe/1-0-6/html/container.html">
-	{% block head_block %}{% endblock%}
-	
-<script type="text/javascript">
-        function searchToggle(obj, evt){
-            var container = $(obj).closest('.search-wrapper');
+	<link rel="prefetch" href="http://tpc.googlesyndication.com/safeframe/1-0-6/html/container.html"> {% block head_block %}{% endblock%}
 
-            if(!container.hasClass('active')){
-                  container.addClass('active');
-				  $(obj).find('.search-input').focus();
-				  $(obj).find('.search-input').select();
-                  evt.preventDefault();
-            }
-            else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
-                  container.removeClass('active');
-                  // clear input
-                  container.find('.search-input').val('');
-                  // clear and hide result container when we press close
-                  container.find('.result-container').fadeOut(100, function(){$(this).empty();});
-            }
-        }
+	<script type="text/javascript">
+		function searchToggle(obj, evt) {
+			var container = $(obj).closest('.search-wrapper');
 
-        function submitFn(obj, evt){
-            value = $(obj).find('.search-input').val();
+			if (!container.hasClass('active')) {
+				container.addClass('active');
+				$(obj).find('.search-input').focus();
+				$(obj).find('.search-input').select();
+				evt.preventDefault();
+			}
+			else if (container.hasClass('active') && $(obj).closest('.input-holder').length == 0) {
+				container.removeClass('active');
+				// clear input
+				container.find('.search-input').val('');
+				// clear and hide result container when we press close
+				container.find('.result-container').fadeOut(100, function() {
+					$(this).empty();
+				});
+			}
+		}
+
+		function submitFn(obj, evt) {
+			value = $(obj).find('.search-input').val();
 			url = $(obj).attr('succeedurl');
 
-            _html = "";
+			_html = "";
 			var check = value.trim();
 			value = value.replace(/\s+/g, '_');
-            if(!check.length){
-                _html = "Bro, you try to search nothing?";
+			if (!check.length) {
+				_html = "Bro, you try to search nothing?";
 				$(obj).find('.result-container').html('<span>' + _html + '</span>');
 				$(obj).find('.result-container').fadeIn(100);
 				$(obj).find('.search-input').val("");
 				$(obj).find('.search-input').attr("placeholder", "Type to search");
-            }
-            else{
+			}
+			else {
 				window.location = url + value;
-            }
-            $(obj).find('.result-container').fadeIn(100);
-            evt.preventDefault();
-        }
-		 $('.collapsible').collapsible({
-    accordion: false, // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-    onOpen: function(el) { alert('Open'); }, // Callback for Collapsible open
-    onClose: function(el) { alert('Closed'); } // Callback for Collapsible close
-  });
-        </script>
+			}
+			$(obj).find('.result-container').fadeIn(100);
+			evt.preventDefault();
+		}
+		$('.collapsible').collapsible({
+			accordion: false, // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+			onOpen: function(el) {
+				alert('Open');
+			}, // Callback for Collapsible open
+			onClose: function(el) {
+					alert('Closed');
+				} // Callback for Collapsible close
+		});
+	</script>
 </head>
 
 <body class="">
 	<div id="drop-layer"></div>
-		<div id="topbar">
-			<div class="header-center">
+	<div id="topbar">
+		<div class="header-center">
 			<div class="dropdown">
-			<a href="{% url 'home' %}">
-			<button class="dropbtn"></button>
-			</a>
-			  <div class="dropdown-content1">
-                    <a href="{% url 'about' %}">About Imgag</a>
-                    <a href="http://help.Imgag.com/hc/en-us">need help?</a>
-			  </div>
+				<a href="{% url 'home' %}">
+					<button class="dropbtn"></button>
+				</a>
+				<div class="dropdown-content1">
+					<a href="{% url 'about' %}">About Imgag</a>
+					<a href="http://help.Imgag.com/hc/en-us">need help?</a>
+				</div>
 			</div>
-			
+
 			<div class="dropdown">
-			 <button class="dropbtn2">Categories</button>
-			 <div class="dropdown-content1">
-			  <div class="row">
-				
-			   {% get_category_list %}
-			
-			 </div>
-			 </div>
-		   </div>
+				<button class="dropbtn2">Categories</button>
+				<div class="dropdown-content1">
+					<div class="row">
+
+						{% get_category_list %}
+
+					</div>
+				</div>
+			</div>
 			<div id="secondary-nav">
 				<ul class="nav navbar-nav navbar-right">
-				<li class="nav-item">
-					   <form onsubmit="submitFn(this, event);" succeedurl="{% url 'search' %}">
+					<li class="nav-item">
+						<form onsubmit="submitFn(this, event);" succeedurl="{% url 'search' %}">
 							<div class="search-wrapper">
 								<div class="input-holder">
 									<input type="text" class="search-input" placeholder="Type to search" name="value" id="query" />
-									<button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+									<button class="search-icon" onclick="searchToggle(this, event);"><span></span>
+									</button>
 								</div>
 								<span class="close" onclick="searchToggle(this, event);"></span>
 								<div class="result-container">
@@ -112,22 +116,22 @@
 								</div>
 							</div>
 						</form>
-						</li>
-						{% if user.is_authenticated %}
+					</li>
+					{% if user.is_authenticated %}
 					<li class="nav-item">
-					<a class="nav-link" href="{% url 'account' %}">Profile</a>
+						<a class="nav-link" href="{% url 'account' %}">Profile</a>
 					</li>
 					{% else %}
 					<li class="nav-item">
-		
+
 					</li>
 					<li class="nav-item">
-					<a class="nav-link" href="{% url 'register' %}">Sign Up</a>
-						</li>
+						<a class="nav-link" href="{% url 'register' %}">Sign Up</a>
+					</li>
 					<li class="nav-item">
-					<a class="nav-link" href="{% url 'login' %}?next={{ request.path }}">Sign In</a>
-				  </li>
-				  {% endif %}
+						<a class="nav-link" href="{% url 'login' %}?next={{ request.path }}">Sign In</a>
+					</li>
+					{% endif %}
 				</ul>
 			</div>
 			<!-- #secondary-nav -->
@@ -139,10 +143,10 @@
 	<div id="cta-lightbox-placeholder"></div>
 
 	<main>
-	
-		{% block body_block %}
-		{% endblock %}
-		
+
+		{% block body_block %} {% endblock %}
+
 	</main>
 </body>
+
 </html>
