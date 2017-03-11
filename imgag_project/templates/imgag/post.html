@@ -23,12 +23,12 @@
 
                 <form id="up_vote_form" method="post" action="{% url 'vote' post_hashid=hashid users_vote=1 %}">
                     {% csrf_token %}
-                    <button type="submit" src="somesrc" alt="Upvotes" /></button>
+                    <button type="submit"></button>
                     <span id="up_votes">{{ up_votes }}</span>
                 </form>
                 <form id="down_vote_form" method="post" action="{% url 'vote' post_hashid=hashid users_vote=-1 %}">
                     {% csrf_token %}
-                    <button type="submit" src="somesrc" alt="Downvotes" /></button>
+                    <button type="submit"></button>
                     <span id="down_votes">{{ down_votes }}</span>
                 </form>
                 <span>By {{ author }}</span>
