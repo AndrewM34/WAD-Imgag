@@ -115,9 +115,16 @@ def show_categories(request):
 	context_dict = {"categories": categories_list}
 	return render(request, 'imgag/categories.html', context_dict)
 
-def show_category(request, category_name_slug):
-	categories_list = [c.as_json() for c in Category.objects.all()]
-	context_dict = {"categories": categories_list}
+def show_category(request, category_name_slug, page=None, ajax=None):
+	category = Category.objects.get(slug=category_name_slug)
+	if page is not None:
+		page = int(page) - 1
+	else:
+		page = 0
+	posts_list = [p.as_json()
+				  for p in Upload.objects.filter(category=category).order_by("-created_date")[page:(page + 10)]]
+	print(posts_list)
+	context_dict = {"category": category, "posts": posts_list}
 	return render(request, 'imgag/category.html', context_dict)
 
 
