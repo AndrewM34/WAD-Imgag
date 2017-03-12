@@ -6,77 +6,51 @@
 
 {% block body_block %}
 	<div class="container w3-padding-32">
-		<a href="{% url 'home' %}">
-		<img src="{% static 'css/logo.svg' %}" class="w3-round" style="height:100px" alt="Imgag" href="{% url 'home' %}">
-		</a>
-		<h1>About Us</h1>
-			<p>
-			Imgag is quite possibly the greatest image sharing website ever conceived. It's users may share images and videos,
-			and rate them according to their greatness. By using an ingenious algorithm (score = upvotes - downvotes) we can
-			assure our users they will only see the BEST images and videos from across the world.
-			</p>
-			<p>
-			In the unlikely event our algorithm does not show the best images possible, we also offer categories, so Imgag's users
-			may see exactly what they desire.
-			</p>
-			<p>
-			Users are incentivised to upload incredible images indefinitely, as they will see their score increase as people rate their uploaded images.
-			</p>
-			<p></p>
-			<div class="row">
-				<div class="col s3">
-				<div class="w3-card-12">
-				  <img src="{% static 'imgag/andrew.svg' %}" style="height:270px" >
-				  <div class="w3-container w3-center">
-				   <h1>Andrew Mcnab</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-					sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-				  </div>
+	<a href="{% url 'home' %}"> <img src="{% static 'css/logo.svg' %}" class="w3-round" style="height:100px" alt="Imgag" href="{% url 'home' %}"> </a>
+	<h1>About Us</h1>
+	<p> Imgag is quite possibly the greatest image sharing website ever conceived. It's users may share images and videos, and rate them according to their greatness. By using an ingenious algorithm (score = upvotes - downvotes) we can assure our users they will only see the BEST images and videos from across the world. </p>
+	<p> In the unlikely event our algorithm does not show the best images possible, we also offer categories, so Imgag's users may see exactly what they desire. </p>
+	<p> Users are incentivised to upload incredible images indefinitely, as they will see their score increase as people rate their uploaded images. </p>
+	<p></p>
+	<div class="row">
+		<div class="col s3">
+			<div class="w3-card-12"> <img src="{% static 'imgag/andrew.svg' %}" style="height:270px">
+				<div class="w3-container w3-center">
+					<h1>Andrew Mcnab</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 				</div>
-					  </div>
-					  <div class="col s3">
-							<div class="row">
-						<div class="w3-card-12">
-				  <img src="{% static 'imgag/archit.svg' %}" style="height:270px">
-				  
-				  <div class="w3-container w3-center">
-				  <h1>Archit Gupta</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-					sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-				  </div>
-				</div>     
-					  </div>
-					   </div>
-					  <div class="col s3">
-							<div class="row">
-					   <div class="w3-card-12">
-				  <img src="{% static 'imgag/dan.svg' %}" style="height:270px">
-				  <div class="w3-container w3-center">
-				   <h1>Dan Šmolík</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-					sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-				  </div>
-				</div>      
-					  </div>
-					   </div>
-					  <div class="col s3">
-							<div class="row">
-					   <div class="w3-card-12">
-				  <img src="{% static 'imgag/petr.svg' %}" style="height:270px">
-				  <div class="w3-container w3-center">
-				   <h1>Petr Šrámek</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-					sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-				  </div>
-				</div>      
-      </div>
-	 </div>
-	  </div>
-	  
 			</div>
-			
+		</div>
+		<div class="col s3">
+			<div class="row">
+				<div class="w3-card-12"> <img src="{% static 'imgag/archit.svg' %}" style="height:270px">
+					<div class="w3-container w3-center">
+						<h1>Archit Gupta</h1>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col s3">
+			<div class="row">
+				<div class="w3-card-12"> <img src="{% static 'imgag/dan.svg' %}" style="height:270px">
+					<div class="w3-container w3-center">
+						<h1>Dan Šmolík</h1>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col s3">
+			<div class="row">
+				<div class="w3-card-12"> <img src="{% static 'imgag/petr.svg' %}" style="height:270px">
+					<div class="w3-container w3-center">
+						<h1>Petr Šrámek</h1>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}

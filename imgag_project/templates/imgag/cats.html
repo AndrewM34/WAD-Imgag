@@ -1,5 +1,4 @@
 <div class="col s4">
-
     {% if cats %}
         {% for c in cats %}
             {% if c == act_cat %}
@@ -7,7 +6,7 @@
                     <a href="{% url 'categories' c.slug %}">{{ c.name }}</a>
                 </strong>
             {% else %}
-                <a href="{% url 'categories' c.slug %}">{{ c.name }}</a>
+                <a href="{% url 'category' c.slug %}">{{ c.name }}</a>
             {% endif %}
             <img src="{{ c.picture.url }}" alt="{{ c.name }}" width="150" height="100"/>
 		

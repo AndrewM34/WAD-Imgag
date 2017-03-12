@@ -42,8 +42,9 @@ def populate():
             for upload_dict in users_uploads_in_category:
                 user = users_dict[username]
                 header = upload_dict["header"]
+                created_date = upload_dict["created_date"]
                 path_to_file = upload_dict["path_to_file"]
-                upload = add_upload(user, category, header, path_to_file)
+                upload = add_upload(user, category, header, path_to_file, created_date)
                 print("Added upload: '" + upload.header +
                       "' by '" + upload.author.user.username + "'")
 
@@ -97,8 +98,12 @@ def add_user(username, email, date_of_birth, path_to_picture):
     return profile
 
 
-def add_upload(author, category, header, path_to_file):
+def add_upload(author, category, header, path_to_file, created_date=None):
     upload = Upload.objects.get_or_create(author=author, category=category, header=header)[0]
+    if created_date is not None:
+        created_date = timezone.make_aware(datetime.strptime(created_date, "%Y-%m-%d %H:%M:%S"),
+                                           timezone.get_current_timezone())
+        upload.created_date = created_date
     imopen = open(path_to_file, "rb")
     django_file = File(imopen)
     filename = os.path.basename(path_to_file)
@@ -125,31 +130,3 @@ def add_vote(user, upload, vote=1):
 
 if __name__ == '__main__':
     populate()
-
-    # up1 = Upload.objects.all()[0]
-    # up2 = Upload.objects.all()[1]
-    # up3 = Upload.objects.all()[2]
-    # u1 = UserProfile.objects.all()[0]
-    # u2 = UserProfile.objects.all()[1]
-    # u3 = UserProfile.objects.all()[2]
-    # v = add_vote(u1, up1, 1)
-    # v = add_vote(u2, up1, -1)
-    # v = add_vote(u3, up1, 1)
-    # v = add_vote(u1, up2, -1)
-    # v = add_vote(u2, up2, -1)
-    # v = add_vote(u3, up2, -1)
-    # v = add_vote(u1, up3, -1)
-    # v = add_vote(u2, up3, -1)
-    # v = add_vote(u3, up3, 1)
-    #
-    # print("Upload: " + str(up1) +
-    #       "\nUpvotes: " + str(Vote.objects.filter(upload__hashid=up1.hashid.hashid).filter(vote=1).count()) +
-    #       "\nDownvotes: " + str(Vote.objects.filter(upload__hashid=up1.hashid.hashid).filter(vote=-1).count()))
-    #
-    # print("Upload: " + str(up2) +
-    #       "\nUpvotes: " + str(Vote.objects.filter(upload__hashid=up2.hashid.hashid).filter(vote=1).count()) +
-    #       "\nDownvotes: " + str(Vote.objects.filter(upload__hashid=up2.hashid.hashid).filter(vote=-1).count()))
-    #
-    # print("Upload: " + str(up3) +
-    #       "\nUpvotes: " + str(Vote.objects.filter(upload__hashid=up3.hashid.hashid).filter(vote=1).count()) +
-    #       "\nDownvotes: " + str(Vote.objects.filter(upload__hashid=up3.hashid.hashid).filter(vote=-1).count()))

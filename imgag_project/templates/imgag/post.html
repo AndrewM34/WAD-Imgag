@@ -6,20 +6,18 @@
 {% endblock%}
 
 {% block body_block %}
+<div class="container w3-padding-32">
     {% if post %}
         <div>
             <div>
-                <h1>
-                    {{ post.header }}
-                </h1>
+                <h1>{{ post.header }}</h1>
                 {% if post.is_video %}
-                    <video autoplay loop>
+                    <video autoplay loop muted onclick="this.paused ? this.play() : this.pause();">
                         <source src="{{ post.upload_url }}" type="video/mp4" />
                     </video>
                 {% else %}
                     <img src="{{ post.upload_url }}" />
                 {% endif %}
-                <br />
 
                 <form id="up_vote_form" method="post" action="{% url 'vote' post_hashid=post.hashid users_vote=1 %}">
                     {% csrf_token %}
@@ -31,7 +29,7 @@
                     <button type="submit"></button>
                     <span id="down_votes">{{ down_votes }}</span>
                 </form>
-                <span>By {{ author }}</span>
+                <span>By {{ post.author }}</span>
                 <span>Created on {{ post.created_date }}</span>
             </div>
             <form id="comment_form" method="post" action="{% url 'add_comment' post_hashid=post.hashid %}">
@@ -61,4 +59,5 @@
             There is no such post.
         </h1>
     {% endif %}
+</div>
 {% endblock %}

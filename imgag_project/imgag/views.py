@@ -9,10 +9,14 @@ import json
 from imgag.forms import UserForm, UserProfileForm, CommentForm
 from imgag.models import UserProfile, Category, Upload, Comment, Vote
 
+POSTS_ON_ONE_PAGE = 15
 
 def home(request, page=1, ajax=None):
-	page = int(page) - 1;
-	posts = Upload.objects.all().order_by('-created_date')[page:(page + 10)]
+	if page is not None:
+		page = int(page) - 1
+	else:
+		page = 0
+	posts = Upload.objects.all().order_by('-created_date')[page:(page + POSTS_ON_ONE_PAGE)]
 	posts_dict = [p.as_json() for p in posts]
 	if ajax == "ajax":
 		pass
@@ -110,34 +114,32 @@ def account(request): # takes username as an arg
 
 
 # view to show all categories
-def categories(request, category_name_slug):
-	context_dict = {}
+def show_categories(request):
+	categories_list = [c.as_json() for c in Category.objects.all()]
+	context_dict = {"categories": categories_list}
+	return render(request, 'imgag/categories.html', context_dict)
 
-	try:
-		category = Category.objects.get(slug=category_name_slug)
-		uploads = Upload.objects.filter(category=category)
-
-		context_dict['uploads'] = uploads
-		context_dict['category'] = category
-
-	except Category.DoesNotExist:
-		context_dict['uploads'] = None
-		context_dict['category'] = None
+def show_category(request, category_name_slug, page=None, ajax=None):
+	category = Category.objects.get(slug=category_name_slug)
+	if page is not None:
+		page = int(page) - 1
+	else:
+		page = 0
+	if ajax == "ajax":
+		pass
+	posts_list = [p.as_json()
+				  for p in Upload.objects.filter(category=category)
+							   .order_by("-created_date")[page:(page + POSTS_ON_ONE_PAGE)]]
+	context_dict = {"category": category, "posts": posts_list}
 
 	return render(request, 'imgag/category.html', context_dict)
 
 
 # view of a post
-def post(request, post_hashid):
+def show_post(request, post_hashid):
 	try:
 		context_dict = {'comment_form': CommentForm()}
 		post = Upload.objects.get(hashid=post_hashid)
-		author = post.author.user.username
-		# context_dict['hashid'] = post_hashid
-		# context_dict['header'] = post.header
-		# context_dict['author'] = author
-		# context_dict['posted_date'] = post.created_date
-		# context_dict['upload'] = post.uploaded_file
 		context_dict['post'] = post.as_json()
 		context_dict['up_votes'] = Vote.objects.filter(upload__hashid=post_hashid).filter(vote__gte=1).count()
 		context_dict['down_votes'] = Vote.objects.filter(upload__hashid=post_hashid).filter(vote__lte=-1).count()
@@ -225,5 +227,5 @@ def upload(request):
 	upload = Upload.objects.get_or_create(author=user, header=request.POST['header'], category=cat)[0]
 	upload.uploaded_file=request.FILES['file']
 	upload.save()
-	return post(request, upload.hashid.hashid)
+	return show_post(request, upload.hashid.hashid)
 
