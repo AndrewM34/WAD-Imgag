@@ -137,6 +137,7 @@ def show_category(request, category_name_slug, page=None, ajax=None):
 
 # view of a post
 def show_post(request, post_hashid):
+	print ("Gets into show post...")
 	try:
 		context_dict = {'comment_form': CommentForm()}
 		post = Upload.objects.get(hashid=post_hashid)
@@ -192,18 +193,12 @@ def vote(request, post_hashid, users_vote, ajax=None):
 @csrf_exempt
 def search(request):
 	result_list = []
-	print ("Gets to search method...")
 	query_human = ""
 	if request.method == 'POST':
 		query_human = request.POST['value']
-		print ("Gets the query...")
-		print ("The query is " + query_human)
 		query = query_human.strip()
 		if query:
 			result_list = run_query(query)
-			print ("Runs query...")
-			for res in result_list:
-				print (res['title'])
 	return render(request, 'imgag/search.html', {'result_list' : result_list, 'query_human':query_human})
 
 @csrf_exempt
@@ -227,5 +222,6 @@ def upload(request):
 	upload = Upload.objects.get_or_create(author=user, header=request.POST['header'], category=cat)[0]
 	upload.uploaded_file=request.FILES['file']
 	upload.save()
+	print ("Upload created...")
 	return show_post(request, upload.hashid.hashid)
 
