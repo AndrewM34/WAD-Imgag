@@ -34,6 +34,14 @@ categories_list = [
         "path_to_picture": None
     },
 ]
+
+superusers_list = [
+    {
+        "nickname": "admin",
+        "password": "admin123"
+    },
+]
+
 users_list = [
     {
         "nickname": "tomator",
