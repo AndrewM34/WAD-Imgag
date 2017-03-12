@@ -29,7 +29,7 @@
                     <button type="submit"></button>
                     <span id="down_votes">{{ down_votes }}</span>
                 </form>
-                <span>By {{ author }}</span>
+                <span>By {{ post.author }}</span>
                 <span>Created on {{ post.created_date }}</span>
             </div>
             <form id="comment_form" method="post" action="{% url 'add_comment' post_hashid=post.hashid %}">

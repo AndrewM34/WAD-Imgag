@@ -42,8 +42,9 @@ def populate():
             for upload_dict in users_uploads_in_category:
                 user = users_dict[username]
                 header = upload_dict["header"]
+                created_date = upload_dict["created_date"]
                 path_to_file = upload_dict["path_to_file"]
-                upload = add_upload(user, category, header, path_to_file)
+                upload = add_upload(user, category, header, path_to_file, created_date)
                 print("Added upload: '" + upload.header +
                       "' by '" + upload.author.user.username + "'")
 
@@ -97,8 +98,12 @@ def add_user(username, email, date_of_birth, path_to_picture):
     return profile
 
 
-def add_upload(author, category, header, path_to_file):
+def add_upload(author, category, header, path_to_file, created_date=None):
     upload = Upload.objects.get_or_create(author=author, category=category, header=header)[0]
+    if created_date is not None:
+        created_date = timezone.make_aware(datetime.strptime(created_date, "%Y-%m-%d %H:%M:%S"),
+                                           timezone.get_current_timezone())
+        upload.created_date = created_date
     imopen = open(path_to_file, "rb")
     django_file = File(imopen)
     filename = os.path.basename(path_to_file)
