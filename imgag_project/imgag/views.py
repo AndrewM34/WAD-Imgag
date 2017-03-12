@@ -110,10 +110,13 @@ def account(request): # takes username as an arg
 
 
 # view to show all categories
-def categories(request):
+def show_categories(request):
 	categories_list = [c.as_json() for c in Category.objects.all()]
 	context_dict = {"categories": categories_list}
 	return render(request, 'imgag/category.html', context_dict)
+
+def show_category(request, category_slug):
+	pass
 
 
 # view of a post
