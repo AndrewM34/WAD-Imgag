@@ -131,6 +131,7 @@ def show_category(request, category_name_slug, page=None, ajax=None):
 				  for p in Upload.objects.filter(category=category)
 							   .order_by("-created_date")[page:(page + POSTS_ON_ONE_PAGE)]]
 	context_dict = {"category": category, "posts": posts_list}
+
 	return render(request, 'imgag/category.html', context_dict)
 
 
