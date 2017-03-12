@@ -110,25 +110,14 @@ def account(request): # takes username as an arg
 
 
 # view to show all categories
-def categories(request, category_name_slug):
-	context_dict = {}
-
-	try:
-		category = Category.objects.get(slug=category_name_slug)
-		uploads = Upload.objects.filter(category=category)
-
-		context_dict['uploads'] = uploads
-		context_dict['category'] = category
-
-	except Category.DoesNotExist:
-		context_dict['uploads'] = None
-		context_dict['category'] = None
-
+def categories(request):
+	categories_list = [c.as_json() for c in Category.objects.all()]
+	context_dict = {"categories": categories_list}
 	return render(request, 'imgag/category.html', context_dict)
 
 
 # view of a post
-def post(request, post_hashid):
+def show_post(request, post_hashid):
 	try:
 		context_dict = {'comment_form': CommentForm()}
 		post = Upload.objects.get(hashid=post_hashid)
@@ -219,5 +208,5 @@ def upload(request):
 	upload = Upload.objects.get_or_create(author=user, header=request.POST['header'], category=cat)[0]
 	upload.uploaded_file=request.FILES['file']
 	upload.save()
-	return post(request, upload.hashid.hashid)
+	return show_post(request, upload.hashid.hashid)
 

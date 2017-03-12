@@ -90,6 +90,11 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
 
+    def as_json(self):
+        return dict(name=self.name,
+                    slug=str(self.slut),
+                    picture_url=self.picture.url)
+
 
 class Upload(models.Model):
     header = models.CharField(max_length=140)
