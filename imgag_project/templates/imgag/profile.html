@@ -8,16 +8,16 @@
 	<div class="page-header">
 		<h1>{{ user.username }} Profile</h1>
 	</div>
-	<div id="dropzone" style="background-color:powderblue;">
-	<form  style="background-color:powderblue;" action="{% url 'upload' %}" class="dropzone needsclick" id="demoUpload" method="post" enctype="multipart/form-data">
+	<div id="dropzone" succeedurl="{% url 'home' %}">
+	<form action="{% url 'upload' %}" class="dropzone needsclick" id="demoUpload" method="post" enctype="multipart/form-data" >
 	{% csrf_token %}
 		<input type="text" placeholder="Write header..." name="header" id="header"> <br />
 		<div class="dz-message needsclick">
 			Drop files here or click to upload.<br />
 		</div>
 	</form>
-	</div>
 	<button type="submit" id="submitFile" >UPLOAD</button>
+	</div>
 	<p id="note"></p>
     {% if userprofile.picture %}
     <img src="{{ MEDIA_URL }}{{userprofile.picture }}" width="300" height="300" alt="{{user.username}}" />
@@ -43,12 +43,16 @@
 		var formStyle = document.querySelector("#demoUpload").style;
 		formStyle.backgroundColor = "gray";
 		formStyle.borderStyle = "dashed groove";
+		
 		Dropzone.options.demoUpload = {
 			maxFilesize: 15,
 			paramName: "file",
 			clickable: true,
 			autoProcessQueue: false,
 			maxFiles: 1,
+			acceptedFiles: "image/*, video/mp4",
+			addRemoveLinks: true,
+			dictRemoveFile: "----REMOVE----",
 			
 			init : function(){
 				var dropThis = this;
@@ -62,12 +66,21 @@
 					}
 					
 					});
+				this.on("addedfile",function(file){
+					
+				});
 				this.on("maxfilesexceeded", function(file){
 					document.querySelector("#note").innerHTML = "You can only upload one file at a time!";
 					this.removeFile(file);
 				});
+				this.on("success", function(){
+					url = document.getElementById("dropzone").getAttribute("succeedurl");
+					window.location = url;
+				});
+				
 			}
 		}
+		
 		
 	</script>
 	

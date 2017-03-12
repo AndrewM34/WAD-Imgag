@@ -223,5 +223,5 @@ def upload(request):
 	upload.uploaded_file=request.FILES['file']
 	upload.save()
 	print ("Upload created...")
-	return show_post(request, upload.hashid.hashid)
+	return home(request)
 
