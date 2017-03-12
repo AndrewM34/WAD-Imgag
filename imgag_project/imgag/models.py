@@ -92,7 +92,7 @@ class Category(models.Model):
 
     def as_json(self):
         return dict(name=self.name,
-                    slug=str(self.slut),
+                    slug=str(self.slug),
                     picture_url=self.picture.url)
 
 

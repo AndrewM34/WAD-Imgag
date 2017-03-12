@@ -113,10 +113,12 @@ def account(request): # takes username as an arg
 def show_categories(request):
 	categories_list = [c.as_json() for c in Category.objects.all()]
 	context_dict = {"categories": categories_list}
-	return render(request, 'imgag/category.html', context_dict)
+	return render(request, 'imgag/categories.html', context_dict)
 
-def show_category(request, category_slug):
-	pass
+def show_category(request, category_name_slug):
+	categories_list = [c.as_json() for c in Category.objects.all()]
+	context_dict = {"categories": categories_list}
+	return render(request, 'imgag/category.html', context_dict)
 
 
 # view of a post

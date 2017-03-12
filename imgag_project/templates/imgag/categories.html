@@ -4,7 +4,7 @@
 {% block body_block %}
     {% if categories %}
         {% for category in categories %}
-            <a href="{% url 'category' category_slug=category.slug %}">
+            <a href="{% url 'category' category_name_slug=category.slug %}">
                 <h1>{{ category.name }}</h1>
                 <img src="{{ category.picture_url }}" />
             </a>
