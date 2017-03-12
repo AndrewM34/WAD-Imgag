@@ -9,10 +9,14 @@ import json
 from imgag.forms import UserForm, UserProfileForm, CommentForm
 from imgag.models import UserProfile, Category, Upload, Comment, Vote
 
+POSTS_ON_ONE_PAGE = 15
 
 def home(request, page=1, ajax=None):
-	page = int(page) - 1;
-	posts = Upload.objects.all().order_by('-created_date')[page:(page + 10)]
+	if page is not None:
+		page = int(page) - 1
+	else:
+		page = 0
+	posts = Upload.objects.all().order_by('-created_date')[page:(page + POSTS_ON_ONE_PAGE)]
 	posts_dict = [p.as_json() for p in posts]
 	if ajax == "ajax":
 		pass
@@ -121,9 +125,11 @@ def show_category(request, category_name_slug, page=None, ajax=None):
 		page = int(page) - 1
 	else:
 		page = 0
+	if ajax == "ajax":
+		pass
 	posts_list = [p.as_json()
-				  for p in Upload.objects.filter(category=category).order_by("-created_date")[page:(page + 10)]]
-	print(posts_list)
+				  for p in Upload.objects.filter(category=category)
+							   .order_by("-created_date")[page:(page + POSTS_ON_ONE_PAGE)]]
 	context_dict = {"category": category, "posts": posts_list}
 	return render(request, 'imgag/category.html', context_dict)
 
