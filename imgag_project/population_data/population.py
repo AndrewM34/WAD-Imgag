@@ -34,6 +34,14 @@ categories_list = [
         "path_to_picture": None
     },
 ]
+
+superusers_list = [
+    {
+        "nickname": "admin",
+        "password": "admin123"
+    },
+]
+
 users_list = [
     {
         "nickname": "tomator",
@@ -71,34 +79,96 @@ users_list = [
         "date_of_birth": "Jun 10 2009",
         "path_to_picture": os.path.join("population_data", os.path.join("profile_images", "gorilla_boy.jpg"))
     },
+    {
+        "nickname": "stoned.stone",
+        "email": "rocky.rock@tratra.tv",
+        "date_of_birth": "May 10 1993",
+        "path_to_picture": os.path.join("population_data", os.path.join("profile_images", "stoned_stone.png"))
+    },
 ]
 
 people_are_awesome_uploads = {
-    "tomator": [
+    "BlueDoge": [
         {
-            "header": "This is crazy, right?",
-            "created_date": "2017-2-24 18:30:05",
-            "path_to_file": os.path.join("population_data", os.path.join("uploads", "crazy_right.png")),
+            "header": "Amazing math skills",
+            "created_date": "2017-3-13 19:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "rest_15_percent.jpg")),
             "comments": [
                 {
                     "authors_name": "tomator",
-                    "text": "Hope you'll like this guys <3",
-                    "created_date": "2017-2-24 20:31:15"
+                    "text": "I think it does not sum to 100 percent.",
+                    "created_date": "2017-3-14 20:31:15"
                 },
                 {
                     "authors_name": "herp",
-                    "text": "This is shit...",
-                    "created_date": "2017-2-24 20:35:21"
+                    "text": "No shit, Sherlock",
+                    "created_date": "2017-3-14 20:35:21"
                 },
                 {
                     "authors_name": "tomator",
-                    "text": "Why so salty?",
-                    "created_date": "2017-2-24 20:36:38"
+                    "text": "Why are you like this?",
+                    "created_date": "2017-3-14 20:36:38"
                 },
                 {
                     "authors_name": "herp",
-                    "text": "I don't like you.",
-                    "created_date": "2017-2-24 20:45:05"
+                    "text": "GTFO",
+                    "created_date": "2017-3-14 20:45:05"
+                }
+            ]
+        },
+    ],
+    "tomator": [
+        {
+            "header": "My Python skill",
+            "created_date": "2017-3-13 19:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "microwave_python.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "This a joke - Python is a programming language and also a snake.",
+                    "created_date": "2017-3-15 18:32:15"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "No shit, Sherlock",
+                    "created_date": "2017-3-15 18:40:21"
+                },
+                {
+                    "authors_name": "tomator",
+                    "text": "I don't have to take this.",
+                    "created_date": "2017-3-15 20:03:38"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "What are you gonna do about is, huh?",
+                    "created_date": "2017-3-15 20:05:05"
+                }
+            ]
+        },
+        {
+            "header": "Me doing exams",
+            "created_date": "2017-3-12 17:30:03",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "doing_exams_like_a_boss.gif")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "I always have A from all subject.",
+                    "created_date": "2017-3-12 18:32:15"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "fking nerd",
+                    "created_date": "2017-3-12 18:40:21"
+                },
+                {
+                    "authors_name": "tomator",
+                    "text": "I am just clever, don't be rude please.",
+                    "created_date": "2017-3-13 20:03:38"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "Bebeee, are you gonna cry?",
+                    "created_date": "2017-3-13 20:05:05"
                 }
             ]
         },
@@ -244,6 +314,38 @@ not_so_awesome_people_uploads = {
     ],
 }
 
+crazy_uploads = {
+    "tomator": [
+        {
+            "header": "This is crazy, right?",
+            "created_date": "2017-2-24 18:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "crazy_right.png")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "Hope you'll like this guys <3",
+                    "created_date": "2017-2-24 20:31:15"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "This is shit...",
+                    "created_date": "2017-2-24 20:35:21"
+                },
+                {
+                    "authors_name": "tomator",
+                    "text": "Why so salty?",
+                    "created_date": "2017-2-24 20:36:38"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "I don't like you.",
+                    "created_date": "2017-2-24 20:45:05"
+                }
+            ]
+        },
+    ],
+}
+
 deep_uploads = {
     "gorilla_boy": [
         {
@@ -266,6 +368,26 @@ deep_uploads = {
                     "authors_name": "gorilla_boy",
                     "text": "Aaaargh aaaarghghh",
                     "created_date": "2017-2-25 02:11:11"
+                },
+            ]
+        },
+    ],
+    "darth_procrastinator": [
+        {
+            "header": "After an oral exam",
+            "created_date": "2017-3-23 11:05:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "leaving_oral_exam.gif")),
+            "comments": [
+                {
+                    "authors_name": "Pyotr",
+                    "text": "G4g4g4",
+                    "created_date": "2017-3-25 11:30:23"
+                },
+                {
+                    "authors_name": "gorilla_boy",
+                    "text": "Grgrgrgh",
+                    "created_date": "2017-3-25 12:11:11"
                 },
             ]
         },
@@ -300,9 +422,86 @@ i_cri_evritiem_uploads = {
     ],
 }
 
+next_level_shieeet_uploads = {
+    "stoned.stone": [
+        {
+            "header": "How much for gram xD",
+            "created_date": "2017-3-21 23:39:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "how_much_gram.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "Admin, please, remove this.",
+                    "created_date": "2017-3-23 23:41:35"
+                },
+                {
+                    "authors_name": "Pyotr",
+                    "text": "5uk4 b1y4t",
+                    "created_date": "2017-3-24 01:45:23"
+                },
+                {
+                    "authors_name": "stoned.stone",
+                    "text": "Dude chill",
+                    "created_date": "2017-3-24 05:55:55"
+                },
+            ]
+        },
+        {
+            "header": "When I come home drunk and parents are awake",
+            "created_date": "2017-3-17 23:59:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "when_i_come_home_drunk.mp4")),
+            "comments": [
+                {
+                    "authors_name": "Pyotr",
+                    "text": "G4g4g4, s0m3 v0dk4 f0r m3 pl34s3",
+                    "created_date": "2017-3-24 02:43:23"
+                },
+                {
+                    "authors_name": "stoned.stone",
+                    "text": "K bro xD",
+                    "created_date": "2017-3-24 05:59:59"
+                },
+            ]
+        },
+    ],
+}
+
+nsfw_uploads = {
+    "tomator": [
+        {
+            "header": "So after seeing Logan I have decided for a new haircut.",
+            "created_date": "2017-3-11 18:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "i_look_like_wolverine.jpg")),
+            "comments": [
+                {
+                    "authors_name": "herp",
+                    "text": "LOL",
+                    "created_date": "2017-3-11 20:35:21"
+                },
+                {
+                    "authors_name": "tomator",
+                    "text": "What?",
+                    "created_date": "2017-3-11 20:36:38"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "Ahahaha",
+                    "created_date": "2017-3-11 20:45:05"
+                }
+            ]
+        },
+    ],
+}
+
 categories_dict = {
     "People Are Awesome": people_are_awesome_uploads,
     "Bad Ass": bad_ass_uploads,
     "Not So Awesome People": not_so_awesome_people_uploads,
-    "Deep": deep_uploads
+    "Crazy": crazy_uploads,
+    "Deep": deep_uploads,
+    "I Cri Evritiem": i_cri_evritiem_uploads,
+    "Next Level Shieeet": next_level_shieeet_uploads,
+    "NSFW": nsfw_uploads,
 }

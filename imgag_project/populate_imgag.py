@@ -12,14 +12,17 @@ from django.core.files import File
 from django.contrib.auth.models import User
 from imgag.models import UserProfile, Category, Comment, Upload, Vote
 
-from population_data.population import users_list, categories_list, categories_dict
+from population_data.population import users_list, categories_list, categories_dict, superusers_list
 
 
 def populate():
     print("Starting populating ImGag. Seat comfortably, please, this is gonna take some time.")
 
-    u, pswd = add_superuser()
-    print("Added superuser: '" + u.username + "' and password iiiiiiiiis: '" + pswd + "'")
+    for su in superusers_list:
+        su_name = su["nickname"]
+        su_password = su["password"]
+        u, pswd = add_superuser(su_name, su_password)
+        print("Added superuser: '" + u.username + "' and password iiiiiiiiis: '" + pswd + "'")
 
     users_dict = {}
     for u_dict in users_list:

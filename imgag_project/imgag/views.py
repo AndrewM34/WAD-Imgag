@@ -13,10 +13,10 @@ POSTS_ON_ONE_PAGE = 15
 
 def home(request, page=1, ajax=None):
 	if page is not None:
-		page = int(page) - 1
+		page = (int(page) - 1) * POSTS_ON_ONE_PAGE if int(page) > 0 else 0
 	else:
 		page = 0
-	posts = Upload.objects.all().order_by('-created_date')[page:(page + POSTS_ON_ONE_PAGE)]
+	posts = Upload.objects.all().order_by('-created_date')[page:page + POSTS_ON_ONE_PAGE]
 	posts_dict = [p.as_json() for p in posts]
 	if ajax == "ajax":
 		pass
@@ -26,6 +26,9 @@ def home(request, page=1, ajax=None):
 
 def about(request):
 	return render(request, 'imgag/about.html', {})
+	
+def faq(request):
+	return render(request, 'imgag/faq.html', {})
 
 
 # view for registering a user
