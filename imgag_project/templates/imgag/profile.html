@@ -1,43 +1,6 @@
 {% extends 'imgag/base.html' %}
 {% load staticfiles %}
-{% block title %}
-	{{ user.username }} Profile
-{% endblock %}
-	
-{% block body_block %}
-	<div class="page-header">
-		<h1>{{ user.username }} Profile</h1>
-	</div>
-	<div id="dropzone" succeedurl="{% url 'home' %}">
-	<form action="{% url 'upload' %}" class="dropzone needsclick" id="demoUpload" method="post" enctype="multipart/form-data" >
-	{% csrf_token %}
-		<input type="text" placeholder="Write header..." name="header" id="header"> <br />
-		<div class="dz-message needsclick">
-			Drop files here or click to upload.<br />
-		</div>
-	</form>
-	<button type="submit" id="submitFile" >UPLOAD</button>
-	</div>
-	<p id="note"></p>
-    {% if userprofile.picture %}
-    <img src="{{ MEDIA_URL }}{{userprofile.picture }}" width="300" height="300" alt="{{user.username}}" />
-    {% else %}
-    <img src="http://lorempixel.com/300/300/" img width="300" height="300" alt="{{user.username}}"/>
-    {% endif %}
-	<br/><br/>
-	<div id="profile_data">
-		{% if selecteduser.username == user.username %}
-    	<form method="post" action="." enctype="multipart/form-data">
-    		{% csrf_token %}
-    		{{ form.as_p }}
-    		<input type="submit" value="Update" />
-    	</form>
-        {% else %}
-		<p><strong>Email:</strong> {{selecteduser.email}}</p>
-		<p><strong>Website:</strong> <a href="{{userprofile.website}}">{{userprofile.website}}</a></p>
-		{% endif %}
-	</div>
-	<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+{% block head_block %}
 	<script src="{% static 'js/dropzone.js' %}"></script>
 	<script type="text/javascript">
 		var formStyle = document.querySelector("#demoUpload").style;
@@ -83,5 +46,42 @@
 		
 		
 	</script>
+	<link rel="stylesheet" href="{% static 'css/imgag_profile.css' %}">
+{% endblock %}
+	
+{% block body_block %}
+	<div class="page-header">
+		<h1>{{ user.username }} Profile</h1>
+	</div>
+	<div id="dropzone" succeedurl="{% url 'home' %}">
+	<form action="{% url 'upload' %}" class="dropzone needsclick" id="demoUpload" method="post" enctype="multipart/form-data" >
+	{% csrf_token %}
+		<input type="text" placeholder="Write header..." name="header" id="header"> <br />
+		<div class="dz-message needsclick">
+			Drop files here or click to upload.<br />
+		</div>
+	</form>
+	<button type="submit" id="submitFile" >UPLOAD</button>
+	</div>
+	<p id="note"></p>
+    {% if userprofile.picture %}
+    <img src="{{ MEDIA_URL }}{{userprofile.picture }}" width="300" height="300" alt="{{user.username}}" />
+    {% else %}
+    <img src="http://lorempixel.com/300/300/" img width="300" height="300" alt="{{user.username}}"/>
+    {% endif %}
+	<br/><br/>
+	<div id="profile_data">
+		{% if selecteduser.username == user.username %}
+    	<form method="post" action="." enctype="multipart/form-data">
+    		{% csrf_token %}
+    		{{ form.as_p }}
+    		<input type="submit" value="Update" />
+    	</form>
+        {% else %}
+		<p><strong>Email:</strong> {{selecteduser.email}}</p>
+		<p><strong>Website:</strong> <a href="{{userprofile.website}}">{{userprofile.website}}</a></p>
+		{% endif %}
+	</div>
+	
 	
 {% endblock %}
