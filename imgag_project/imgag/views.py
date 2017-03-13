@@ -13,14 +13,15 @@ POSTS_ON_ONE_PAGE = 15
 
 def home(request, page=1, ajax=None):
 	if page is not None:
-		page = (int(page) - 1) * POSTS_ON_ONE_PAGE if int(page) > 0 else 0
+		page = int(page) if int(page) > 0 else 1
 	else:
-		page = 0
-	posts = Upload.objects.all().order_by('-created_date')[page:page + POSTS_ON_ONE_PAGE]
+		page = 1
+	offset = (page - 1) * POSTS_ON_ONE_PAGE
+	posts = Upload.objects.all().order_by('-created_date')[offset:offset + POSTS_ON_ONE_PAGE]
 	posts_dict = [p.as_json() for p in posts]
 	if ajax == "ajax":
 		pass
-	context_dict = {"posts": posts_dict}
+	context_dict = {"posts": posts_dict, "page": page + 1}
 	return render(request, 'imgag/home.html', context_dict)
 
 
