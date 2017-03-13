@@ -2,70 +2,69 @@
 {% load staticfiles %}
 
 {% block head_block %}
-    <script src="{% static 'js/post.js' %}"></script>
+<script src="{% static 'js/post.js' %}"></script>
 {% endblock%}
 
 {% block body_block %}
 <div class="container w3-padding-jumbo">
 
     {% if post %}
-        <div>
-            <div class="post-container">
-                <h1>{{ post.header }}</h1>
-                {% if post.is_video %}
-                    <video autoplay loop muted onclick="this.paused ? this.play() : this.pause();">
-                        <source src="{{ post.upload_url }}" type="video/mp4" />
-                    </video>
-                {% else %}
-                    <img src="{{ post.upload_url }}" />
-                {% endif %}
+    <div>
+        <div class="post-container">
+            <h1>{{ post.header }}</h1>
+            {% if post.is_video %}
+                <video autoplay loop muted onclick="this.paused ? this.play() : this.pause();">
+                    <source src="{{ post.upload_url }}" type="video/mp4"/>
+                </video>
+            {% else %}
+                <img src="{{ post.upload_url }}"/>
+            {% endif %}
 
-                <form id="up_vote_form" method="post" action="{% url 'vote' post_hashid=post.hashid users_vote=1 %}">
-                    {% csrf_token %}
-                    <button class="btn waves-effect waves-light" type="submit" name="action">
-					<i class="material-icons right">thumb_up</i>
-				  </button>
-                    <span id="up_votes">{{ up_votes }}</span>
-                </form>
-                <form id="down_vote_form" method="post" action="{% url 'vote' post_hashid=post.hashid users_vote=-1 %}">
-                    {% csrf_token %}
-                    <button class="btn waves-effect waves-light" type="submit" name="action">
-					<i class="material-icons right">thumb_down</i>
-				  </button>
-                    <span id="down_votes">{{ down_votes }}</span>
-                </form>
-                <span>By {{ post.author }}</span>
-                <span>Created on {{ post.created_date }}</span>
-            </div>
-            <form id="comment_form" method="post" action="{% url 'add_comment' post_hashid=post.hashid %}">
+            <form id="up_vote_form" method="post" action="{% url 'vote' post_hashid=post.hashid users_vote=1 %}">
                 {% csrf_token %}
-                {% for hidden in comment_form.hidden_fields %}
-                    {{ hidden }}
-                {% endfor %}
-                {% for field in comment_form.visible_fields %}
-                    {{ field.errors }}
-                    {{ field.help_text }}
-                    {{ field }}
-                {% endfor %}
-				<button class="btn waves-effect waves-light" type="submit" name="action">Submit
-					<i class="material-icons right">send</i>
-				  </button
+                <button class="btn waves-effect waves-light" type="submit" name="action">
+                    <i class="material-icons right">thumb_up</i>
+                </button>
+                <span id="up_votes">{{ up_votes }}</span>
             </form>
-            <div id="comments">
-                {% for comment in comments %}
-                    <div name="comment">
-                        <span>{{ comment.author }}</span>
-                        <span>{{ comment.created_date }}</span>
-                        <textarea disabled>{{ comment.text }}</textarea>
-                    </div>
-                {% endfor %}
-            </div>
+            <form id="down_vote_form" method="post" action="{% url 'vote' post_hashid=post.hashid users_vote=-1 %}">
+                {% csrf_token %}
+                <button class="btn waves-effect waves-light" type="submit" name="action">
+                    <i class="material-icons right">thumb_down</i>
+                </button>
+                <span id="down_votes">{{ down_votes }}</span>
+            </form>
+            <span>By {{ post.author }}</span>
+            <span>Created on {{ post.created_date }}</span>
         </div>
+        <form id="comment_form" method="post" action="{% url 'add_comment' post_hashid=post.hashid %}">
+            {% csrf_token %}
+            {% for hidden in comment_form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+            {% for field in comment_form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}
+            {% endfor %}
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+        <div id="comments">
+            {% for comment in comments %}
+                <div name="comment">
+                    <span>{{ comment.author }}</span>
+                    <span>{{ comment.created_date }}</span>
+                    <textarea disabled>{{ comment.text }}</textarea>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
     {% else %}
-        <h1>
-            There is no such post.
-        </h1>
+    <h1>
+        There is no such post.
+    </h1>
     {% endif %}
-</div>
 </div>
 {% endblock %}
