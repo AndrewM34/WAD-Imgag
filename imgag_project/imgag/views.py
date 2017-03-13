@@ -26,6 +26,9 @@ def home(request, page=1, ajax=None):
 
 def about(request):
 	return render(request, 'imgag/about.html', {})
+	
+def faq(request):
+	return render(request, 'imgag/faq.html', {})
 
 
 # view for registering a user

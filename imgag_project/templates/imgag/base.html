@@ -73,6 +73,17 @@
 					alert('Closed');
 				} // Callback for Collapsible close
 		});
+		//collapsible
+	$(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+  //collapsible options
+   $('.collapsible').collapsible({
+    accordion: false, // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    onOpen: function(el) { alert('Open'); }, // Callback for Collapsible open
+    onClose: function(el) { alert('Closed'); } // Callback for Collapsible close
+  });
+        
 	</script>
 </head>
 
@@ -86,18 +97,14 @@
 				</a>
 				<div class="dropdown-content1">
 					<a href="{% url 'about' %}">About Imgag</a>
-					<a href="http://help.Imgag.com/hc/en-us">need help?</a>
+					<a href="{% url 'faq' %}">need help?</a>
 				</div>
 			</div>
 
 			<div class="dropdown">
 				<a href="{% url 'categories' %}"><button class="dropbtn2">Categories</button></a>
 				<div class="dropdown-content1">
-					<div class="row">
-
 						{% get_category_list %}
-
-					</div>
 				</div>
 			</div>
 			<div id="secondary-nav">
@@ -121,6 +128,9 @@
 					<li class="nav-item">
 						<a class="nav-link" href="{% url 'account' %}">Profile</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'auth_logout' %}?next=/home/">Logout</a>
+					</li>
 					{% else %}
 					<li class="nav-item">
 
@@ -129,7 +139,7 @@
 						<a class="nav-link" href="{% url 'register' %}">Sign Up</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{% url 'login' %}?next={{ request.path }}">Sign In</a>
+						<a class="nav-link" href="{% url 'auth_login' %}">Sign In</a>
 					</li>
 					{% endif %}
 				</ul>

@@ -5,6 +5,7 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^home/((?P<page>[0-9]+)/(?P<ajax>ajax))?$', views.home, name='home'),
     url(r'^about/$', views.about, name='about'),
+	url(r'^faq/$', views.faq, name='faq'),
     url(r'^account/$', views.account, name='account'),
     url(r'^categories/$', views.show_categories, name='categories'),
     url(r'^category/(?P<category_name_slug>[\w\-]+)/((?P<page>[0-9]+)/(?P<ajax>ajax))?$',
