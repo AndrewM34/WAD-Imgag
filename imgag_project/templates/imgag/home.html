@@ -36,8 +36,13 @@
             </div>
         </div>
     </div>
-    {% if posts|length == 15 %}
-        <a href="{% url 'home' page=page %}">Next</a>
-    {% endif %}
+    <div>
+        {% if page > 1 %}
+            <a href="{% url 'home' page=page|add:-1 %}">Previous</a>
+        {% endif %}
+        {% if posts|length == 15 %}
+            <a href="{% url 'home' page=page|add:1 %}">Next</a>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}

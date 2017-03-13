@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^faq/$', views.faq, name='faq'),
     url(r'^account/$', views.account, name='account'),
     url(r'^categories/$', views.show_categories, name='categories'),
-    url(r'^category/(?P<category_name_slug>[\w\-]+)/((?P<page>[0-9]+)/(?P<ajax>ajax))?/$',
+    url(r'^category/(?P<category_name_slug>[\w\-]+)?/$',
         views.show_category, name='category'),
     url(r'^category/(?P<category_name_slug>[\w\-]+)/page/(?P<page>[0-9]+)/$',
         views.show_category, name='category'),

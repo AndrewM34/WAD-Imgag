@@ -126,22 +126,22 @@ people_are_awesome_uploads = {
                 {
                     "authors_name": "tomator",
                     "text": "This a joke - Python is a programming language and also a snake.",
-                    "created_date": "2017-3-15 18:32:15"
+                    "created_date": "2017-3-05 18:32:15"
                 },
                 {
                     "authors_name": "herp",
                     "text": "No shit, Sherlock",
-                    "created_date": "2017-3-15 18:40:21"
+                    "created_date": "2017-3-05 18:40:21"
                 },
                 {
                     "authors_name": "tomator",
                     "text": "I don't have to take this.",
-                    "created_date": "2017-3-15 20:03:38"
+                    "created_date": "2017-3-05 20:03:38"
                 },
                 {
                     "authors_name": "herp",
                     "text": "What are you gonna do about is, huh?",
-                    "created_date": "2017-3-15 20:05:05"
+                    "created_date": "2017-3-05 20:05:05"
                 }
             ]
         },
@@ -375,19 +375,19 @@ deep_uploads = {
     "darth_procrastinator": [
         {
             "header": "After an oral exam",
-            "created_date": "2017-3-23 11:05:05",
+            "created_date": "2017-3-13 11:05:05",
             "path_to_file": os.path.join("population_data",
                                          os.path.join("uploads", "leaving_oral_exam.gif")),
             "comments": [
                 {
                     "authors_name": "Pyotr",
                     "text": "G4g4g4",
-                    "created_date": "2017-3-25 11:30:23"
+                    "created_date": "2017-3-05 11:30:23"
                 },
                 {
                     "authors_name": "gorilla_boy",
                     "text": "Grgrgrgh",
-                    "created_date": "2017-3-25 12:11:11"
+                    "created_date": "2017-3-05 12:11:11"
                 },
             ]
         },
@@ -426,42 +426,42 @@ next_level_shieeet_uploads = {
     "stoned.stone": [
         {
             "header": "How much for gram xD",
-            "created_date": "2017-3-21 23:39:05",
+            "created_date": "2017-3-11 23:39:05",
             "path_to_file": os.path.join("population_data",
                                          os.path.join("uploads", "how_much_gram.jpg")),
             "comments": [
                 {
                     "authors_name": "tomator",
                     "text": "Admin, please, remove this.",
-                    "created_date": "2017-3-23 23:41:35"
+                    "created_date": "2017-3-13 23:41:35"
                 },
                 {
                     "authors_name": "Pyotr",
                     "text": "5uk4 b1y4t",
-                    "created_date": "2017-3-24 01:45:23"
+                    "created_date": "2017-3-14 01:45:23"
                 },
                 {
                     "authors_name": "stoned.stone",
                     "text": "Dude chill",
-                    "created_date": "2017-3-24 05:55:55"
+                    "created_date": "2017-3-14 05:55:55"
                 },
             ]
         },
         {
             "header": "When I come home drunk and parents are awake",
-            "created_date": "2017-3-17 23:59:05",
+            "created_date": "2017-3-07 23:59:05",
             "path_to_file": os.path.join("population_data",
                                          os.path.join("uploads", "when_i_come_home_drunk.mp4")),
             "comments": [
                 {
                     "authors_name": "Pyotr",
                     "text": "G4g4g4, s0m3 v0dk4 f0r m3 pl34s3",
-                    "created_date": "2017-3-24 02:43:23"
+                    "created_date": "2017-3-14 02:43:23"
                 },
                 {
                     "authors_name": "stoned.stone",
                     "text": "K bro xD",
-                    "created_date": "2017-3-24 05:59:59"
+                    "created_date": "2017-3-14 05:59:59"
                 },
             ]
         },
