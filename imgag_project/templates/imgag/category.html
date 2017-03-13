@@ -13,13 +13,17 @@
                             {% for post in posts %}
                                     <div class="post">
                                         <a class="image-list-link" href="{% url 'post' post_hashid=post.hashid %}">
-                                            {% if post.is_video %}
+                                            {% if post.category == "NSFW" %}
+                                                <img width="100%" height="100%" src="{{ MEDIA_URL }}default/uploads/nsfw.png" />
+                                            {% else %}
+                                                {% if post.is_video %}
                                                     <video width="100%" height="100%" autoplay loop muted
                                                            onclick="this.paused ? this.play() : this.pause();">
                                                         <source src="{{ post.upload_url }}" type="video/mp4" />
                                                     </video>
-                                            {% else %}
+                                                {% else %}
                                                     <img width="100%" height="100%" src="{{ post.upload_url }}" />
+                                                {% endif %}
                                             {% endif %}
                                             <div class="point-info gradient-transparent-black transition"></div>
                                         </a>
