@@ -476,23 +476,18 @@ nsfw_uploads = {
             "path_to_file": os.path.join("population_data", os.path.join("uploads", "i_look_like_wolverine.jpg")),
             "comments": [
                 {
-                    "authors_name": "tomator",
-                    "text": "Hope you'll like this guys <3",
-                    "created_date": "2017-3-11 20:31:15"
-                },
-                {
                     "authors_name": "herp",
-                    "text": "This is shit...",
+                    "text": "LOL",
                     "created_date": "2017-3-11 20:35:21"
                 },
                 {
                     "authors_name": "tomator",
-                    "text": "Why so salty?",
+                    "text": "What?",
                     "created_date": "2017-3-11 20:36:38"
                 },
                 {
                     "authors_name": "herp",
-                    "text": "I don't like you.",
+                    "text": "Ahahaha",
                     "created_date": "2017-3-11 20:45:05"
                 }
             ]
