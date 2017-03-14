@@ -52,16 +52,22 @@
 	<div class="page-header">
 		<h1>{{ user.username }} Profile</h1>
 	</div>
-	<select name="category" form_id="demoUpload">
-		<option value="Deep">Deep</option>
-		<option value="People are awesome">People are awesome</option>
-		</select> <br
 	<div id="dropzone" succeedurl="{% url 'home' %}">
 	<form action="{% url 'upload' %}" class="dropzone needsclick" id="demoUpload" method="post" enctype="multipart/form-data" name="dragdrop" >
 	{% csrf_token %}
 		<input type="text" placeholder="Write header..." name="header" id="headerTextInput" class="headerTextInput"> <br />
 		<!-- SELECT DOESN'T WORK-->
-		>
+		<select name="category" form="demoUpload" id="dropDownList">
+		<option value="Deep">Deep</option>
+		<option value="People are awesome">People are awesome</option>
+			{% if categories %}
+			{% for cat in categories %}
+			<option value="{{ cat.name }}">{{ cat.name }}</option>
+			{% endfor %}
+			{% else %}
+			<option value="#">----------</option>
+			{% endif %}
+		</select> <br />
 		<div class="dz-message needsclick">
 			Drop files here or click to upload.<br />
 		</div>
