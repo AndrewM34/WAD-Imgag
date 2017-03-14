@@ -140,7 +140,7 @@ class Upload(models.Model):
 class Comment(models.Model):
     author = models.ForeignKey(UserProfile)
     upload = models.ForeignKey(Upload)
-    text = models.CharField(max_length=1000)
+    text = models.CharField(max_length=200)
     created_date = models.DateTimeField(blank=True)
 
     def save(self, *args, **kwargs):
@@ -157,6 +157,7 @@ class Comment(models.Model):
 
     def as_json(self):
         return dict(author=str(self.author),
+                    author_image_url=str(self.author.picture.url),
                     upload_hashid=self.upload.hashid.hashid,
                     text=str(self.text),
                     created_date=self.created_date.strftime("%Y-%m-%d %H:%M"))
