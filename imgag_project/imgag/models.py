@@ -157,6 +157,7 @@ class Comment(models.Model):
 
     def as_json(self):
         return dict(author=str(self.author),
+                    author_image_url=str(self.author.picture.url),
                     upload_hashid=self.upload.hashid.hashid,
                     text=str(self.text),
                     created_date=self.created_date.strftime("%Y-%m-%d %H:%M"))
