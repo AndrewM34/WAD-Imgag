@@ -123,7 +123,9 @@ def account(request): # takes username as an arg
 	context = {'categories' : category_list }
 	context['username'] = request.user
 	#print (request.user)
-	context['posts'] = Upload.objects.filter(author=user)
+	posts = Upload.objects.filter(author=user)
+	posts_dict = [p.as_json() for p in posts]
+	context['posts'] = posts_dict
 	# we will probably need to separate pictures from videos
 
 	return render(request, 'imgag/profile.html', context)
