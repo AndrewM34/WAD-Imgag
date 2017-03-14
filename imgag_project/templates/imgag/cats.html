@@ -1,6 +1,8 @@
 
     {% if cats %}
+	<div class="col s3">
         {% for c in cats %}
+	
             {% if c == act_cat %}
                 <strong>
                     <a href="{% url 'categories' c.slug %}">{{ c.name }}</a>
@@ -9,8 +11,9 @@
                 <a href="{% url 'category' c.slug %}">{{ c.name }}</a>
             {% endif %}
             <img src="{{ c.picture.url }}" alt="{{ c.name }}" width="150" height="100"/>
-		
+	
         {% endfor %}
+		</div>
     {% else %}
         <strong>There are no categories present.</strong>
     {% endif %}
