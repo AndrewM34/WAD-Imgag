@@ -109,9 +109,12 @@ def account(request): # takes username as an arg
 	context = {}
 	user = UserProfile.objects.get(user=request.user)
 	#print (user)
+	category_list = Category.objects.all()
+	context = {'categories' : category_list }
 	context['username'] = request.user
 	#print (request.user)
 	context['posts'] = Upload.objects.filter(author=user)
+	# we will probably need to separate pictures from videos
 
 	return render(request, 'imgag/profile.html', context)
 
@@ -221,7 +224,7 @@ def test(request):
 @login_required	
 def upload(request):
 	user = UserProfile.objects.get(user=request.user)
-	cat = Category.objects.get(name="Deep")
+	cat = Category.objects.get(name=request.POST['category'])
 	upload = Upload.objects.get_or_create(author=user, header=request.POST['header'], category=cat)[0]
 	upload.uploaded_file=request.FILES['file']
 	upload.save()

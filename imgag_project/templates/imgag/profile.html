@@ -1,12 +1,9 @@
 {% extends 'imgag/base.html' %}
 {% load staticfiles %}
 {% block head_block %}
+	<link rel="stylesheet" href="{% static 'css/imgag_profile.css' %}">
 	<script src="{% static 'js/dropzone.js' %}"></script>
 	<script type="text/javascript">
-		var formStyle = document.querySelector("#demoUpload").style;
-		formStyle.backgroundColor = "gray";
-		formStyle.borderStyle = "dashed groove";
-		
 		Dropzone.options.demoUpload = {
 			maxFilesize: 15,
 			paramName: "file",
@@ -21,8 +18,12 @@
 				var dropThis = this;
 				var submitting = document.querySelector("#submitFile");
 				submitting.addEventListener("click", function() {
-					var content = document.querySelector("#header").value;
-					if(!content.length){
+					var content = document.querySelector("#headerTextInput").value;
+					var files = dropThis.getQueuedFiles();
+					if(files.length == 0){
+						document.querySelector("#note").innerHTML = "<strong>No file to upload!</strong>";
+					}
+					else if(!content.length){
 						document.querySelector("#note").innerHTML = "<strong>Each post must have a header!</strong>";
 					} else {
 						dropThis.processQueue();
@@ -40,13 +41,11 @@
 					url = document.getElementById("dropzone").getAttribute("succeedurl");
 					window.location = url;
 				});
-				
 			}
 		}
 		
 		
 	</script>
-	<link rel="stylesheet" href="{% static 'css/imgag_profile.css' %}">
 {% endblock %}
 	
 {% block body_block %}
@@ -54,33 +53,53 @@
 		<h1>{{ user.username }} Profile</h1>
 	</div>
 	<div id="dropzone" succeedurl="{% url 'home' %}">
-	<form action="{% url 'upload' %}" class="dropzone needsclick" id="demoUpload" method="post" enctype="multipart/form-data" >
+	<form action="{% url 'upload' %}" class="dropzone needsclick" id="demoUpload" method="post" enctype="multipart/form-data" name="dragdrop" >
 	{% csrf_token %}
-		<input type="text" placeholder="Write header..." name="header" id="header"> <br />
+		<input type="text" placeholder="Write header..." name="header" id="headerTextInput" class="headerTextInput"> <br />
+		<!-- SELECT DOESN'T WORK-->
+		<select name="category" form="demoUpload" id="dropDownList">
+		<option value="Deep">Deep</option>
+		<option value="People are awesome">People are awesome</option>
+			{% if categories %}
+			{% for cat in categories %}
+			<option value="{{ cat.name }}">{{ cat.name }}</option>
+			{% endfor %}
+			{% else %}
+			<option value="#">----------</option>
+			{% endif %}
+		</select> <br />
 		<div class="dz-message needsclick">
 			Drop files here or click to upload.<br />
 		</div>
 	</form>
-	<button type="submit" id="submitFile" >UPLOAD</button>
+	<button type="submit" id="submitFile" >UPLOAD</button> <br />
 	</div>
 	<p id="note"></p>
     {% if userprofile.picture %}
-    <img src="{{ MEDIA_URL }}{{userprofile.picture }}" width="300" height="300" alt="{{user.username}}" />
+    <img src="{{ MEDIA_URL }}{{userprofile.picture }}" width="80" height="80" alt="{{user.username}}" />
     {% else %}
-    <img src="http://lorempixel.com/300/300/" img width="300" height="300" alt="{{user.username}}"/>
+    <img src="http://lorempixel.com/300/300/" img width="80" height="80" alt="{{user.username}}"/>
     {% endif %}
 	<br/><br/>
 	<div id="profile_data">
-		{% if selecteduser.username == user.username %}
+		{% if user.authenticated %}
     	<form method="post" action="." enctype="multipart/form-data">
     		{% csrf_token %}
     		{{ form.as_p }}
     		<input type="submit" value="Update" />
     	</form>
+		{% if posts %}
+		{% for pic in posts %}
+		<img src="{{ MEDIA_URL }}{{ pic.uploaded_file }}" width="300" height="300" atl="{{ pic.header }}" />
+		{% endfor %}
+		{% else %}
+		<p><strong>UPLOAD MEMES MOTHERF*CKER!!!</strong></p>
+		{% endif %}
         {% else %}
 		<p><strong>Email:</strong> {{selecteduser.email}}</p>
 		<p><strong>Website:</strong> <a href="{{userprofile.website}}">{{userprofile.website}}</a></p>
 		{% endif %}
+		
 	</div>
 	
 	
