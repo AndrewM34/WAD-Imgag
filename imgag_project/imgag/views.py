@@ -21,6 +21,7 @@ def get_num_page_and_offset(page):
 	offset = (page - 1) * POSTS_ON_ONE_PAGE
 	return page, offset
 
+
 def home(request, page=1, ajax=None):
 	page, offset = get_num_page_and_offset(page)
 	posts = Upload.objects.filter(created_date__lte=timezone.now()) \
