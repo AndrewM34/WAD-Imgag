@@ -29,8 +29,7 @@
 
 			if (!container.hasClass('active')) {
 				container.addClass('active');
-				$(obj).find('.search-input').focus();
-				$(obj).find('.search-input').select();
+				container.find('.search-input').select();
 				evt.preventDefault();
 			}
 			else if (container.hasClass('active') && $(obj).closest('.input-holder').length == 0) {
