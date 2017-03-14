@@ -23,12 +23,11 @@ function addComment(e) {
     number_of_comments = $("div[name=comment").length;
     $.ajax({
       type: 'post',
-      url: ($(e.target).attr("action") + "comments-count/" + number_of_comments + "/ajax"),
+      url: ($(e.target).attr("action") + "comments-count/" + number_of_comments + "/ajax/"),
       data: $(e.target).serialize(),
       success: commentAnswer,
     });
 }
-var ob;
 
 function voteAnswer(json) {
     if (json.hasOwnProperty("ok")) {
@@ -43,7 +42,7 @@ function vote(e) {
     e.preventDefault();
     $.ajax({
       type: 'post',
-      url: ($(e.target).attr("action") + "ajax"),
+      url: ($(e.target).attr("action") + "ajax/"),
       data: $(e.target).serialize(),
       success: voteAnswer,
     });
