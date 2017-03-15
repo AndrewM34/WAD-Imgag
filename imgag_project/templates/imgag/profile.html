@@ -49,15 +49,35 @@
 {% endblock %}
 	
 {% block body_block %}
+<div class="container w3-padding-32">
+
+<div class="row grey darken-4">
+<div class="col s5">
 	<div class="page-header">
 		<h1>{{ user.username }} Profile</h1>
 	</div>
-	<div id="dropzone" succeedurl="{% url 'home' %}">
+	<br>
+	{% if userprofile.picture %}
+    <img src="{{ MEDIA_URL }}{{userprofile.picture }}" width="280" height="280" alt="{{user.username}}" />
+    {% else %}
+    <img src="http://lorempixel.com/300/300/" img width="280" height="280" alt="{{user.username}}"/>
+    {% endif %}
+	<div id="profile_data" class="w3-padding-16">
+		{% if user.is_authenticated %}
+    	<form method="post" action="." enctype="multipart/form-data">
+    		{% csrf_token %}
+    		{{ form.as_p }}
+    		<input type="submit" value="Update" />
+    	</form>
+	</div>
+	</div>
+
+	<div class="col s7 w3-padding-64 w3-margin-top" id="dropzone" succeedurl="{% url 'home' %}">
 	<form action="{% url 'upload' %}" class="dropzone needsclick" id="demoUpload" method="post" enctype="multipart/form-data" name="dragdrop" >
 	{% csrf_token %}
-		<input type="text" placeholder="Write header..." name="header" id="headerTextInput" class="headerTextInput"> <br />
+		<input type="text" placeholder="Title of the Image" name="header" id="headerTextInput" class="headerTextInput"> <br />
 		<!-- SELECT DOESN'T WORK-->
-		<select name="category" form="demoUpload" id="dropDownList" required>
+		<select class="teal lighten-2" name="category" form="demoUpload" id="dropDownList" required>
 			{% if categories %}
 			{% for cat in categories %}
 			<option value="{{ cat.name }}">{{ cat.name }}</option>
@@ -70,23 +90,12 @@
 			Drop files here or click to upload.<br />
 		</div>
 	</form>
-	<button type="submit" id="submitFile" >UPLOAD</button> <br />
+	<button class="w3-margin-top" type="submit" id="submitFile" >UPLOAD</button> <br />
 	</div>
+	</div>
+	
 	<p id="note"></p>
-    {% if userprofile.picture %}
-    <img src="{{ MEDIA_URL }}{{userprofile.picture }}" width="80" height="80" alt="{{user.username}}" />
-    {% else %}
-    <img src="http://lorempixel.com/300/300/" img width="80" height="80" alt="{{user.username}}"/>
-    {% endif %}
-	<br/><br/>
-	<div id="profile_data">
-		{% if user.is_authenticated %}
-    	<form method="post" action="." enctype="multipart/form-data">
-    		{% csrf_token %}
-    		{{ form.as_p }}
-    		<input type="submit" value="Update" />
-    	</form>
-	</div>
+    
 	<div class="cards">
 			{% if posts %}
 			{% for post in posts %}
@@ -147,3 +156,4 @@
 		{% else %}
 			There are no posts yet. :(
 		{% endif %}
+</div>
