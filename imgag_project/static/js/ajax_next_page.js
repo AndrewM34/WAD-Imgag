@@ -39,7 +39,8 @@ function getNextPage() {
         var currentScrollPosition = $(window).scrollTop() + $(window).height();
         if (currentScrollPosition >= maxScrollPosition) {
             page++;
-            $("#posts").append('<img id="next_page_loading" src="/static/images/loading/ajax-loader.gif" />');
+            $("#posts").append('<img id="next_page_loading" src="/static/images/loading/ajax-loader.gif"' +
+                                    'class="img-responsive center-block" />');
             $("#previoues_page").remove();
             $("#next_page").hide();
             $.ajax({
