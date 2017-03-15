@@ -54,7 +54,6 @@
 				});
 			}
 		}
-
 		function submitFn(obj, evt) {
 			value = $(obj).find('.search-input').val();
 			url = $(obj).attr('succeedurl');
@@ -74,27 +73,7 @@
 			}
 			$(obj).find('.result-container').fadeIn(100);
 			evt.preventDefault();
-		}
-		$('.collapsible').collapsible({
-			accordion: false, // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-			onOpen: function(el) {
-				alert('Open');
-			}, // Callback for Collapsible open
-			onClose: function(el) {
-					alert('Closed');
-				} // Callback for Collapsible close
-		});
-		//collapsible
-	$(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
-  //collapsible options
-   $('.collapsible').collapsible({
-    accordion: false, // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-    onOpen: function(el) { alert('Open'); }, // Callback for Collapsible open
-    onClose: function(el) { alert('Closed'); } // Callback for Collapsible close
-  });
-        
+		}  
 	</script>
 </head>
 
