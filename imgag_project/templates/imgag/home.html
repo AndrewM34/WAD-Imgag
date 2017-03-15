@@ -1,35 +1,39 @@
 {% extends 'imgag/base.html' %}
 {% load staticfiles %}
 
+{% block head_block %}
+<script src="{% static 'js/ajax_next_page.js' %}"></script>
+{% endblock%}
+
 {% block body_block %}
 <div class="container w3-padding-64 w3-padding-xlarge">
     <div id="imagelist" class="home-gallery">
         <div class="posts br5 first-child">
             <div class="outside-loader"></div>
-            <div class="cards">
+            <div id="posts" class="cards">
                 {% if posts %}
-                {% for post in posts %}
-                <div class="post">
-                    <a class="image-list-link" href="{% url 'post' post_hashid=post.hashid %}">
-                        {% if post.category == "NSFW" %}
-                            <img width="100%" height="100%" src="{{ MEDIA_URL }}default/uploads/nsfw.png"/>
-                        {% else %}
-                            {% if post.is_video %}
-                                <video width="100%" height="100%" autoplay loop muted
-                                       onclick="this.paused ? this.play() : this.pause();">
-                                    <source src="{{ post.upload_url }}" type="video/mp4"/>
-                                </video>
+                    {% for post in posts %}
+                    <div class="post">
+                        <a class="image-list-link" href="{% url 'post' post_hashid=post.hashid %}">
+                            {% if post.category == "NSFW" %}
+                                <img width="100%" height="100%" src="{{ MEDIA_URL }}default/uploads/nsfw.png"/>
                             {% else %}
-                                <img width="100%" height="100%" src="{{ post.upload_url }}"/>
+                                {% if post.is_video %}
+                                    <video width="100%" height="100%" autoplay loop muted
+                                           onclick="this.paused ? this.play() : this.pause();">
+                                        <source src="{{ post.upload_url }}" type="video/mp4"/>
+                                    </video>
+                                {% else %}
+                                    <img width="100%" height="100%" src="{{ post.upload_url }}"/>
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
-                        <div class="point-info gradient-transparent-black transition"></div>
-                    </a>
-                    <div class="hover" style="left:15px;">
-                        <p>{{ post.header }}</p>
+                            <div class="point-info gradient-transparent-black transition"></div>
+                        </a>
+                        <div class="hover" style="left:15px;">
+                            <p>{{ post.header }}</p>
+                        </div>
                     </div>
-                </div>
-                {% endfor %}
+                    {% endfor %}
                 {% else %}
                     There are no posts yet. :(
                 {% endif %}
@@ -38,12 +42,16 @@
     </div>
     <div>
         {% if page > 1 %}
-            <a class="btn waves-effect waves-light white-text" href="{% url 'home' page=page|add:-1 %}">Previous
-			<i class="material-icons right">skip_previous</i></a>
+            <a id="previous_page" class="btn waves-effect waves-light white-text" href="{% url 'home' page=page|add:-1 %}">
+                Previous
+			    <i class="material-icons right">skip_previous</i>
+            </a>
         {% endif %}
         {% if posts|length == 15 %}
-            <a class="btn waves-effect waves-light white-text" href="{% url 'home' page=page|add:1 %}">Next
-			<i class="material-icons right">skip_next</i></a>
+            <a id="next_page" class="btn waves-effect waves-light white-text" href="{% url 'home' page=page|add:1 %}">
+                Next
+			    <i class="material-icons right">skip_next</i>
+            </a>
         {% endif %}
     </div>
 </div>

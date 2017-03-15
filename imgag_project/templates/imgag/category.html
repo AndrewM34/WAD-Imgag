@@ -1,12 +1,16 @@
 {% extends 'imgag/base.html' %}
 {% load staticfiles %}
 
+{% block head_block %}
+<script src="{% static 'js/ajax_next_page.js' %}"></script>
+{% endblock%}
+
 {% block body_block %}
 <div class="container w3-padding-64 w3-padding-xlarge">
     <div id="imagelist" class="home-gallery">
         <div class="posts br5 first-child">
             <div class="outside-loader"></div>
-            <div class="cards">
+            <div id="posts" class="cards">
                 {% if category %}
                     <h1>{{ category.name }}</h1>
                     {% if posts %}

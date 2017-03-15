@@ -28,7 +28,8 @@ def home(request, page=1, ajax=None):
         '-created_date')[offset:offset + POSTS_ON_ONE_PAGE]
     posts_dict = [p.as_json() for p in posts]
     if ajax == "ajax":
-        pass
+        json_dict = {"ok": "ok", "posts": posts_dict}
+        return HttpResponse(json.dumps(json_dict), content_type="application/json")
     context_dict = {"posts": posts_dict, "page": page}
     return render(request, 'imgag/home.html', context_dict)
 
