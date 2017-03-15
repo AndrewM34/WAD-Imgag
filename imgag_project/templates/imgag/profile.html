@@ -52,7 +52,7 @@
 <div class="container w3-padding-32">
 
 <div class="row grey darken-4">
-<div class="col s5">
+<div class="col s5 center-align">
 	<div class="page-header">
 		<h1>{{ user.username }} Profile</h1>
 	</div>
@@ -67,7 +67,10 @@
     	<form method="post" action="." enctype="multipart/form-data">
     		{% csrf_token %}
     		{{ form.as_p }}
-    		<input type="submit" value="Update" />
+			<button class="btn waves-effect waves-light" type="submit" value="Update">Update
+			<i class="material-icons right">picture_in_picture</i>
+		  </button>
+
     	</form>
 	</div>
 	</div>
@@ -90,7 +93,9 @@
 			Drop files here or click to upload.<br />
 		</div>
 	</form>
-	<button class="w3-margin-top" type="submit" id="submitFile" >UPLOAD</button> <br />
+	<button class="btn waves-effect waves-light w3-margin-top" type="submit" id="submitFile">Upload
+			<i class="material-icons right">send</i>
+	</button>
 	</div>
 	</div>
 	

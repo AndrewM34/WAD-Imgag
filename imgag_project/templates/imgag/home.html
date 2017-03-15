@@ -38,10 +38,12 @@
     </div>
     <div>
         {% if page > 1 %}
-            <a href="{% url 'home' page=page|add:-1 %}">Previous</a>
+            <a class="btn waves-effect waves-light white-text" href="{% url 'home' page=page|add:-1 %}">Previous
+			<i class="material-icons right">skip_previous</i></a>
         {% endif %}
         {% if posts|length == 15 %}
-            <a href="{% url 'home' page=page|add:1 %}">Next</a>
+            <a class="btn waves-effect waves-light white-text" href="{% url 'home' page=page|add:1 %}">Next
+			<i class="material-icons right">skip_next</i></a>
         {% endif %}
     </div>
 </div>
