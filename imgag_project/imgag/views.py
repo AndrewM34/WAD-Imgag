@@ -118,11 +118,13 @@ def user_logout(request):
 def account(request):  # takes username as an arg
     user = UserProfile.objects.get(user=request.user)
     category_list = Category.objects.all()
-    context = {'categories': category_list, 'username': request.user, 'posts': Upload.objects.filter(author=user)}
-    return render(request, 'imgag/profile.html', context)
+    context = {'categories': category_list, 'username': request.user}
+    posts = Upload.objects.filter(author=user)
+    posts_dict = [p.as_json() for p in posts]
+    context['posts'] = posts_dict
+    return render(request, 'imgag/profile.html', context)  # view to show all categories
 
 
-# view to show all categories
 def show_categories(request):
     categories_list = [c.as_json() for c in Category.objects.all()]
     context_dict = {"categories": categories_list}

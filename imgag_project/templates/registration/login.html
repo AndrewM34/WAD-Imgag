@@ -3,10 +3,11 @@
 {% block body_block %}
 	<div class="w3-display-container w3-black" style="height:700px;">
 	<div class="w3-display-middle">
-		<h1 class = " display-3">Login</h1>
+		<h1 class = "display-3">Login</h1>
 	<form class="form-signin" role="form" method='post' action="">
 		{% csrf_token %}
 		<h2 class = "form-signin-heading">Please sign in</h2>
+
 		<label for="inputUsername" class="sr-only">Username</label>
 		<input type="text" name="username" id="id_username" class="form-control" placeholder="Username" required autofocus>
 		<label for="inputPassword" class="sr-only">Password</label>

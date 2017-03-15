@@ -140,7 +140,7 @@ class Upload(models.Model):
 class Comment(models.Model):
     author = models.ForeignKey(UserProfile)
     upload = models.ForeignKey(Upload)
-    text = models.CharField(max_length=1000)
+    text = models.CharField(max_length=200)
     created_date = models.DateTimeField(blank=True)
 
     def save(self, *args, **kwargs):

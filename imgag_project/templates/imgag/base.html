@@ -23,14 +23,25 @@
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
 	<link rel="prefetch" href="http://tpc.googlesyndication.com/safeframe/1-0-6/html/container.html"> {% block head_block %}{% endblock%}
 
+	<!-- jQuery Plugin -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+	<!-- Preloader -->
+	<script type="text/javascript">
+		//<![CDATA[
+			$(window).on('load', function() { // makes sure the whole site is loaded 
+				$('#status').fadeOut(); // will first fade out the loading animation 
+				$('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website. 
+				$('body').delay(350).css({'overflow':'visible'});
+			  })
+		//]]>
+	</script>
 	<script type="text/javascript">
 		function searchToggle(obj, evt) {
 			var container = $(obj).closest('.search-wrapper');
 
 			if (!container.hasClass('active')) {
 				container.addClass('active');
-				$(obj).find('.search-input').focus();
-				$(obj).find('.search-input').select();
+				container.find('.search-input').select();
 				evt.preventDefault();
 			}
 			else if (container.hasClass('active') && $(obj).closest('.input-holder').length == 0) {
@@ -88,6 +99,10 @@
 </head>
 
 <body class="">
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status">&nbsp;</div>
+</div>
 	<div id="drop-layer"></div>
 	<div id="topbar">
 		<div class="header-center">
@@ -100,7 +115,9 @@
 					<a href="{% url 'faq' %}">need help?</a>
 				</div>
 			</div>
+	
 
+	
 			<div class="dropdown">
 				<a href="{% url 'categories' %}"><button class="dropbtn2">Categories</button></a>
 				<div class="dropdown-content1">
@@ -153,10 +170,10 @@
 	<div id="cta-lightbox-placeholder"></div>
 
 	<main>
-
 		{% block body_block %} {% endblock %}
-
 	</main>
+	        
 </body>
+
 
 </html>
