@@ -46,7 +46,7 @@
 			</div>
         </div>
         </div>
-        <div class="w3-container grey darken-4"
+        <div class="w3-container grey darken-4">
         <form id="comment_form" method="post" action="{% url 'add_comment' post_hashid=post.hashid %}">
             {% csrf_token %}
             {% for hidden in comment_form.hidden_fields %}

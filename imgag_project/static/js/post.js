@@ -54,4 +54,4 @@ function init() {
 	$("#down_vote_form").submit(vote);
 }
 
-$("document").ready(init);
+$(document).ready(init);
