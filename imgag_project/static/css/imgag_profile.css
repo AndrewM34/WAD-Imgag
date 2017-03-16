@@ -2,7 +2,7 @@
  * The MIT License
  * Copyright (c) 2012 Matias Meno <m@tias.me>
  */
- /*
+ 
 @-webkit-keyframes passing-through {
   0% {
     opacity: 0;
@@ -170,7 +170,7 @@
     -moz-transform: scale(1);
     -ms-transform: scale(1);
     -o-transform: scale(1);
-    transform: scale(1); } }*/
+    transform: scale(1); } }
 .dropzone, .dropzone * {
   box-sizing: border-box; }
 

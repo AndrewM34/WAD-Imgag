@@ -27,4 +27,5 @@ urlpatterns = [
     url(r'^search/$', views.search, name='search'),
     url(r'^test/$', views.test, name='test'),
     url(r'^upload/$', views.upload, name='upload'),
+	url(r'^updateProfilePic/$', views.updateProfilePic, name='updateProfilePic')
 ]

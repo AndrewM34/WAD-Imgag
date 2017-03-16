@@ -119,7 +119,7 @@ def user_logout(request):
 def account(request):  # takes username as an arg
     user = UserProfile.objects.get(user=request.user)
     category_list = Category.objects.all()
-    context = {'categories': category_list, 'username': request.user}
+    context = {'categories': category_list, 'username': request.user, 'userprofile' : user}
     posts = Upload.objects.filter(author=user)
     posts_dict = [p.as_json() for p in posts]
     context['posts'] = posts_dict
@@ -239,6 +239,14 @@ def upload(request):
     user = UserProfile.objects.get(user=request.user)
     cat = Category.objects.get(name=request.POST['category'])
     u = Upload.objects.get_or_create(author=user, header=request.POST['header'], category=cat)[0]
-    u.uploaded_file = request.FILES['file']
-    u.save()
+    if 'file' in request.FILES:
+        u.uploaded_file = request.FILES['file']
+        u.save()
     return home(request)
+
+def updateProfilePic(request):
+	user = UserProfile.objects.get(user=request.user)
+	if 'profilePic' in request.FILES:
+		user.picture = request.FILES['profilePic']
+		user.save()
+	return HttpResponseRedirect(reverse('account'))
