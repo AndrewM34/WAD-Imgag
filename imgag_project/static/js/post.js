@@ -8,11 +8,16 @@ function commentAnswer(json) {
         jQuery.each(json.comments, function(index, comment) {
             $("#comments").append(
                         '<div name="comment">' +
-                            '<span>' + comment.author + '</span> ' +
-                            '<span>' + comment.created_date + '</span>' +
-                            '<textarea disabled>' + comment.text + '</textarea>' +
+                            '<div class="w3-container grey darken-4" style="width:60%">' +
+                                '<img class="w3-margin-top w3-margin-right" src="' + comment.author_image_url + '"' +
+                                'style="height:50px"/>' +
+                                '<font size="+3">' + comment.author + '</font>' +
+                                '<font size="-3">' + comment.created_date + '</font>' +
+                                '<li class="divider"></li>' +
+                                '<p>' + comment.text + '</p>' +
+                            '</div>' +
                         '</div>');
-                        });
+            });
     } else {
         redirectToLogin()
     }
