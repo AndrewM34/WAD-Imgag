@@ -24,17 +24,18 @@
 		{% if user.is_authenticated %}
     	<form method="post" action="{% url 'updateProfilePic' %}" enctype="multipart/form-data" id="updateProfilePicForm">
     		{% csrf_token %}
-    		<input type="file" name="profilePic" accept="image/*" id="profilePicToBe" required />
+ 
+    		<input class="orange w3-margin-bottom" type="file" name="profilePic" accept="image/*" id="profilePicToBe" required />
+	
 			<button class="btn waves-effect waves-light" onclick="updateProfilePic(event)" value="Update">Update
 			<i class="material-icons right">picture_in_picture</i>
 		  </button>
 		  <p id="noteForUpdatePic"></p>
-
     	</form>
 	</div>
 	</div>
 
-	<div class="col s7 w3-padding-64 w3-margin-top" id="dropzone" succeedurl="{% url 'home' %}">
+	<div class="col s6 w3-padding-64 w3-margin-top" id="dropzone" succeedurl="{% url 'home' %}">
 	<form action="{% url 'upload' %}" class="dropzone needsclick" id="demoUpload" method="post" enctype="multipart/form-data" name="dragdrop" >
 	{% csrf_token %}
 		<input type="text" placeholder="Title of the Image" name="header" id="headerTextInput" class="headerTextInput" /> <br />
@@ -88,14 +89,10 @@
 			{% endfor %}
 			{% else %}
 				There are no posts yet. :(
+				<p><strong>Email:</strong> {{user.email}}</p>
+				<p><strong>Website:</strong> <a href="{{user.website}}">{{user.website}}</a></p>
 			{% endif %}
 		</div>
-		<div>
-        {% else %}
-		<p><strong>Email:</strong> {{user.email}}</p>
-		<p><strong>Website:</strong> <a href="{{user.website}}">{{user.website}}</a></p>
-		{% endif %}
-		</div>
-	
+		{% endif %}	
 	
 {% endblock %}
