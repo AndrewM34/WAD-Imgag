@@ -60,7 +60,7 @@
 {% block body_block %}
 <div class="container w3-padding-32">
 
-<div class="row grey darken-4">
+<div class="row" style="background-color:#34373c">
 <div class="col s5 center-align">
 	<div class="page-header">
 		<h1>{{ user.username }} Profile</h1>
@@ -76,9 +76,9 @@
     	<form method="post" action="{% url 'updateProfilePic' %}" enctype="multipart/form-data" id="updateProfilePicForm">
     		{% csrf_token %}
  
-    		<input class="orange w3-margin-bottom" type="file" name="profilePic" accept="image/*" id="profilePicToBe" required />
+    		<input class="w3-margin-bottom" style="background-color:#ff7f00" type="file" name="profilePic" accept="image/*" id="profilePicToBe" required />
 	
-			<button class="btn waves-effect waves-light" onclick="updateProfilePic(event)" value="Update">Update
+			<button class="btn waves-effect waves-light" style="background-color:#ff7f00" onclick="updateProfilePic(event)" value="Update">Update
 			<i class="material-icons right">picture_in_picture</i>
 		  </button>
 		  <p id="noteForUpdatePic"></p>
@@ -90,7 +90,7 @@
 	<form action="{% url 'upload' %}" class="dropzone needsclick" id="demoUpload" method="post" enctype="multipart/form-data" name="dragdrop" >
 	{% csrf_token %}
 		<input type="text" placeholder="Title of the Image" name="header" id="headerTextInput" class="headerTextInput" /> <br />
-		<select class="teal lighten-2" name="category" form="demoUpload" id="dropDownList" required>
+		<select class="orange darken-1" name="category" form="demoUpload" id="dropDownList" required>
 			{% if categories %}
 			{% for cat in categories %}
 			<option value="{{ cat.name }}">{{ cat.name }}</option>
@@ -106,7 +106,7 @@
 			<input type="file" name="file" accept="image/*" required>
 		</div>
 	</form>
-	<button class="btn waves-effect waves-light w3-margin-top" type="submit" id="submitFile">Upload
+	<button class="btn waves-effect waves-light w3-margin-top" style="background-color:#ff7f00" type="submit" id="submitFile">Upload
 			<i class="material-icons right">send</i>
 	</button>
 	</div>
