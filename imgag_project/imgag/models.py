@@ -11,6 +11,8 @@ from django.utils import timezone
 from django.core.files import File
 from django.conf import settings
 
+from registration.signals import user_registered
+
 
 # Overriding FileSystemStorage class, because Django by default doesn't remove files with the same name => tons of
 # same profile pictures, etc.
@@ -35,6 +37,12 @@ def upload_to(instance, filename):
     filename = prefix + filename + extension
     return os.path.join(path, filename)
 
+def user_registered_callback(sender,user,request,**kwargs):
+	print ("got hereeeeeeeeeeeee")
+	profile = UserProfile(user=user)
+	profile.save()
+
+user_registered.connect(user_registered_callback)
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
@@ -50,6 +58,9 @@ class UserProfile(models.Model):
         return self.user.username
 
     def save(self, *args, **kwargs):
+        if not self.date_of_birth:
+            self.date_of_birth = timezone.make_aware(datetime.now(),
+                                                    timezone.get_current_timezone())
         if os.path.basename(self.picture.name) == "default.png":
             imopen = open(os.path.join(settings.MEDIA_ROOT, self.picture.name), "rb")
             django_file = File(imopen)

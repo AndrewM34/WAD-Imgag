@@ -47,6 +47,7 @@ def faq(request):
 # should pass the username, profile picture and all posts by that user
 @login_required
 def account(request):  # takes username as an arg
+    
     user = UserProfile.objects.get(user=request.user)
     category_list = Category.objects.all()
     context = {'categories': category_list, 'username': request.user, 'userprofile' : user}
