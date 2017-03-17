@@ -30,7 +30,7 @@
                     <form id="up_vote_form" method="post"
                           action="{% url 'vote' post_hashid=post.hashid users_vote=1 %}">
                         {% csrf_token %}
-                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                        <button class="btn waves-effect waves-light" style="background-color:#ff7f00" type="submit" name="action">
                             <i class="material-icons right">thumb_up</i>
                         </button>
                         <p class="right-align" id="up_votes">{{ up_votes }}</p>
@@ -40,7 +40,7 @@
                     <form id="down_vote_form" method="post"
                           action="{% url 'vote' post_hashid=post.hashid users_vote=-1 %}">
                         {% csrf_token %}
-                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                        <button class="btn waves-effect waves-light" style="background-color:#ff7f00" type="submit" name="action">
                             <i class="material-icons right">thumb_down</i>
                         </button>
                         <p class="right-align" id="down_votes">{{ down_votes }}</p>
@@ -59,7 +59,7 @@
                 {{ field.help_text }}
                 {{ field }}
                 {% endfor %}
-                <button class="btn waves-effect waves-light" type="submit">Submit
+                <button class="btn waves-effect waves-light" style="background-color:#ff7f00" type="submit">Submit
                     <i class="material-icons right">send</i>
                 </button>
             </form>

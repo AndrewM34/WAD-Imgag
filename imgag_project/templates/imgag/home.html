@@ -6,8 +6,8 @@
 {% endblock%}
 
 {% block body_block %}
-<div class="container w3-padding-64 w3-padding-jumbo ">
-    <div id="imagelist" class="home-gallery ">
+<div class="container w3-padding-32">
+    <div id="imagelist" class="home-gallery center-align w3-padding-jumbo">
         <div id="posts" class="posts br5 first-child">
             <div class="outside-loader"></div>
             <div class="cards">
@@ -42,13 +42,13 @@
     </div>
     <div>
         {% if page > 1 %}
-            <a id="previous_page" class="btn waves-effect waves-light white-text" href="{% url 'home' page=page|add:-1 %}">
+            <a id="previous_page" style="background-color:#ff7f00" class="btn waves-effect waves-light white-text" href="{% url 'home' page=page|add:-1 %}">
                 Previous
 			    <i class="material-icons right">skip_previous</i>
             </a>
         {% endif %}
         {% if posts|length == 15 %}
-            <a id="next_page" class="btn waves-effect waves-light white-text" href="{% url 'home' page=page|add:1 %}">
+            <a id="next_page" style="background-color:#ff7f00" class="btn waves-effect waves-light white-text" href="{% url 'home' page=page|add:1 %}">
                 Next
 			    <i class="material-icons right">skip_next</i>
             </a>
