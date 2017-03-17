@@ -1,17 +1,17 @@
 from django import forms
 from django.contrib.auth.models import User
 from imgag.models import UserProfile, Comment, Vote
+from registration.forms import RegistrationForm
 
 
-class UserForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
+class UserForm(RegistrationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password')
+        fields = ('username', 'email')
 
 
-class UserProfileForm(forms.ModelForm):
+class UserProfileForm(RegistrationForm):
     class Meta:
         model = UserProfile
         fields = ('picture', )

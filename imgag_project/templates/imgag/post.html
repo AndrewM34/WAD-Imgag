@@ -12,7 +12,7 @@
         <div class="grey darken-2 w3-padding-4 w3-padding-left"><h1>{{ post.header }}</h1></div>
         <div class="w3-container grey darken-4 center-align">
             {% if post.is_video %}
-            <video style="max-width:100px" autoplay loop muted onclick="this.paused ? this.play() : this.pause();">
+            <video style="max-width:900px" autoplay loop muted onclick="this.paused ? this.play() : this.pause();">
                 <source src="{{ post.upload_url }}" type="video/mp4"/>
             </video>
             {% else %}
