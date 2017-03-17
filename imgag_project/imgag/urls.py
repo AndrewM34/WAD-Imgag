@@ -23,8 +23,8 @@ urlpatterns = [
         views.add_comment, name='add_comment'),
     url(r'^post/add_comment/(?P<post_hashid>[\w]+)/comments-count/(?P<comments_count>[0-9]+)/(?P<ajax>ajax)/$',
         views.add_comment, name='add_comment'),
+    url(r'^search/$', views.search_arg, name='search'),
     url(r'^search/(?P<query>[^/]+)/$', views.search_arg, name='searchArg'),
-    url(r'^search/$', views.search, name='search'),
     url(r'^test/$', views.test, name='test'),
     url(r'^upload/$', views.upload, name='upload'),
 	url(r'^updateProfilePic/$', views.updateProfilePic, name='updateProfilePic')

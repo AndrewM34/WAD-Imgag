@@ -2,65 +2,14 @@
 {% load staticfiles %}
 {% block head_block %}
 	<link rel="stylesheet" href="{% static 'css/imgag_profile.css' %}">
-	<script src="{% static 'js/dropzone.js' %}"></script>
-	<script type="text/javascript">
-		Dropzone.options.demoUpload = {
-			maxFilesize: 15,
-			paramName: "file",
-			clickable: true,
-			autoProcessQueue: false,
-			maxFiles: 1,
-			acceptedFiles: "image/*, video/mp4",
-			addRemoveLinks: true,
-			dictRemoveFile: "----REMOVE----",
-			
-			init : function(){
-				var dropThis = this;
-				var submitting = document.querySelector("#submitFile");
-				submitting.addEventListener("click", function() {
-					var content = document.querySelector("#headerTextInput").value;
-					var files = dropThis.getQueuedFiles();
-					if(files.length == 0){
-						document.querySelector("#note").innerHTML = "<strong>No file to upload!</strong>";
-					}
-					else if(!content.length){
-						document.querySelector("#note").innerHTML = "<strong>Each post must have a header!</strong>";
-					} else {
-						dropThis.processQueue();
-					}
-					
-					});
-				this.on("addedfile",function(file){
-					
-				});
-				this.on("maxfilesexceeded", function(file){
-					document.querySelector("#note").innerHTML = "You can only upload one file at a time!";
-					this.removeFile(file);
-				});
-				this.on("success", function(){
-					url = document.getElementById("dropzone").getAttribute("succeedurl");
-					window.location = url;
-				});
-			}
-		}
-		function updateProfilePic(event){
-			event.preventDefault();
-			var file = document.getElementById("profilePicToBe").files;
-			if(file.length == 0){
-				document.getElementById("noteForUpdatePic").innerHTML = "You need to choose a picture first!";
-			} else { 
-				document.getElementById("updateProfilePicForm").submit();
-			}
-		}
-		
-		
-	</script>
+	<script type="text/javascript" src="{% static 'js/dropzone.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/profile.js' %}"></script>
 {% endblock %}
 	
 {% block body_block %}
 <div class="container w3-padding-32">
 
-<div class="row grey darken-4">
+<div class="row" style="background-color:#34373c">
 <div class="col s5 center-align">
 	<div class="page-header">
 		<h1>{{ user.username }} Profile</h1>
@@ -75,21 +24,22 @@
 		{% if user.is_authenticated %}
     	<form method="post" action="{% url 'updateProfilePic' %}" enctype="multipart/form-data" id="updateProfilePicForm">
     		{% csrf_token %}
-    		<input type="file" name="profilePic" accept="image/*" id="profilePicToBe" required />
-			<button class="btn waves-effect waves-light" onclick="updateProfilePic(event)" value="Update">Update
+ 
+    		<input class="w3-margin-bottom" style="background-color:#ff7f00" type="file" name="profilePic" accept="image/*" id="profilePicToBe" required />
+	
+			<button class="btn waves-effect waves-light" style="background-color:#ff7f00" onclick="updateProfilePic(event)" value="Update">Update
 			<i class="material-icons right">picture_in_picture</i>
 		  </button>
 		  <p id="noteForUpdatePic"></p>
-
     	</form>
 	</div>
 	</div>
 
-	<div class="col s7 w3-padding-64 w3-margin-top" id="dropzone" succeedurl="{% url 'home' %}">
+	<div class="col s6 w3-padding-64 w3-margin-top" id="dropzone" succeedurl="{% url 'home' %}">
 	<form action="{% url 'upload' %}" class="dropzone needsclick" id="demoUpload" method="post" enctype="multipart/form-data" name="dragdrop" >
 	{% csrf_token %}
 		<input type="text" placeholder="Title of the Image" name="header" id="headerTextInput" class="headerTextInput" /> <br />
-		<select class="teal lighten-2" name="category" form="demoUpload" id="dropDownList" required>
+		<select class="orange darken-1" name="category" form="demoUpload" id="dropDownList" required>
 			{% if categories %}
 			{% for cat in categories %}
 			<option value="{{ cat.name }}">{{ cat.name }}</option>
@@ -105,7 +55,7 @@
 			<input type="file" name="file" accept="image/*" required>
 		</div>
 	</form>
-	<button class="btn waves-effect waves-light w3-margin-top" type="submit" id="submitFile">Upload
+	<button class="btn waves-effect waves-light w3-margin-top" style="background-color:#ff7f00" type="submit" id="submitFile">Upload
 			<i class="material-icons right">send</i>
 	</button>
 	</div>
@@ -139,14 +89,10 @@
 			{% endfor %}
 			{% else %}
 				There are no posts yet. :(
+				<p><strong>Email:</strong> {{user.email}}</p>
+				<p><strong>Website:</strong> <a href="{{user.website}}">{{user.website}}</a></p>
 			{% endif %}
 		</div>
-		<div>
-        {% else %}
-		<p><strong>Email:</strong> {{user.email}}</p>
-		<p><strong>Website:</strong> <a href="{{user.website}}">{{user.website}}</a></p>
-		{% endif %}
-		</div>
-	
+		{% endif %}	
 	
 {% endblock %}
