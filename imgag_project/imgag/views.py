@@ -42,76 +42,6 @@ def faq(request):
     return render(request, 'imgag/faq.html')
 
 
-# view for registering a user
-def register(request):
-    registered = False
-
-    if request.method == 'POST':
-        user_form = UserForm(data=request.POST)
-        profile_form = UserProfileForm(data=request.POST)
-
-        if user_form.is_valid() and profile_form.is_valid():
-            user = user_form.save()
-
-            user.set_password(user.password)
-            user.save()
-
-            profile = profile_form.save(commit=False)
-            profile.user = user
-
-            if 'picture' in request.FILES:
-                profile.picture = request.FILES['picture']
-
-            profile.save()
-            registered = True
-
-        else:
-            print(user_form.errors, profile_form.errors)
-
-    else:
-        user_form = UserForm()
-        profile_form = UserProfileForm()
-
-    return render(request, 'imgag/register.html',
-                  {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
-
-
-# view for a user to login
-def user_login(request):
-    badlogin = False
-    print("ejeej")
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        user = authenticate(username=username, password=password)
-
-        if user:
-            if user.is_active:
-                login(request, user)
-                if "next" in request.GET:
-                    print("next here")
-                    return HttpResponseRedirect(request.GET["next"])
-                print("next noooooooooooooot here")
-                return HttpResponseRedirect(reverse('home'))
-
-            else:
-                return HttpResponse("Your Imgag account is disabled.")  # naughty user probably got banned
-
-        else:
-            badlogin = True
-            return render(request, 'imgag/login.html', {"username": username, "badlogin": badlogin})
-
-    else:
-        return render(request, 'imgag/login.html', {'badlogin': badlogin})
-
-
-# log out the current user
-@login_required
-def user_logout(request):
-    logout(request)
-    return HttpResponseRedirect(reverse('home'))
-
 
 # view to show account (details)
 # should pass the username, profile picture and all posts by that user
@@ -209,7 +139,7 @@ def vote(request, post_hashid, users_vote, ajax=None):
 
 # view for search
 @csrf_exempt
-def search(request):
+def search_arg(request, query=""):
     result_list = []
     query_human = ""
     if request.method == 'POST':
@@ -217,17 +147,12 @@ def search(request):
         query = query_human.strip()
         if query:
             result_list = run_query(query)
+    else:
+        query_human = query.replace('_', ' ')
+        value = query_human.strip()
+        if value:
+            result_list = run_query(value)
     return render(request, 'imgag/search.html', {'result_list': result_list, 'query_human': query_human})
-
-
-@csrf_exempt
-def search_arg(request, query):
-    result_list = []
-    human_readable = query.replace('_', ' ')
-    value = human_readable.strip()
-    if value:
-        result_list = run_query(value)
-    return render(request, 'imgag/search.html', {'result_list': result_list, 'query_human': human_readable})
 
 
 def test(request):
@@ -243,7 +168,8 @@ def upload(request):
         u.uploaded_file = request.FILES['file']
         u.save()
     return home(request)
-
+	
+@login_required
 def updateProfilePic(request):
 	user = UserProfile.objects.get(user=request.user)
 	if 'profilePic' in request.FILES:
