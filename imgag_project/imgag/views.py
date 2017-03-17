@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login, logout
+from datetime import datetime
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from imgag.webhose_search import run_query
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
 import json
-from imgag.forms import UserForm, UserProfileForm, CommentForm
+from imgag.forms import CommentForm
 from imgag.models import UserProfile, Category, Upload, Comment, Vote
 
 POSTS_ON_ONE_PAGE = 15
@@ -42,14 +42,13 @@ def faq(request):
     return render(request, 'imgag/faq.html')
 
 
-
 # view to show account (details)
 # should pass the username, profile picture and all posts by that user
 @login_required
 def account(request):  # takes username as an arg
     user = UserProfile.objects.get(user=request.user)
     category_list = Category.objects.all()
-    context = {'categories': category_list, 'username': request.user, 'userprofile' : user}
+    context = {'categories': category_list, 'username': request.user, 'userprofile': user}
     posts = Upload.objects.filter(author=user)
     posts_dict = [p.as_json() for p in posts]
     context['posts'] = posts_dict
@@ -155,10 +154,6 @@ def search_arg(request, query=""):
     return render(request, 'imgag/search.html', {'result_list': result_list, 'query_human': query_human})
 
 
-def test(request):
-    return render(request, 'imgag/test.html', {})
-
-
 @login_required
 def upload(request):
     user = UserProfile.objects.get(user=request.user)
@@ -168,11 +163,20 @@ def upload(request):
         u.uploaded_file = request.FILES['file']
         u.save()
     return home(request)
-	
+
+
 @login_required
-def updateProfilePic(request):
-	user = UserProfile.objects.get(user=request.user)
-	if 'profilePic' in request.FILES:
-		user.picture = request.FILES['profilePic']
-		user.save()
-	return HttpResponseRedirect(reverse('account'))
+def update_profile_pic(request):
+    user = UserProfile.objects.get(user=request.user)
+    if 'profilePic' in request.FILES:
+        user.picture = request.FILES['profilePic']
+        user.save()
+    if 'birth_date' in request.POST:
+        try:
+            my_datetime = datetime.strptime(request.POST['birth_date'], "%Y-%b-%d")
+            user.date_of_birth = timezone.make_aware(my_datetime, timezone.get_current_timezone())
+            print(user.date_of_birth)
+            user.save()
+        except ValueError:
+            pass
+    return HttpResponseRedirect(reverse('account'))
