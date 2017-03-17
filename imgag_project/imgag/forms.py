@@ -5,11 +5,10 @@ from registration.forms import RegistrationForm
 
 
 class UserForm(RegistrationForm):
-    password = forms.CharField(widget=forms.PasswordInput())
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password')
+        fields = ('username', 'email')
 
 
 class UserProfileForm(RegistrationForm):
