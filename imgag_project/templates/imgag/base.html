@@ -1,12 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
- {% load staticfiles %}
- {% load imgag_template_tags %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> {% load staticfiles %} {% load imgag_template_tags %}
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link href="./Imgag_ The most awesome images on the Internet_files/css" rel="stylesheet">
-	<title> Imgag: The most awesome images on the Internet
+	<title> Imgag - you meme us
 	</title>
 	<meta name="viewport" content="width=1138">
 	<meta name="keywords" content="images, funny, image host, image sharing, reaction gif, viral images, current events, cute, visual storytelling, gif">
@@ -14,54 +11,133 @@
 
 	<meta name="copyright" content="Copyright 2017 Imgag, Inc.">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge;">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 	<link rel="icon" href="{% static 'imgag/favicon.svg' %}">
+	<link rel="stylesheet" type="text/css" href="//s.imgur.com/min/global.css?1489087397" />
+	<link rel="stylesheet" type="text/css" href="//s.imgur.com/min/gallery.css?1489087397" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/imgag.css' %}" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+	<link rel="prefetch" href="http://tpc.googlesyndication.com/safeframe/1-0-6/html/container.html"> {% block head_block %}{% endblock%}
 
-	<link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'css/gallery.css' %}" />
+	<!-- jQuery Plugin -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+	<!-- Preloader -->
+	<script type="text/javascript">
+		//<![CDATA[
+			$(window).on('load', function() { // makes sure the whole site is loaded 
+				$('#status').fadeOut(); // will first fade out the loading animation 
+				$('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website. 
+				$('body').delay(350).css({'overflow':'visible'});
+			  })
+		//]]>
+	</script>
+	<script type="text/javascript">
+		function searchToggle(obj, evt) {
+			var container = $(obj).closest('.search-wrapper');
 
-	<link rel="canonical" href="http://Imgag.com/">
-	<meta property="og:url" content="http://Imgag.com/">
+			if (!container.hasClass('active')) {
+				container.addClass('active');
+				container.find('.search-input').select();
+				evt.preventDefault();
+			}
+			else if (container.hasClass('active') && $(obj).closest('.input-holder').length == 0) {
+				container.removeClass('active');
+				// clear input
+				container.find('.search-input').val('');
+				// clear and hide result container when we press close
+				container.find('.result-container').fadeOut(100, function() {
+					$(this).empty();
+				});
+			}
+		}
+		function submitFn(obj, evt) {
+			value = $(obj).find('.search-input').val();
+			url = $(obj).attr('succeedurl');
 
-	<link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.Imgag.com/">
-
-	<link rel="prefetch" href="http://tpc.googlesyndication.com/safeframe/1-0-6/html/container.html">
-	<script type="text/javascript" charset="utf-8" async="" src="./Imgag_ The most awesome images on the Internet_files/button.5b89bce04f133ec533459161985cf461.js.download"></script>
+			_html = "";
+			var check = value.trim();
+			value = value.replace(/\s+/g, '_');
+			if (!check.length) {
+				_html = "Bro, you try to search nothing?";
+				$(obj).find('.result-container').html('<span>' + _html + '</span>');
+				$(obj).find('.result-container').fadeIn(100);
+				$(obj).find('.search-input').val("");
+				$(obj).find('.search-input').attr("placeholder", "Type to search");
+			}
+			else {
+				window.location = url + value;
+			}
+			$(obj).find('.result-container').fadeIn(100);
+			evt.preventDefault();
+		}  
+	</script>
 </head>
 
 <body class="">
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status">&nbsp;</div>
+</div>
 	<div id="drop-layer"></div>
-		<div id="topbar">
-			<div class="header-center">
+	<div id="topbar">
+		<div class="header-center">
 			<div class="dropdown">
-			<a href="{% url 'home' %}">
-			<button class="dropbtn"></button>
-			</a>
-			  <div class="dropdown-content">
-                    <a href="{% url 'about' %}">About Imgag</a>
-                    <a href="http://store.Imgag.com/">Contact US</a>
-					<a href="http://Imgag.com/jobs">we're hiring!</a>
-                    <a href="http://help.Imgag.com/hc/en-us">need help?</a>
-			  </div>
+				<a href="{% url 'home' %}">
+					<button class="dropbtn"></button>
+				</a>
+				<div class="dropdown-content1">
+					<a href="{% url 'about' %}">About Imgag</a>
+					<a href="{% url 'faq' %}">need help?</a>
+				</div>
 			</div>
-			
+	
+
+	
 			<div class="dropdown">
-			 <button class="dropbtn2">Categories</button>
-			 <div class="dropdown-content">
-			   {% get_category_list %}
-			 </div>
-		   </div>
+				<a href="{% url 'categories' %}"><button class="dropbtn2">Categories</button></a>
+				<div class="dropdown-content1">
+						{% get_category_list %}
+				</div>
+			</div>
 			<div id="secondary-nav">
-				<ul class="user-nav">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="nav-item">
+						<form onsubmit="submitFn(this, event);" succeedurl="{% url 'search' %}">
+							<div class="search-wrapper">
+								<div class="input-holder">
+									<input type="text" class="search-input" placeholder="Type to search" name="value" id="query" />
+									<button class="search-icon" onclick="searchToggle(this, event);"><span></span>
+									</button>
+								</div>
+								<span class="close" onclick="searchToggle(this, event);"></span>
+								<div class="result-container">
+
+								</div>
+							</div>
+						</form>
+					</li>
 					{% if user.is_authenticated %}
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'account' %}">Profile</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'auth_logout' %}?next=/home/">Logout</a>
+					</li>
 					{% else %}
-					          <li class="nav-item">
-					<a class="nav-link" href="{% url 'registration_register' %}">Sign Up</a>
-				  </li>
-				  <li class="nav-item">
-					<a class="nav-link" href="{% url 'auth_login' %}">Sign In</a>
-				  </li>
-				  {% endif %}
+					<li class="nav-item">
+
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'register' %}">Sign Up</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'auth_login' %}">Sign In</a>
+					</li>
+					{% endif %}
 				</ul>
 			</div>
 			<!-- #secondary-nav -->
@@ -72,10 +148,11 @@
 	<div id="cta-container-placeholder"></div>
 	<div id="cta-lightbox-placeholder"></div>
 
-{% block body_block %}
-{% endblock %}
-	
-
+	<main>
+		{% block body_block %} {% endblock %}
+	</main>
+	        
 </body>
+
 
 </html>

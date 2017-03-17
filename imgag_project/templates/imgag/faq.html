@@ -1,0 +1,76 @@
+{% extends 'imgag/base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+<div class="container w3-padding-64">
+	<div class="w3-display-topmiddle w3-padding-64"><h1>The FAQ Page</h1></div>
+	<div class="row w3-padding-64">
+	<div class="col s6">
+	<img src="{% static 'imgag/moon.jpg' %}" style="height:300px">
+	</div>
+	<div class="col s6">
+	 <ul class="collapsible" data-collapsible="accordion">
+		<li>
+		  <div class="collapsible-header active grey darken-4 w3-padding-8"><i class="material-icons">filter_drama</i>Is this for real?</div>
+		  <div class="collapsible-body"><span>Yes. Unlike the moon landing, Imgag is for real. It’s really real. For real.</span></div>
+		</li>
+		<li>
+		  <div class="collapsible-header grey darken-4 w3-padding-8"><i class="material-icons">place</i>What does this cost?</div>
+		  <div class="collapsible-body"><span>Nothing. Imgag's media sharing service, like love, is literally worthless.</span></div>
+		</li>
+		<li>
+		  <div class="collapsible-header grey darken-4 w3-padding-8"><i class="material-icons">whatshot</i>How can I make money from Imgag?</div>
+		  <div class="collapsible-body"><span>We're the only ones who make money.</span></div>
+		</li>
+	  </ul>
+  </div>
+	</div>
+ <div class="row w3-padding-64">
+	<div class="col s6">
+	 <ul class="collapsible" data-collapsible="accordion">
+		<li>
+		  <div class="collapsible-header grey darken-4"><i class="material-icons">filter_drama</i>Is it true that Imgag is the 16th greatest invention of all time?</div>
+		  <div class="collapsible-body"><span>Yes.</span></div>
+		</li>
+		<li>
+		  <div class="collapsible-header grey darken-4 w3-padding-8"><i class="material-icons">place</i>How do you keep your skin looking so young and vibrant?</div>
+		  <div class="collapsible-body"><span>Family secret.</span></div>
+		</li>
+		<li>
+		  <div class="collapsible-header grey darken-4 w3-padding-8"><i class="material-icons">whatshot</i>I don't like the name Imgag. It isn't even original.</div>
+		  <div class="collapsible-body"><span>Send your name suggestions to /dev/null</span></div>
+		</li>
+	  </ul>	
+	</div>
+	<div class="col s6 right-align">
+	<img src="{% static 'imgag/moon.jpg' %}" style="height:300px">
+	</div>
+ </div>
+ 	<div class="row w3-padding-64">
+	<div class="col s6">
+	<img src="{% static 'imgag/moon.jpg' %}" style="height:300px">
+	</div>
+	<div class="col s6">
+	 <ul class="collapsible" data-collapsible="accordion">
+		<li>
+		  <div class="collapsible-header grey darken-4 w3-padding-8"><i class="material-icons">filter_drama</i>Does Imgag vet the people on the site?</div>
+		  <div class="collapsible-body"><span>Unlike our high-quality services, we are in no way vouching for the authenticity, non-creepiness, or criminal record of anyone on this site.</span></div>
+		</li>
+		<li>
+		  <div class="collapsible-header grey darken-4 w3-padding-8"><i class="material-icons">place</i>Can I find the love of my life on Imgag?</div>
+		  <div class="collapsible-body"><span>Although we satisfy the needs of many customers, we recommend other methods. Here are five other places you may find love: <br>
+			Supermarket <br>
+			Gym <br>
+			Mattress Store <br>
+			Veterinary Hospital Bathroom <br>
+			Amusement-Park Tram Ride</span></div>
+		</li>
+		<li>
+		  <div class="collapsible-header grey darken-4 w3-padding-8"><i class="material-icons">whatshot</i>Can you actually answer my question?</div>
+		  <div class="collapsible-body"><span>We'll try.</span></div>
+		</li>
+	  </ul>
+  </div>
+	</div>
+ </div>
+{% endblock %}

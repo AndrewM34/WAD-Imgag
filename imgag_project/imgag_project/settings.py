@@ -77,6 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                "django.template.context_processors.media",
             ],
         },
     },
@@ -139,3 +140,9 @@ MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [STATIC_DIR, ]
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "wad.imgag@gmail.com"
+EMAIL_HOST_PASSWORD = '4PVRL32zKcqacwxP'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

@@ -1,29 +1,152 @@
 {% extends 'imgag/base.html' %}
 {% load staticfiles %}
-{% block title %}
-	{{ user.username }} Profile
+{% block head_block %}
+	<link rel="stylesheet" href="{% static 'css/imgag_profile.css' %}">
+	<script src="{% static 'js/dropzone.js' %}"></script>
+	<script type="text/javascript">
+		Dropzone.options.demoUpload = {
+			maxFilesize: 15,
+			paramName: "file",
+			clickable: true,
+			autoProcessQueue: false,
+			maxFiles: 1,
+			acceptedFiles: "image/*, video/mp4",
+			addRemoveLinks: true,
+			dictRemoveFile: "----REMOVE----",
+			
+			init : function(){
+				var dropThis = this;
+				var submitting = document.querySelector("#submitFile");
+				submitting.addEventListener("click", function() {
+					var content = document.querySelector("#headerTextInput").value;
+					var files = dropThis.getQueuedFiles();
+					if(files.length == 0){
+						document.querySelector("#note").innerHTML = "<strong>No file to upload!</strong>";
+					}
+					else if(!content.length){
+						document.querySelector("#note").innerHTML = "<strong>Each post must have a header!</strong>";
+					} else {
+						dropThis.processQueue();
+					}
+					
+					});
+				this.on("addedfile",function(file){
+					
+				});
+				this.on("maxfilesexceeded", function(file){
+					document.querySelector("#note").innerHTML = "You can only upload one file at a time!";
+					this.removeFile(file);
+				});
+				this.on("success", function(){
+					url = document.getElementById("dropzone").getAttribute("succeedurl");
+					window.location = url;
+				});
+			}
+		}
+		function updateProfilePic(event){
+			event.preventDefault();
+			var file = document.getElementById("profilePicToBe").files;
+			if(file.length == 0){
+				document.getElementById("noteForUpdatePic").innerHTML = "You need to choose a picture first!";
+			} else { 
+				document.getElementById("updateProfilePicForm").submit();
+			}
+		}
+		
+		
+	</script>
 {% endblock %}
-
+	
 {% block body_block %}
+<div class="container w3-padding-32">
+
+<div class="row grey darken-4">
+<div class="col s5 center-align">
 	<div class="page-header">
-		<h1>{{selecteduser.username}} Profile</h1>
+		<h1>{{ user.username }} Profile</h1>
 	</div>
-    {% if userprofile.picture %}
-    <img src="{{ MEDIA_URL }}{{userprofile.picture }}" width="300" height="300" alt="{{user.username}}" />
+	<br>
+	{% if userprofile.picture %}
+    <img src="{{ MEDIA_URL }}{{ userprofile.picture }}" width="280" height="280" alt="Got here = {{user.username}}" />
     {% else %}
-    <img src="http://lorempixel.com/300/300/" img width="300" height="300" alt="{{user.username}}"/>
+    <img src="http://lorempixel.com/300/300/" img width="280" height="280" alt="{{user.username}}"/>
     {% endif %}
-	<br/><br/>
-	<div id="profile_data">
-		{% if selecteduser.username == user.username %}
-    	<form method="post" action="." enctype="multipart/form-data">
+	<div id="profile_data" class="w3-padding-16">
+		{% if user.is_authenticated %}
+    	<form method="post" action="{% url 'updateProfilePic' %}" enctype="multipart/form-data" id="updateProfilePicForm">
     		{% csrf_token %}
-    		{{ form.as_p }}
-    		<input type="submit" value="Update" />
+    		<input type="file" name="profilePic" accept="image/*" id="profilePicToBe" required />
+			<button class="btn waves-effect waves-light" onclick="updateProfilePic(event)" value="Update">Update
+			<i class="material-icons right">picture_in_picture</i>
+		  </button>
+		  <p id="noteForUpdatePic"></p>
+
     	</form>
-        {% else %}
-		<p><strong>Email:</strong> {{selecteduser.email}}</p>
-		<p><strong>Website:</strong> <a href="{{userprofile.website}}">{{userprofile.website}}</a></p>
-		{% endif %}
 	</div>
+	</div>
+
+	<div class="col s7 w3-padding-64 w3-margin-top" id="dropzone" succeedurl="{% url 'home' %}">
+	<form action="{% url 'upload' %}" class="dropzone needsclick" id="demoUpload" method="post" enctype="multipart/form-data" name="dragdrop" >
+	{% csrf_token %}
+		<input type="text" placeholder="Title of the Image" name="header" id="headerTextInput" class="headerTextInput" /> <br />
+		<select class="teal lighten-2" name="category" form="demoUpload" id="dropDownList" required>
+			{% if categories %}
+			{% for cat in categories %}
+			<option value="{{ cat.name }}">{{ cat.name }}</option>
+			{% endfor %}
+			{% else %}
+			<option value="#">----------</option>
+			{% endif %}
+		</select> <br />
+		<div class="dz-message needsclick">
+			Drop files here or click to upload.<br />
+		</div>
+		<div class="fallback"> <!-- if JS is not working -->
+			<input type="file" name="file" accept="image/*" required>
+		</div>
+	</form>
+	<button class="btn waves-effect waves-light w3-margin-top" type="submit" id="submitFile">Upload
+			<i class="material-icons right">send</i>
+	</button>
+	</div>
+	</div>
+	
+	<p id="note"></p>
+    
+	<div class="cards">
+			{% if posts %}
+			{% for post in posts %}
+			<div class="post">
+				<a class="image-list-link" href="{% url 'post' post_hashid=post.hashid %}">
+					{% if post.category == "NSFW" %}
+						<img width="100%" height="100%" src="{{ MEDIA_URL }}default/uploads/nsfw.png"/>
+					{% else %}
+						{% if post.is_video %}
+							<video width="100%" height="100%" autoplay loop muted
+								   onclick="this.paused ? this.play() : this.pause();">
+								<source src="{{ post.upload_url }}" type="video/mp4"/>
+							</video>
+						{% else %}
+							<img width="100%" height="100%" src="{{ post.upload_url }}"/>
+						{% endif %}
+					{% endif %}
+					<div class="point-info gradient-transparent-black transition"></div>
+				</a>
+				<div class="hover" style="left:15px;">
+					<p>{{ post.header }}</p>
+				</div>
+			</div>
+			{% endfor %}
+			{% else %}
+				There are no posts yet. :(
+			{% endif %}
+		</div>
+		<div>
+        {% else %}
+		<p><strong>Email:</strong> {{user.email}}</p>
+		<p><strong>Website:</strong> <a href="{{user.website}}">{{user.website}}</a></p>
+		{% endif %}
+		</div>
+	
+	
 {% endblock %}

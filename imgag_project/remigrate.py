@@ -1,34 +1,34 @@
-from os.path import join
-from subprocess import Popen, DEVNULL, STDOUT
+from os.path import join, exists
+from os import remove
+from subprocess import Popen
 import glob
+import shutil
 
 if __name__ == '__main__':
     PYTHON = "python"
     MANAGE_PY = "manage.py"
-    RM = "rm"
 
-    RM_DB_ARGS = [RM, "db.sqlite3"]
-    UPLOADED_FILES = [join("media", folder) for folder in ["profile_images", "uploads", "category_images"]]
-    RM_UPLOADED_FILES = [RM, "-rfv"] + UPLOADED_FILES
-    RM_MIGRATIONS_ARGS = [RM] + glob.glob(join(join("imgag", "migrations"), "*.py"))
+    DB_PATH = "db.sqlite3"
+    UPLOADED_FILE_PATHS = [join("media", folder) for folder in ["profile_images", "uploads", "category_images"]]
+    MIGRATIONS_PATH = join("imgag", "migrations")
     MAKE_MIGRATE_ARGS = [PYTHON, MANAGE_PY, "makemigrations", "imgag"]
     MIGRATE_ARGS = [PYTHON, MANAGE_PY, "migrate"]
-    CREATE_SUPER_USER_ARGS = [PYTHON, MANAGE_PY, "createsuperuser"]
 
     print("Removing DB...")
-    p = Popen(RM_DB_ARGS, stdout=DEVNULL, stderr=STDOUT)
-    p.communicate(input=None)
+    if exists(DB_PATH):
+        remove(DB_PATH)
     print("Removing file from media/uploads,media/profile_images and media/categories...")
-    p = Popen(RM_UPLOADED_FILES, stdout=DEVNULL, stderr=STDOUT)
-    p.communicate(input=None)
+    for folder_to_delete in UPLOADED_FILE_PATHS:
+        if exists(folder_to_delete):
+            shutil.rmtree(folder_to_delete)
     print("Removing migrations...")
-    p = Popen(RM_MIGRATIONS_ARGS, stdout=DEVNULL, stderr=STDOUT)
-    p.communicate(input=None)
+    if exists(MIGRATIONS_PATH):
+        shutil.rmtree(MIGRATIONS_PATH)
     print("Making migrations for imgag...")
-    p = Popen(MAKE_MIGRATE_ARGS, stdout=DEVNULL, stderr=STDOUT)
+    p = Popen(MAKE_MIGRATE_ARGS)
     p.communicate(input=None)
     print("Migrating...")
-    p = Popen(MIGRATE_ARGS, stdout=DEVNULL, stderr=STDOUT)
+    p = Popen(MIGRATE_ARGS)
     p.communicate(input=None)
 
-    print("There, you should now have clean DB (stdout of commands was sent to DEVNULL, so let's hope).")
+    print("There, you should now have clean DB.")

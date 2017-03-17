@@ -90,6 +90,11 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
 
+    def as_json(self):
+        return dict(name=self.name,
+                    slug=str(self.slug),
+                    picture_url=self.picture.url)
+
 
 class Upload(models.Model):
     header = models.CharField(max_length=140)
@@ -122,11 +127,20 @@ class Upload(models.Model):
     def __unicode__(self):
         return self.header
 
+    def as_json(self):
+        return dict(author=str(self.author),
+                    header=str(self.header),
+                    category=str(self.category),
+                    created_date=self.created_date.strftime("%Y-%m-%d %H:%M"),
+                    upload_url=str(self.uploaded_file.url),
+                    hashid=str(self.hashid.hashid),
+                    is_video=str(self.uploaded_file.name).endswith(".mp4"))
+
 
 class Comment(models.Model):
     author = models.ForeignKey(UserProfile)
     upload = models.ForeignKey(Upload)
-    text = models.CharField(max_length=1000)
+    text = models.CharField(max_length=200)
     created_date = models.DateTimeField(blank=True)
 
     def save(self, *args, **kwargs):
@@ -140,6 +154,13 @@ class Comment(models.Model):
 
     def __unicode__(self):
         return self.text
+
+    def as_json(self):
+        return dict(author=str(self.author),
+                    author_image_url=str(self.author.picture.url),
+                    upload_hashid=self.upload.hashid.hashid,
+                    text=str(self.text),
+                    created_date=self.created_date.strftime("%Y-%m-%d %H:%M"))
 
 
 class Vote(models.Model):

@@ -1,102 +1,58 @@
 {% extends 'imgag/base.html' %}
 {% load staticfiles %}
 
-<div>
-	{% block title_block %}
-		Index
-	{% endblock %}
+{% block head_block %}
+<script src="{% static 'js/ajax_next_page.js' %}"></script>
+{% endblock%}
 
-	{% block body_block %}
-		 <div id="content" class="outside main">
-		<div class="sentence-sorting">
-			<span class="before-text">
-				The
-			</span>
-			<div id="section" class="combobox front-page-section sorting-text-align" name="section">
-				<div class="selection">
-					<div data-type="base" data-value="hot">
-						<span class="name">Most Viral</span>
-					</div>
-
-				</div>
-
-				<div class="options nano">
-					<div class="js-galleries content">
-						<div class="combobox-header-current">current:
-							<div class="combobox-current green bold">
-								Most Viral
-							</div>
-						</div>
-						<ul>
-						<li class="item">
-						<a>{{ category.name }}</a></li>
-						</ul>
-					</div>
-				</div>
-			</div><span class="middle-text"> <!-- intentionally not closed -->
-
-    images on the Internet.
-
-    </span>
-			<!-- .middle-text -->
-
-			<h1 id="user-gallery-message">
-                    Today's most popular posts.
-
-    </h1>
-		</div>
-
-		<div class="panel hidden">
-			<div id="imagelist" class="home-gallery">
-
-				<div class="posts br5 first-child">
-
-					<div class="outside-loader"></div>
-
-					<div class="cards">
-						<div id="4tF2g" class="post" data-tag1="" data-tag2="">
-							<a class="image-list-link" href="http://Imgag.com/gallery/4tF2g" data-page="0">
-								<img alt="" src="./Imgag_ The most awesome images on the Internet_files/HLjmg1Ab.jpg" original-title="">
-
-
-								<div class="point-info gradient-transparent-black transition">
-									<div class="relative">
-										<div class="pa-bottom">
-											<div class="arrows">
-												<div title="like" class="pointer arrow-up icon-upvote-outline" data="4tF2g" type="image" data-up="6382"></div>
-												<div title="dislike" class="pointer arrow-down icon-downvote-outline" data="4tF2g" type="image" data-downs="173"></div>
-												<div class="clear"></div>
-											</div>
-
-											<div class="point-info-points" title="points">
-												<span class="points-4tF2g">6,209</span>
-												<span class="points-text-4tF2g">points</span>
-											</div>
-										</div>
-									</div>
-								</div>
-
-							</a>
-							<div class="hover">
-								<p>Drown out all the pain</p>
-
-
-								<div class="post-info">
-									album · 134,145 views
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="clear"></div>
-
-				</div>
-				<div class="page-divider"><a href="javascript:;" class="scroll-top-text">back to top</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="clear"></div>
-	</div>
-	{% endblock %}
+{% block body_block %}
+<div class="container w3-padding-64 w3-padding-xlarge">
+    <div id="imagelist" class="home-gallery">
+        <div id="posts" class="posts br5 first-child">
+            <div class="outside-loader"></div>
+            <div class="cards">
+                {% if posts %}
+                    {% for post in posts %}
+                    <div class="post">
+                        <a class="image-list-link" href="{% url 'post' post_hashid=post.hashid %}">
+                            {% if post.category == "NSFW" %}
+                                <img width="100%" height="100%" src="{{ MEDIA_URL }}default/uploads/nsfw.png"/>
+                            {% else %}
+                                {% if post.is_video %}
+                                    <video width="100%" height="100%" autoplay loop muted
+                                           onclick="this.paused ? this.play() : this.pause();">
+                                        <source src="{{ post.upload_url }}" type="video/mp4"/>
+                                    </video>
+                                {% else %}
+                                    <img width="100%" height="100%" src="{{ post.upload_url }}"/>
+                                {% endif %}
+                            {% endif %}
+                            <div class="point-info gradient-transparent-black transition"></div>
+                        </a>
+                        <div class="hover" style="left:15px;">
+                            <p>{{ post.header }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    There are no posts yet. :(
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div>
+        {% if page > 1 %}
+            <a id="previous_page" class="btn waves-effect waves-light white-text" href="{% url 'home' page=page|add:-1 %}">
+                Previous
+			    <i class="material-icons right">skip_previous</i>
+            </a>
+        {% endif %}
+        {% if posts|length == 15 %}
+            <a id="next_page" class="btn waves-effect waves-light white-text" href="{% url 'home' page=page|add:1 %}">
+                Next
+			    <i class="material-icons right">skip_next</i>
+            </a>
+        {% endif %}
+    </div>
 </div>
+{% endblock %}
