@@ -449,7 +449,8 @@ crazy_uploads = {
         {
             "header": "Just another day in Maryhill",
             "created_date": "2017-2-24 18:30:05",
-            "path_to_file": os.path.join("population_data", os.path.join("uploads", "just_another_day_in_maryhill.jpg")),
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "just_another_day_in_maryhill.jpg")),
             "comments": [
                 {
                     "authors_name": "tomator",
@@ -692,7 +693,7 @@ next_level_shieeet_uploads = {
                 {
                     "authors_name": "herp",
                     "text": "old viper was better tho",
-                    "created_date" : "2017-3-18 14:50:00"
+                    "created_date": "2017-3-18 14:50:00"
                 },
             ]
         },
@@ -721,6 +722,15 @@ nsfw_uploads = {
                     "text": "Ahahaha",
                     "created_date": "2017-3-11 20:45:05"
                 }
+            ]
+        },
+    ],
+    "BlueDoge": [
+        {
+            "header": "There is a naked ninja in this image",
+            "created_date": "2017-1-11 18:35:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "naked_ninja.jpg")),
+            "comments": [
             ]
         },
     ],

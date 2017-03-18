@@ -1,14 +1,15 @@
 var page, nextPage;
 var maxScrollPosition;
-
+var j;
 function ajaxNextPage(json) {
     $("#next_page_loading").remove();
+    j = json;
     if (json.hasOwnProperty("ok")) {
         jQuery.each(json.posts, function(index, post) {
             postsAppend = '<div class="post">' +
             '<a class="image-list-link" href="/post/' + post.hashid + '/">';
-            if (post.category == "NSFW") {
-                postsAppend += '<img width="100%" height="100%" src="media/default/uploads/nsfw.png"/>';
+            if (!json.user_can_see_nsfw && post.category == "NSFW") {
+                postsAppend += '<img width="100%" height="100%" src="/media/default/uploads/nsfw.png"/>';
             } else {
                 if (post.is_video) {
                     postsAppend += '<video width="100%" height="100%" autoplay loop muted' +
@@ -27,6 +28,7 @@ function ajaxNextPage(json) {
             '</div>';
             $("#posts").append(postsAppend);
         });
+    $("#next_page").attr("href", "/home/page/" + (page + 1) + "/");
     if (json.length == 15) {
         $("#next_page").show();
     }

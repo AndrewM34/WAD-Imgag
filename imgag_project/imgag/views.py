@@ -35,11 +35,12 @@ def home(request, page=1, ajax=None):
     page, offset = get_num_page_and_offset(page)
     posts = Upload.objects.filter(created_date__lte=timezone.now()).order_by(
         '-created_date')[offset:offset + POSTS_ON_ONE_PAGE]
-    posts_dict = [p.as_json() for p in posts]
+    posts_list = [p.as_json() for p in posts]
+    context_dict = {"posts": posts_list, "page": page,
+                    "user_can_see_nsfw": auth_and_older_than_18(request)}
     if ajax == "ajax":
-        json_dict = {"ok": "ok", "posts": posts_dict}
-        return HttpResponse(json.dumps(json_dict), content_type="application/json")
-    context_dict = {"posts": posts_dict, "page": page, "user_can_see_nsfw": auth_and_older_than_18(request)}
+        context_dict["ok"] = "ok"
+        return HttpResponse(json.dumps(context_dict), content_type="application/json")
     return render(request, 'imgag/home.html', context_dict)
 
 
@@ -76,15 +77,15 @@ def show_categories(request):
 def show_category(request, category_name_slug, page=None, ajax=None):
     page, offset = get_num_page_and_offset(page)
     category = Category.objects.get(slug=category_name_slug)
-    if ajax == "ajax":
-        pass
     posts_list = [p.as_json()
                   for p in
                   Upload.objects.filter(category=category).filter(created_date__lte=timezone.now()).order_by(
                       "-created_date")[offset:offset + POSTS_ON_ONE_PAGE]]
     context_dict = {"category": category, "posts": posts_list, "page": page,
                     "user_can_see_nsfw": auth_and_older_than_18(request)}
-
+    if ajax == "ajax":
+        context_dict["ok"] = "ok"
+        return HttpResponse(json.dumps(context_dict), content_type="application/json")
     return render(request, 'imgag/category.html', context_dict)
 
 
@@ -94,11 +95,15 @@ def show_post(request, post_hashid):
     try:
         context_dict = {'comment_form': CommentForm()}
         post = Upload.objects.get(hashid=post_hashid)
+        # We allow just hashed id to access a post, not its real id
+        if str(post.hashid.hashid) != str(post_hashid):
+            raise TypeError
+        # Show only posts that weren't created in future
         if post.created_date > timezone.now():
             raise ValueError
         context_dict['post'] = post.as_json()
-        context_dict['up_votes'] = Vote.objects.filter(upload__hashid=post_hashid).filter(vote__gte=1).count()
-        context_dict['down_votes'] = Vote.objects.filter(upload__hashid=post_hashid).filter(vote__lte=-1).count()
+        context_dict['up_votes'] = Vote.objects.filter(upload=post).filter(vote__gte=1).count()
+        context_dict['down_votes'] = Vote.objects.filter(upload=post).filter(vote__lte=-1).count()
         context_dict['comments'] = [c.as_json() for c in Comment.objects.filter(upload=post).filter(
             created_date__lte=timezone.now()).order_by("created_date")]
         if post.uploaded_file.name.endswith(".mp4"):
