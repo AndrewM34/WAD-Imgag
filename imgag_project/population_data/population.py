@@ -15,7 +15,7 @@ categories_list = [
     },
     {
         "name": "I Cri Evritiem",
-        "path_to_picture": os.path.join("population_data", os.path.join("category_images", ".jpg"))
+        "path_to_picture": os.path.join("population_data", os.path.join("category_images", "i_cri_evritiem.jpg"))
     },
     {
         "name": "Next Level Shieeet",
