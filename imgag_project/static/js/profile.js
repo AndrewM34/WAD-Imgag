@@ -49,7 +49,7 @@ Dropzone.options.demoUpload = {
 }
 // checking when updating profile picture on client side
 function updateProfilePic(event){
-	event.preventDefault();
+	/*event.preventDefault();
 	var file = document.getElementById("profilePicToBe").files;
 	if(file.length == 0){
 		// notify user
@@ -57,6 +57,6 @@ function updateProfilePic(event){
 	} else {
 		// submit form & change the profile pic
 		document.getElementById("updateProfilePicForm").submit();
-	}
+	}*/
 }
 		 

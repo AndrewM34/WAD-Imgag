@@ -7,31 +7,31 @@ categories_list = [
     },
     {
         "name": "Not So Awesome People",
-        "path_to_picture": None
+        "path_to_picture": os.path.join("population_data", os.path.join("category_images", "not_so_awesome_people.jpg"))
     },
     {
         "name": "Deep",
-        "path_to_picture": None
+        "path_to_picture": os.path.join("population_data", os.path.join("category_images", "deep.jpg"))
     },
     {
         "name": "I Cri Evritiem",
-        "path_to_picture": None
+        "path_to_picture": os.path.join("population_data", os.path.join("category_images", "i_cri_evritiem.jpg"))
     },
     {
         "name": "Next Level Shieeet",
-        "path_to_picture": None
+        "path_to_picture": os.path.join("population_data", os.path.join("category_images", "next_level.jpg"))
     },
     {
         "name": "Crazy",
-        "path_to_picture": None
+        "path_to_picture": os.path.join("population_data", os.path.join("category_images", "crazy.jpg"))
     },
     {
         "name": "Bad Ass",
-        "path_to_picture": None
+        "path_to_picture": os.path.join("population_data", os.path.join("category_images", "badass.jpg"))
     },
     {
         "name": "NSFW",
-        "path_to_picture": None
+        "path_to_picture": os.path.join("population_data", os.path.join("category_images", "nsfw.png"))
     },
 ]
 
@@ -53,7 +53,7 @@ users_list = [
         "nickname": "Pyotr",
         "email": "pyotr.pyotrovic@yandex.com",
         "date_of_birth": "Dec 31 1993",
-        "path_to_picture": os.path.join("population_data", os.path.join("profile_images", "pyotr.png"))
+        "path_to_picture": os.path.join("population_data", os.path.join("profile_images", "pyotr_img.png"))
     },
     {
         "nickname": "BlueDoge",
@@ -140,7 +140,7 @@ people_are_awesome_uploads = {
                 },
                 {
                     "authors_name": "herp",
-                    "text": "What are you gonna do about is, huh?",
+                    "text": "What are you gonna do about it, huh?",
                     "created_date": "2017-3-05 20:05:05"
                 }
             ]
@@ -152,7 +152,7 @@ people_are_awesome_uploads = {
             "comments": [
                 {
                     "authors_name": "tomator",
-                    "text": "I always have A from all subject.",
+                    "text": "I always have A from all subjects.",
                     "created_date": "2017-3-12 18:32:15"
                 },
                 {
@@ -196,6 +196,45 @@ bad_ass_uploads = {
                     "authors_name": "Pyotr",
                     "text": "R45h B, 5uk4 b1y4t",
                     "created_date": "2017-2-25 00:45:25"
+                },
+            ]
+        },
+        {
+            "header": "My goat",
+            "created_date": "2017-2-24 15:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "goat.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "That's a nice goat.",
+                    "created_date": "2017-2-25 15:45:17"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "This is shit...",
+                    "created_date": "2017-2-25 20:45:37"
+                },
+                {
+                    "authors_name": "Pyotr",
+                    "text": "My goat is better, nerd",
+                    "created_date": "2017-2-25 00:45:25"
+                },
+            ]
+        },
+        {
+            "header": "Spaced out o.O",
+            "created_date": "2017-2-24 15:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "spaced_out.jpeg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "Underwood wood be a good president if you get what I mean :^)",
+                    "created_date": "2017-2-25 15:45:17"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "I prefer turmp",
+                    "created_date": "2017-2-25 20:45:37"
                 },
             ]
         },
@@ -287,6 +326,47 @@ not_so_awesome_people_uploads = {
                 },
             ]
         },
+        {
+            "header": "Redneck's guide to cutting a bush.",
+            "created_date": "2017-2-24 18:30:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "redneck_chores.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "yee-haw pardner!",
+                    "created_date": "2017-2-25 18:47:10"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "that's texas you absolute donut",
+                    "created_date": "2017-2-26 21:15:05"
+                },
+            ]
+        },
+        {
+            "header": "I'm spook'd right now",
+            "created_date": "2017-2-24 17:30:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "spooky.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "omg man u spook'd me too :'( ",
+                    "created_date": "2017-2-25 18:41:45"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "fug sake man ur gonna kill someone with that level of spookage",
+                    "created_date": "2017-2-26 20:49:11"
+                },
+                {
+                    "authors_name": "Pyotr",
+                    "text": "my spook is spookier",
+                    "created_date": "2017-2-27 00:50:25"
+                },
+            ]
+        },
     ],
     "gorilla_boy": [
         {
@@ -308,6 +388,29 @@ not_so_awesome_people_uploads = {
                     "authors_name": "gorilla_boy",
                     "text": "Ugh",
                     "created_date": "2017-2-25 05:55:55"
+                },
+            ]
+        },
+        {
+            "header": "What do you guys think of my new ride?",
+            "created_date": "2017-2-24 17:30:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "my_new_ride.jpg")),
+            "comments": [
+                {
+                    "authors_name": "herp",
+                    "text": "damn dude that's super fly",
+                    "created_date": "2017-2-25 18:42:45"
+                },
+                {
+                    "authors_name": "tomator",
+                    "text": "yes my friend very nice",
+                    "created_date": "2017-2-26 20:49:11"
+                },
+                {
+                    "authors_name": "Pyotr",
+                    "text": "where can I get one?",
+                    "created_date": "2017-2-27 00:50:25"
                 },
             ]
         },
@@ -341,6 +444,79 @@ crazy_uploads = {
                     "text": "I don't like you.",
                     "created_date": "2017-2-24 20:45:05"
                 }
+            ]
+        },
+        {
+            "header": "Just another day in Maryhill",
+            "created_date": "2017-2-24 18:30:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "just_another_day_in_maryhill.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "I can believe this happening",
+                    "created_date": "2017-2-24 20:31:15"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "yeah nice repost my man",
+                    "created_date": "2017-2-24 20:35:21"
+                },
+                {
+                    "authors_name": "tomator",
+                    "text": "Why so salty again?",
+                    "created_date": "2017-2-24 20:36:38"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "Stop being you, please.",
+                    "created_date": "2017-2-24 20:45:05"
+                }
+            ]
+        },
+        {
+            "header": "Life imitating art",
+            "created_date": "2017-2-24 18:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "life_imitating_art.jpeg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "Tru dat :^)",
+                    "created_date": "2017-2-24 20:31:15"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "puns should be a bannable offence.",
+                    "created_date": "2017-2-24 20:35:21"
+                },
+                {
+                    "authors_name": "tomator",
+                    "text": "aaaaa ",
+                    "created_date": "2017-2-24 20:36:38"
+                },
+            ]
+        },
+        {
+            "header": "When your maw says ye canne go oot cause ye pure fucked yer exams like",
+            "created_date": "2017-2-24 17:30:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "waaa.jpg")),
+            "comments": [
+                {
+                    "authors_name": "herp",
+                    "text": "aye pal that's pure shoot",
+                    "created_date": "2017-2-25 18:42:45"
+                },
+                {
+                    "authors_name": "tomator",
+                    "text": "catch me in viper again lads",
+                    "created_date": "2017-2-26 20:49:11"
+                },
+                {
+                    "authors_name": "Pyotr",
+                    "text": "I get A1 in all my exams, I don't understand this post.",
+                    "created_date": "2017-2-27 00:50:25"
+                },
             ]
         },
     ],
@@ -391,6 +567,29 @@ deep_uploads = {
                 },
             ]
         },
+        {
+            "header": "When bae cooks you ribs :3",
+            "created_date": "2017-2-24 17:30:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "ribs.png")),
+            "comments": [
+                {
+                    "authors_name": "herp",
+                    "text": "tfw no ribs :(",
+                    "created_date": "2017-2-25 18:42:45"
+                },
+                {
+                    "authors_name": "tomator",
+                    "text": "tfw no bae :(",
+                    "created_date": "2017-2-26 20:49:11"
+                },
+                {
+                    "authors_name": "Pyotr",
+                    "text": "I wish Freddie was my bae :'(",
+                    "created_date": "2017-2-27 00:50:25"
+                },
+            ]
+        },
     ],
 }
 
@@ -404,7 +603,7 @@ i_cri_evritiem_uploads = {
             "comments": [
                 {
                     "authors_name": "tomator",
-                    "text": "I am very sorry for you loss.",
+                    "text": "I am very sorry for your loss.",
                     "created_date": "2017-2-10 20:41:35"
                 },
                 {
@@ -416,6 +615,11 @@ i_cri_evritiem_uploads = {
                     "authors_name": "gorilla_boy",
                     "text": "Aaaargh",
                     "created_date": "2017-2-25 05:55:55"
+                },
+                {
+                    "authors_name": "stoned.stone",
+                    "text": "wtf is wrong with you guy, do you post anything other than gorillas?",
+                    "created_date": "2017-3-18 14:51:38"
                 },
             ]
         },
@@ -465,6 +669,34 @@ next_level_shieeet_uploads = {
                 },
             ]
         },
+        {
+            "header": "Me at viper",
+            "created_date": "2017-3-11 23:39:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "me_at_viper.gif")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "lookin' good, my man",
+                    "created_date": "2017-3-13 23:41:35"
+                },
+                {
+                    "authors_name": "Pyotr",
+                    "text": "I'm more of a hive kinda guy",
+                    "created_date": "2017-3-14 01:45:23"
+                },
+                {
+                    "authors_name": "stoned.stone",
+                    "text": "Hive is literally the worst. You must be high to think that viper is worse than Hive.",
+                    "created_date": "2017-3-14 05:55:55"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "old viper was better tho",
+                    "created_date": "2017-3-18 14:50:00"
+                },
+            ]
+        },
     ],
 }
 
@@ -490,6 +722,15 @@ nsfw_uploads = {
                     "text": "Ahahaha",
                     "created_date": "2017-3-11 20:45:05"
                 }
+            ]
+        },
+    ],
+    "BlueDoge": [
+        {
+            "header": "There is a naked ninja in this image",
+            "created_date": "2017-1-11 18:35:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "naked_ninja.jpg")),
+            "comments": [
             ]
         },
     ],

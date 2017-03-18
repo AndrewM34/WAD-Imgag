@@ -2,14 +2,25 @@
 {% load staticfiles %}
 
 {% block body_block %}
-    {% if categories %}
-        {% for category in categories %}
-            <a href="{% url 'category' category_name_slug=category.slug %}">
-                <h1>{{ category.name }}</h1>
-                <img src="{{ category.picture_url }}" />
-            </a>
-        {% endfor %}
-    {% else %}
-        There are now categories!
-    {% endif %}
+<div class="container w3-padding-64 w3-padding-xlarge">
+    <div id="imagelist" class="home-gallery">
+        <div id="posts" class="posts br5 first-child">
+            <div class="outside-loader"></div>
+            <div class="cards">
+                {% if categories %}
+                {% for category in categories %}
+                <div class="post">
+                    <a href="{% url 'category' category_name_slug=category.slug %}">
+                        <h1>{{ category.name }}</h1>
+                        <img src="{{ category.picture_url }}"/>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+There are now categories!
+{% endif %}
 {% endblock %}

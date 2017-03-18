@@ -8,8 +8,12 @@ from django.core.files.storage import FileSystemStorage
 from hashid_field import HashidAutoField
 from datetime import datetime
 from django.utils import timezone
+import pytz
 from django.core.files import File
 from django.conf import settings
+from dateutil.relativedelta import relativedelta
+
+from registration.signals import user_registered
 
 
 # Overriding FileSystemStorage class, because Django by default doesn't remove files with the same name => tons of
@@ -36,6 +40,14 @@ def upload_to(instance, filename):
     return os.path.join(path, filename)
 
 
+def user_registered_callback(sender, user, request, **kwargs):
+    profile = UserProfile(user=user)
+    profile.save()
+
+
+user_registered.connect(user_registered_callback)
+
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     date_of_birth = models.DateTimeField()
@@ -50,6 +62,9 @@ class UserProfile(models.Model):
         return self.user.username
 
     def save(self, *args, **kwargs):
+        if not self.date_of_birth:
+            print("ejjjjjj")
+            self.date_of_birth = pytz.utc.localize(datetime.now())
         if os.path.basename(self.picture.name) == "default.png":
             imopen = open(os.path.join(settings.MEDIA_ROOT, self.picture.name), "rb")
             django_file = File(imopen)
@@ -60,6 +75,9 @@ class UserProfile(models.Model):
 
     def get_upload_dir_and_prefix(self):
         return os.path.join("profile_images", self.user.username), ""
+
+    def older_than_18(self):
+        return abs(relativedelta(self.date_of_birth, pytz.utc.localize(datetime.now())).years) >= 18
 
 
 class Category(models.Model):
@@ -108,8 +126,7 @@ class Upload(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.created_date:
-            self.created_date = timezone.make_aware(datetime.now(),
-                                                    timezone.get_current_timezone())
+            self.created_date = pytz.utc.localize(datetime.now())
         super(Upload, self).save(*args, **kwargs)
 
         if os.path.basename(self.uploaded_file.name) == "default.png":
@@ -145,8 +162,7 @@ class Comment(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.created_date:
-            self.created_date = timezone.make_aware(datetime.now(),
-                                                    timezone.get_current_timezone())
+            self.created_date = pytz.utc.localize(datetime.now())
         super(Comment, self).save(*args, **kwargs)
 
     def __str__(self):
