@@ -35,8 +35,8 @@ class MyRegistrationView(RegistrationView):
 urlpatterns = [
                   url(r'^admin/', admin.site.urls),
                   url(r'^$', views.home, name="home"),
-                  # url(r'^login/$', auth_views.login, name='login'),
-                  # url(r'^register/$', MyRegistrationView.as_view(), name='register'),
+                  url(r'^login/$', auth_views.login, name='login'),
+                  url(r'^register/$', MyRegistrationView.as_view(), name='register'),
                   url(r'^accounts/register/$', MyRegistrationView.as_view(form_class=UserForm), name='registration_register'),
                 # url(r'^reset_password/$', views.reset_pass, name='reset'),
                 # url(r'^change_password/$', views.change_pass, name='change'),
