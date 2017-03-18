@@ -4,7 +4,7 @@
 	<div class="w3-display-container w3-black" style="height:700px;">
 	<div class="w3-display-middle">
 		<h1 class = "display-3">Login</h1>
-	<form class="form-signin" role="form" method='post' action="">
+	<form class="form-signin" role="form" method='post' action=".">
 		{% csrf_token %}
 		<h2 class = "form-signin-heading">Please sign in</h2>
 
@@ -12,7 +12,7 @@
 		<input type="text" name="username" id="id_username" class="form-control" placeholder="Username" required autofocus>
 		<label for="inputPassword" class="sr-only">Password</label>
 		<input type="password" name = "password" id="id_password" class="form-control" placeholder="Password" required>
-		<button class="btn waves-effect waves-light" type="submit" value="Submit" name="action">Sign in
+		<button class="btn waves-effect waves-light" style="background-color:#ff7f00" type="submit" value="Submit" name="action">Sign in
 			<i class="material-icons right">send</i>
 		  </button>
 	</form>
