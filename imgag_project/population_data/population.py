@@ -199,6 +199,45 @@ bad_ass_uploads = {
                 },
             ]
         },
+        {
+            "header": "My goat",
+            "created_date": "2017-2-24 15:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "goat.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "That's a nice goat.",
+                    "created_date": "2017-2-25 15:45:17"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "This is shit...",
+                    "created_date": "2017-2-25 20:45:37"
+                },
+                {
+                    "authors_name": "Pyotr",
+                    "text": "My goat is better, nerd",
+                    "created_date": "2017-2-25 00:45:25"
+                },
+            ]
+        },
+        {
+            "header": "Spaced out o.O",
+            "created_date": "2017-2-24 15:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "spaced_out.jpeg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "Underwood wood be a good president if you get what I mean :^)",
+                    "created_date": "2017-2-25 15:45:17"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "I prefer turmp",
+                    "created_date": "2017-2-25 20:45:37"
+                },
+            ]
+        },
     ],
     "gorilla_boy": [
         {
@@ -302,6 +341,29 @@ not_so_awesome_people_uploads = {
                     "authors_name": "herp",
                     "text": "that's texas you absolute donut",
                     "created_date": "2017-2-26 21:15:05"
+                },
+            ]
+        },
+        {
+            "header": "I'm spook'd right now",
+            "created_date": "2017-2-24 17:30:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "spooky.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "omg man u spook'd me too :'( ",
+                    "created_date": "2017-2-25 18:41:45"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "fug sake man ur gonna kill someone with that level of spookage",
+                    "created_date": "2017-2-26 20:49:11"
+                },
+                {
+                    "authors_name": "Pyotr",
+                    "text": "my spook is spookier",
+                    "created_date": "2017-2-27 00:50:25"
                 },
             ]
         },
@@ -411,6 +473,51 @@ crazy_uploads = {
                 }
             ]
         },
+        {
+            "header": "Life imitating art",
+            "created_date": "2017-2-24 18:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "life_imitating_art.jpeg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "Tru dat :^)",
+                    "created_date": "2017-2-24 20:31:15"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "puns should be a bannable offence.",
+                    "created_date": "2017-2-24 20:35:21"
+                },
+                {
+                    "authors_name": "tomator",
+                    "text": "aaaaa ",
+                    "created_date": "2017-2-24 20:36:38"
+                },
+            ]
+        },
+        {
+            "header": "When your maw says ye canne go oot cause ye pure fucked yer exams like",
+            "created_date": "2017-2-24 17:30:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "waaa.jpg")),
+            "comments": [
+                {
+                    "authors_name": "herp",
+                    "text": "aye pal that's pure shoot",
+                    "created_date": "2017-2-25 18:42:45"
+                },
+                {
+                    "authors_name": "tomator",
+                    "text": "catch me in viper again lads",
+                    "created_date": "2017-2-26 20:49:11"
+                },
+                {
+                    "authors_name": "Pyotr",
+                    "text": "I get A1 in all my exams, I don't understand this post.",
+                    "created_date": "2017-2-27 00:50:25"
+                },
+            ]
+        },
     ],
 }
 
@@ -456,6 +563,29 @@ deep_uploads = {
                     "authors_name": "gorilla_boy",
                     "text": "Grgrgrgh",
                     "created_date": "2017-3-05 12:11:11"
+                },
+            ]
+        },
+        {
+            "header": "When bae cooks you ribs :3",
+            "created_date": "2017-2-24 17:30:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "ribs.png")),
+            "comments": [
+                {
+                    "authors_name": "herp",
+                    "text": "tfw no ribs :(",
+                    "created_date": "2017-2-25 18:42:45"
+                },
+                {
+                    "authors_name": "tomator",
+                    "text": "tfw no bae :(",
+                    "created_date": "2017-2-26 20:49:11"
+                },
+                {
+                    "authors_name": "Pyotr",
+                    "text": "I wish Freddie was my bae :'(",
+                    "created_date": "2017-2-27 00:50:25"
                 },
             ]
         },
