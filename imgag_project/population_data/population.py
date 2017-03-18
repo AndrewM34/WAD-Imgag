@@ -140,7 +140,7 @@ people_are_awesome_uploads = {
                 },
                 {
                     "authors_name": "herp",
-                    "text": "What are you gonna do about is, huh?",
+                    "text": "What are you gonna do about it, huh?",
                     "created_date": "2017-3-05 20:05:05"
                 }
             ]
@@ -152,7 +152,7 @@ people_are_awesome_uploads = {
             "comments": [
                 {
                     "authors_name": "tomator",
-                    "text": "I always have A from all subject.",
+                    "text": "I always have A from all subjects.",
                     "created_date": "2017-3-12 18:32:15"
                 },
                 {
@@ -602,7 +602,7 @@ i_cri_evritiem_uploads = {
             "comments": [
                 {
                     "authors_name": "tomator",
-                    "text": "I am very sorry for you loss.",
+                    "text": "I am very sorry for your loss.",
                     "created_date": "2017-2-10 20:41:35"
                 },
                 {
