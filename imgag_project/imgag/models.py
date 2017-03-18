@@ -77,7 +77,7 @@ class UserProfile(models.Model):
         return os.path.join("profile_images", self.user.username), ""
 
     def older_than_18(self):
-        return abs(relativedelta(self.date_of_birth, pytz.utc.localize(datetime.now()).years)) >= 18
+        return abs(relativedelta(self.date_of_birth, pytz.utc.localize(datetime.now())).years) >= 18
 
 
 class Category(models.Model):

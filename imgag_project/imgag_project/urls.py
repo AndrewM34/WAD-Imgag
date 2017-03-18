@@ -30,16 +30,16 @@ class MyRegistrationView(RegistrationView):
         return '/home/'
 
 
-
-
 urlpatterns = [
                   url(r'^admin/', admin.site.urls),
                   url(r'^$', views.home, name="home"),
                   url(r'^login/$', auth_views.login, name='login'),
-                  url(r'^register/$', MyRegistrationView.as_view(), name='register'),
-                  url(r'^accounts/register/$', MyRegistrationView.as_view(form_class=UserForm), name='registration_register'),
-                # url(r'^reset_password/$', views.reset_pass, name='reset'),
-                # url(r'^change_password/$', views.change_pass, name='change'),
+                  url(r'^register/$', MyRegistrationView.as_view(form_class=UserForm), name='register'),
+                  url(r'^logout/$', auth_views.logout, name='logout'),
+                  url(r'^accounts/register/$', MyRegistrationView.as_view(form_class=UserForm),
+                      name='registration_register'),
+                  # url(r'^reset_password/$', views.reset_pass, name='reset'),
+                  # url(r'^change_password/$', views.change_pass, name='change'),
                   url(r'^accounts/', include('registration.backends.default.urls')),
                   url(r'^', include('imgag.urls')),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

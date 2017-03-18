@@ -25,7 +25,10 @@ def get_num_page_and_offset(page):
 
 
 def auth_and_older_than_18(request):
-    return request.user.is_authenticated() and UserProfile.objects.get(user=request.user).older_than_18()
+    try:
+        return request.user.is_authenticated() and UserProfile.objects.get(user=request.user).older_than_18()
+    except UserProfile.DoesNotExist:
+        return False
 
 
 def home(request, page=1, ajax=None):
@@ -52,14 +55,16 @@ def faq(request):
 # should pass the username, profile picture and all posts by that user
 @login_required
 def account(request):  # takes username as an arg
-
-    user = UserProfile.objects.get(user=request.user)
-    category_list = Category.objects.all()
-    context = {'categories': category_list, 'username': request.user, 'userprofile': user}
-    posts = Upload.objects.filter(author=user)
-    posts_dict = [p.as_json() for p in posts]
-    context['posts'] = posts_dict
-    return render(request, 'imgag/profile.html', context)  # view to show all categories
+    try:
+        user = UserProfile.objects.get(user=request.user)
+        category_list = Category.objects.all()
+        context = {'categories': category_list, 'username': request.user, 'userprofile': user}
+        posts = Upload.objects.filter(author=user)
+        posts_dict = [p.as_json() for p in posts]
+        context['posts'] = posts_dict
+        return render(request, 'imgag/profile.html', context)  # view to show all categories
+    except UserProfile.DoesNotExist:
+        return faq(request)
 
 
 def show_categories(request):
