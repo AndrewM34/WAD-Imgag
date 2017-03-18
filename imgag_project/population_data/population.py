@@ -53,7 +53,7 @@ users_list = [
         "nickname": "Pyotr",
         "email": "pyotr.pyotrovic@yandex.com",
         "date_of_birth": "Dec 31 1993",
-        "path_to_picture": os.path.join("population_data", os.path.join("profile_images", "pyotr.png"))
+        "path_to_picture": os.path.join("population_data", os.path.join("profile_images", "pyotr_img.png"))
     },
     {
         "nickname": "BlueDoge",
