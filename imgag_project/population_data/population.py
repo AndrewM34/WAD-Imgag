@@ -287,6 +287,24 @@ not_so_awesome_people_uploads = {
                 },
             ]
         },
+        {
+            "header": "Redneck's guide to cutting a bush.",
+            "created_date": "2017-2-24 18:30:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "redneck_chores.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "yee-haw pardner!",
+                    "created_date": "2017-2-25 18:47:10"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "that's texas you absolute donut",
+                    "created_date": "2017-2-26 21:15:05"
+                },
+            ]
+        },
     ],
     "gorilla_boy": [
         {
@@ -308,6 +326,29 @@ not_so_awesome_people_uploads = {
                     "authors_name": "gorilla_boy",
                     "text": "Ugh",
                     "created_date": "2017-2-25 05:55:55"
+                },
+            ]
+        },
+        {
+            "header": "What do you guys think of my new ride?",
+            "created_date": "2017-2-24 17:30:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "my_new_ride.jpg")),
+            "comments": [
+                {
+                    "authors_name": "herp",
+                    "text": "damn dude that's super fly",
+                    "created_date": "2017-2-25 18:42:45"
+                },
+                {
+                    "authors_name": "tomator",
+                    "text": "yes my friend very nice",
+                    "created_date": "2017-2-26 20:49:11"
+                },
+                {
+                    "authors_name": "Pyotr",
+                    "text": "where can I get one?",
+                    "created_date": "2017-2-27 00:50:25"
                 },
             ]
         },
@@ -339,6 +380,33 @@ crazy_uploads = {
                 {
                     "authors_name": "herp",
                     "text": "I don't like you.",
+                    "created_date": "2017-2-24 20:45:05"
+                }
+            ]
+        },
+        {
+            "header": "Just another day in Maryhill",
+            "created_date": "2017-2-24 18:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "just_another_day_in_maryhill.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "I can believe this happening",
+                    "created_date": "2017-2-24 20:31:15"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "yeah nice repost my man",
+                    "created_date": "2017-2-24 20:35:21"
+                },
+                {
+                    "authors_name": "tomator",
+                    "text": "Why so salty again?",
+                    "created_date": "2017-2-24 20:36:38"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "Stop being you, please.",
                     "created_date": "2017-2-24 20:45:05"
                 }
             ]
@@ -417,6 +485,11 @@ i_cri_evritiem_uploads = {
                     "text": "Aaaargh",
                     "created_date": "2017-2-25 05:55:55"
                 },
+                {
+                    "authors_name": "stoned.stone"
+                    "text": "wtf is wrong with you guy, do you post anything other than gorillas?"
+                    "created_date": "2017-3-18 14:51:38"
+                },
             ]
         },
     ],
@@ -462,6 +535,34 @@ next_level_shieeet_uploads = {
                     "authors_name": "stoned.stone",
                     "text": "K bro xD",
                     "created_date": "2017-3-14 05:59:59"
+                },
+            ]
+        },
+        {
+            "header": "Me at viper",
+            "created_date": "2017-3-11 23:39:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "me_at_viper.gif")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "lookin' good, my man",
+                    "created_date": "2017-3-13 23:41:35"
+                },
+                {
+                    "authors_name": "Pyotr",
+                    "text": "I'm more of a hive kinda guy",
+                    "created_date": "2017-3-14 01:45:23"
+                },
+                {
+                    "authors_name": "stoned.stone",
+                    "text": "Hive is literally the worst. You must be high to think that viper is worse than Hive.",
+                    "created_date": "2017-3-14 05:55:55"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "old viper was better tho"
+                    "created_date" : "2017-3-18 14:50:00"
                 },
             ]
         },
