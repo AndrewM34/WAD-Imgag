@@ -486,8 +486,8 @@ i_cri_evritiem_uploads = {
                     "created_date": "2017-2-25 05:55:55"
                 },
                 {
-                    "authors_name": "stoned.stone"
-                    "text": "wtf is wrong with you guy, do you post anything other than gorillas?"
+                    "authors_name": "stoned.stone",
+                    "text": "wtf is wrong with you guy, do you post anything other than gorillas?",
                     "created_date": "2017-3-18 14:51:38"
                 },
             ]
@@ -561,7 +561,7 @@ next_level_shieeet_uploads = {
                 },
                 {
                     "authors_name": "herp",
-                    "text": "old viper was better tho"
+                    "text": "old viper was better tho",
                     "created_date" : "2017-3-18 14:50:00"
                 },
             ]
