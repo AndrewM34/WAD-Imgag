@@ -7,27 +7,27 @@ categories_list = [
     },
     {
         "name": "Not So Awesome People",
-        "path_to_picture": None
+        "path_to_picture": os.path.join("population_data", os.path.join("category_images", "not_so_awesome_people.jpg"))
     },
     {
         "name": "Deep",
-        "path_to_picture": None
+        "path_to_picture": os.path.join("population_data", os.path.join("category_images", "deep.jpg"))
     },
     {
         "name": "I Cri Evritiem",
-        "path_to_picture": None
+        "path_to_picture": os.path.join("population_data", os.path.join("category_images", ".jpg"))
     },
     {
         "name": "Next Level Shieeet",
-        "path_to_picture": None
+        "path_to_picture": os.path.join("population_data", os.path.join("category_images", "next_level.jpg"))
     },
     {
         "name": "Crazy",
-        "path_to_picture": None
+        "path_to_picture": os.path.join("population_data", os.path.join("category_images", "crazy.jpg"))
     },
     {
         "name": "Bad Ass",
-        "path_to_picture": None
+        "path_to_picture": os.path.join("population_data", os.path.join("category_images", "badass.jpg"))
     },
     {
         "name": "NSFW",
