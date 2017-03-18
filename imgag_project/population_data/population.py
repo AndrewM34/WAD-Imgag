@@ -31,7 +31,7 @@ categories_list = [
     },
     {
         "name": "NSFW",
-        "path_to_picture": None
+        "path_to_picture": os.path.join("population_data", os.path.join("category_images", "nsfw.png"))
     },
 ]
 
