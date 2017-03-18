@@ -36,7 +36,7 @@ HASHID_FIELD_SALT = "as%2d3kvnq751+bucw%rc+x0b*qf*xdfty(fzmb(7a7wp6zn)l"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["imgag.pythonanywhere.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "imgag.pythonanywhere.com", ]
 
 
 # Application definition

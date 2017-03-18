@@ -11,12 +11,6 @@ class UserForm(RegistrationForm):
         fields = ('username', 'email')
 
 
-class UserProfileForm(RegistrationForm):
-    class Meta:
-        model = UserProfile
-        fields = ('picture', )
-
-
 class CommentForm(forms.ModelForm):
     text = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Type your comment here. (max length: 200)', 'maxlength': 200}))
 

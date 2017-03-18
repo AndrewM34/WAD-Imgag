@@ -1,11 +1,4 @@
-Packages to install:
-- Python3.3+
-– pip install -U django==1.10
-– pip install pillow
-– pip install django-registration-redux
-– pip install django-bootstrap-toolkit
-- pip install django-hashid-field 
-- pip install django-cleanup
+Python version: Python3.3+
 
-You can use:
-pip install -r requirements.txt
+Modules installed: in requirements.txt
+To install all modules use: pip install -r requirements.txt

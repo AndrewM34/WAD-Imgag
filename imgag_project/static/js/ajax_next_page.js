@@ -34,10 +34,18 @@ function ajaxNextPage(json) {
     }
 }
 
-function getNextPage() {
+function loadNextPageYesNoMaybe(e, currentScrollPosition) {
+    if ($(e.target).attr("id") == "next_page") {
+        e.preventDefault();
+        return true;
+    }
+    return currentScrollPosition >= maxScrollPosition;
+}
+
+function getNextPage(e) {
     if (page < nextPage) {
         var currentScrollPosition = $(window).scrollTop() + $(window).height();
-        if (currentScrollPosition >= maxScrollPosition) {
+        if (loadNextPageYesNoMaybe(e, currentScrollPosition)) {
             page++;
             $("#posts").append('<img id="next_page_loading" src="/static/images/loading/ajax-loader.gif"' +
                                     'class="img-responsive center-block" />');
@@ -54,6 +62,7 @@ function getNextPage() {
 
 function init() {
     $(window).scroll(getNextPage);
+    $("#next_page").click(getNextPage);
     maxScrollPosition = 0.90 * $(document).height();
     if (window.location.pathname == "/"
         || window.location.pathname == "/home/"
