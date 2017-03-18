@@ -31,4 +31,4 @@ if __name__ == '__main__':
     p = Popen(MIGRATE_ARGS)
     p.communicate(input=None)
 
-    print("There, you should now have clean DB.")
+    print("ENDE")
