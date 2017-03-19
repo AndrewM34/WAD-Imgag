@@ -53,7 +53,7 @@ users_list = [
         "nickname": "Pyotr",
         "email": "pyotr.pyotrovic@yandex.com",
         "date_of_birth": "Dec 31 1993",
-        "path_to_picture": os.path.join("population_data", os.path.join("profile_images", "pyotr.png"))
+        "path_to_picture": os.path.join("population_data", os.path.join("profile_images", "pyotr_img.png"))
     },
     {
         "nickname": "BlueDoge",
@@ -140,7 +140,7 @@ people_are_awesome_uploads = {
                 },
                 {
                     "authors_name": "herp",
-                    "text": "What are you gonna do about is, huh?",
+                    "text": "What are you gonna do about it, huh?",
                     "created_date": "2017-3-05 20:05:05"
                 }
             ]
@@ -152,7 +152,7 @@ people_are_awesome_uploads = {
             "comments": [
                 {
                     "authors_name": "tomator",
-                    "text": "I always have A from all subject.",
+                    "text": "I always have A from all subjects.",
                     "created_date": "2017-3-12 18:32:15"
                 },
                 {
@@ -449,7 +449,8 @@ crazy_uploads = {
         {
             "header": "Just another day in Maryhill",
             "created_date": "2017-2-24 18:30:05",
-            "path_to_file": os.path.join("population_data", os.path.join("uploads", "just_another_day_in_maryhill.jpg")),
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "just_another_day_in_maryhill.jpg")),
             "comments": [
                 {
                     "authors_name": "tomator",
@@ -602,7 +603,7 @@ i_cri_evritiem_uploads = {
             "comments": [
                 {
                     "authors_name": "tomator",
-                    "text": "I am very sorry for you loss.",
+                    "text": "I am very sorry for your loss.",
                     "created_date": "2017-2-10 20:41:35"
                 },
                 {
@@ -692,7 +693,7 @@ next_level_shieeet_uploads = {
                 {
                     "authors_name": "herp",
                     "text": "old viper was better tho",
-                    "created_date" : "2017-3-18 14:50:00"
+                    "created_date": "2017-3-18 14:50:00"
                 },
             ]
         },
@@ -721,6 +722,15 @@ nsfw_uploads = {
                     "text": "Ahahaha",
                     "created_date": "2017-3-11 20:45:05"
                 }
+            ]
+        },
+    ],
+    "BlueDoge": [
+        {
+            "header": "There is a naked ninja in this image",
+            "created_date": "2017-1-11 18:35:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "naked_ninja.jpg")),
+            "comments": [
             ]
         },
     ],

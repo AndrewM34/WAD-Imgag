@@ -4,7 +4,7 @@
 	<div class="w3-display-container w3-black" style="height:700px;">
 	<div class="w3-display-middle">
 		<h1 class = "display-3">Login</h1>
-	<form class="form-signin" role="form" method='post' action=".">
+	<form class="form-signin" role="form" method='post' action="">
 		{% csrf_token %}
 		<h2 class = "form-signin-heading">Please sign in</h2>
 
@@ -18,7 +18,7 @@
 	</form>
 	<p>
 		Not a member?
-		<a href="{% url 'registration_register' %}">Register!</a>
+		<a href="{% url 'register' %}">Register!</a>
 	</p>
 	</div>
 	</div>
