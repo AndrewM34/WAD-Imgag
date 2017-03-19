@@ -173,6 +173,188 @@ people_are_awesome_uploads = {
             ]
         },
     ],
+	"Pyotr": [
+        {
+            "header": "A star rulez",
+            "created_date": "2017-2-24 15:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "dijkstra.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "Don't act as you would be tough, I know you are a good guy, Pyotr.",
+                    "created_date": "2017-2-25 15:45:17"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "This is shit...",
+                    "created_date": "2017-2-25 20:45:37"
+                },
+                {
+                    "authors_name": "Pyotr",
+                    "text": "R45h B, 5uk4 b1y4t",
+                    "created_date": "2017-2-25 00:45:25"
+                },
+            ]
+        },
+        {
+            "header": "cant sleep...",
+            "created_date": "2017-2-24 15:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "insomnia.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "That's a nice goat.",
+                    "created_date": "2017-2-25 15:45:17"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "This is shit...",
+                    "created_date": "2017-2-25 20:45:37"
+                },
+                {
+                    "authors_name": "Pyotr",
+                    "text": "My goat is better, nerd",
+                    "created_date": "2017-2-25 00:45:25"
+                },
+            ]
+        },
+        {
+            "header": "Love is all there is...",
+            "created_date": "2017-2-24 15:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "find_someone.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "Underwood wood be a good president if you get what I mean :^)",
+                    "created_date": "2017-2-25 15:45:17"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "I prefer Kim Chong un",
+                    "created_date": "2017-2-25 20:45:37"
+                },
+            ]
+        },
+		{
+            "header": "When someone tells me I should work...",
+            "created_date": "2017-2-24 15:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "matrix.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "Underwood wood be a good president if you get what I mean :^)",
+                    "created_date": "2017-2-25 15:45:17"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "I prefer turmp",
+                    "created_date": "2017-2-25 20:45:37"
+                },
+            ]
+        },
+		{
+            "header": "Coffee is important...",
+            "created_date": "2017-2-24 15:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "coffee.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "League of legends rulez",
+                    "created_date": "2017-2-25 15:45:17"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "I prefer Mao Tse-Tung",
+                    "created_date": "2017-2-25 20:45:37"
+                },
+            ]
+        },
+		{
+            "header": "No offence...",
+            "created_date": "2017-2-24 15:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "offence.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "whatevs....",
+                    "created_date": "2017-2-25 15:45:17"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "I prefer turmp",
+                    "created_date": "2017-2-25 20:45:37"
+                },
+            ]
+        },
+		{
+            "header": "Oh god!",
+            "created_date": "2017-2-24 15:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "jesus.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "Underwood wood be a good president if you get what I mean :^)",
+                    "created_date": "2017-2-25 15:45:17"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "I prefer putin",
+                    "created_date": "2017-2-25 20:45:37"
+                },
+            ]
+        },
+		{
+            "header": "You know it!",
+            "created_date": "2017-2-24 15:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "nut_milk.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "Underwood wood be a good president if you get what I mean :^)",
+                    "created_date": "2017-2-25 15:45:17"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "I prefer hillary",
+                    "created_date": "2017-2-25 20:45:37"
+                },
+            ]
+        },
+		{
+            "header": "just CSGO stuff",
+            "created_date": "2017-2-24 15:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "csgo.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "Potatos suck...",
+                    "created_date": "2017-2-25 15:45:17"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "I prefer Usama...",
+                    "created_date": "2017-2-25 20:45:37"
+                },
+            ]
+        },
+		{
+            "header": "Wow didn't know that :-O",
+            "created_date": "2017-2-24 15:30:05",
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "joker.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "Does anyone know his true name??",
+                    "created_date": "2017-2-25 15:45:17"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "I bet Batman does...",
+                    "created_date": "2017-2-25 20:45:37"
+                },
+            ]
+        },
+    ],
 }
 
 bad_ass_uploads = {
@@ -591,6 +773,104 @@ deep_uploads = {
             ]
         },
     ],
+	"herp": [
+        {
+            "header": "Blows my mind!!!",
+            "created_date": "2017-2-14 11:33:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "sort.jpg")),
+            "comments": [
+                {
+                    "authors_name": "herp",
+                    "text": "First comment!",
+                    "created_date": "2017-2-14 11:41:35"
+                },
+                {
+                    "authors_name": "Pyotr",
+                    "text": "WHO CARES",
+                    "created_date": "2017-2-15 01:30:23"
+                },
+                {
+                    "authors_name": "gorilla_boy",
+                    "text": "burn...",
+                    "created_date": "2017-2-15 02:11:11"
+                },
+            ]
+        },
+    ],
+	"tomator": [
+        {
+            "header": "Which one was it?",
+            "created_date": "2017-3-4 22:40:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "tetris.jpg")),
+            "comments": [
+                {
+                    "authors_name": "BlueDoge",
+                    "text": "WoW rulez",
+                    "created_date": "2017-3-5 19:41:35"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "CS GO because I have no life whatsoever...",
+                    "created_date": "2017-3-5 01:30:23"
+                },
+                {
+                    "authors_name": "gorilla_boy",
+                    "text": "Pac-Man!!!!",
+                    "created_date": "2017-3-5 02:11:11"
+                },
+            ]
+        },
+    ],
+	"Pyotr": [
+        {
+            "header": "We should really wake up...",
+            "created_date": "2017-1-23 22:40:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "water_wifi.jpg")),
+            "comments": [
+                {
+                    "authors_name": "BlueDoge",
+                    "text": "true true...",
+                    "created_date": "2017-1-24 19:41:35"
+                },
+                {
+                    "authors_name": "Pyotr",
+                    "text": "I know right?? We should really do something about it...",
+                    "created_date": "2017-1-25 01:30:23"
+                },
+                {
+                    "authors_name": "gorilla_boy",
+                    "text": "No not necessary and global warming is a lie!",
+                    "created_date": "2017-1-25 02:11:11"
+                },
+            ]
+        },
+		{
+            "header": "Take my money!!!",
+            "created_date": "2017-3-18 22:40:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "function.png")),
+            "comments": [
+                {
+                    "authors_name": "BlueDoge",
+                    "text": "truely deep...",
+                    "created_date": "2017-3-18 19:41:35"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "made me think",
+                    "created_date": "2017-3-19 01:30:23"
+                },
+                {
+                    "authors_name": "gorilla_boy",
+                    "text": "not true...",
+                    "created_date": "2017-3-19 02:11:11"
+                },
+            ]
+        },
+    ],
 }
 
 i_cri_evritiem_uploads = {
@@ -620,6 +900,123 @@ i_cri_evritiem_uploads = {
                     "authors_name": "stoned.stone",
                     "text": "wtf is wrong with you guy, do you post anything other than gorillas?",
                     "created_date": "2017-3-18 14:51:38"
+                },
+            ]
+        },
+    ],
+	"Pyotr": [
+        {
+            "header": "anyone here playin' SW Battlefront 1???",
+            "created_date": "2017-2-24 23:30:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "old_game.jpg")),
+            "comments": [
+                {
+                    "authors_name": "Pyotr",
+                    "text": "C mon guys...",
+                    "created_date": "2017-2-10 20:41:35"
+                },
+            ]
+        },
+		{
+            "header": "Yeah... sooo I really did it...",
+            "created_date": "2017-1-5 23:30:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "winrar.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "I am very sorry for your loss.",
+                    "created_date": "2017-1-6 20:41:35"
+                },
+                {
+                    "authors_name": "BlueDoge",
+                    "text": "5uk4 b1y4t",
+                    "created_date": "2017-1-7 01:45:23"
+                },
+                {
+                    "authors_name": "gorilla_boy",
+                    "text": "why tho",
+                    "created_date": "2017-1-8 05:55:55"
+                },
+                {
+                    "authors_name": "stoned.stone",
+                    "text": "doesn't make sense...",
+                    "created_date": "2017-1-9 14:51:38"
+                },
+            ]
+        },
+		{
+            "header": "Which one is yours???",
+            "created_date": "2017-2-24 23:30:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "best_song.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "Slipknot - (Sic)",
+                    "created_date": "2017-2-25 20:41:35"
+                },
+                {
+                    "authors_name": "darth_procrastinator",
+                    "text": "Justin Bieber - Love yourself",
+                    "created_date": "2017-2-25 01:45:23"
+                },
+                {
+                    "authors_name": "gorilla_boy",
+                    "text": "M.O.C. label - Groove street",
+                    "created_date": "2017-2-26 05:55:55"
+                },
+                {
+                    "authors_name": "stoned.stone",
+                    "text": "Steel panther - girl from Oklahoma",
+                    "created_date": "2017-3-18 14:51:38"
+                },
+            ]
+        },
+		{
+            "header": "...we shall see...",
+            "created_date": "2017-3-6 23:30:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "mc_chicken.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "you probably don't even have a gf...",
+                    "created_date": "2017-3-7 20:41:35"
+                },
+                {
+                    "authors_name": "herp",
+                    "text": "loser!!!!",
+                    "created_date": "2017-3-8 01:45:23"
+                },
+            ]
+        },
+		{
+            "header": "How can anyone be that stupid???",
+            "created_date": "2017-2-24 23:30:05",
+            "path_to_file": os.path.join("population_data",
+                                         os.path.join("uploads", "nasa_money.jpg")),
+            "comments": [
+                {
+                    "authors_name": "tomator",
+                    "text": "Mekka rulez",
+                    "created_date": "2017-2-25 20:41:35"
+                },
+                {
+                    "authors_name": "BlueDoge",
+                    "text": "Vatican rulez",
+                    "created_date": "2017-2-25 01:45:23"
+                },
+                {
+                    "authors_name": "gorilla_boy",
+                    "text": "kill them...",
+                    "created_date": "2017-2-26 05:55:55"
+                },
+                {
+                    "authors_name": "stoned.stone",
+                    "text": "too many people...",
+                    "created_date": "2017-3-1 14:51:38"
                 },
             ]
         },
