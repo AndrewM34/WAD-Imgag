@@ -89,7 +89,7 @@
 				<a href="{% url 'home' %}">
 					<button class="dropbtn"></button>
 				</a>
-				<div class="dropdown-content1">
+				<div class="dropdown-content1 w3-round-large">
 					<a href="{% url 'about' %}">About Imgag</a>
 					<a href="{% url 'faq' %}">Need help?</a>
 				</div>
@@ -100,7 +100,7 @@
 			<div class="dropdown">
 				<a href="{% url 'categories' %}"><button class="dropbtn2">Categories</button></a>
 				
-				<div class="dropdown-content1 w3-padding-medium">
+				<div class="dropdown-content1 w3-padding-medium w3-round-large" style="background-color:#141518">
 						{% get_category_list %}
 				</div>
 			</div>
