@@ -13,7 +13,7 @@ import os
 
 # ----------------- TESTS ----------------- #
 
-class TestVoteModel(TestCase):
+class ImgagTests(TestCase):
 	def setUp(self):
 		populate()
 
@@ -60,6 +60,7 @@ class TestVoteModel(TestCase):
 
 	# tests to see if a user under the age of 18 can view nsfw
 	def test_under_18_can_see_nsfw(self):
+
 		def add_user(username, email, date_of_birth, path_to_picture):
 			user = User.objects.get_or_create(email=email)[0]
 			user.username = username
@@ -81,6 +82,8 @@ class TestVoteModel(TestCase):
 
 
 		testUser = add_user('ohmycosh', 'ohmycosh@thatdomainsucks.com', 'Jun 1 2005', None)
-		login(testcase_user=testUser) # logs in without proper authentication
+		self.client.login(user=testUser)
 
 		response = self.client.get(reverse('post', kwargs={'post_hashid':'ZynyW4L'}))
+
+		self.assertIn(bytes('nsfw_not_logged.png', 'utf-8'), response.content)
