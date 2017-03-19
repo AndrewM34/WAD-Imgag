@@ -3,15 +3,15 @@
 
 {% block body_block %}
 <div class="container w3-padding-64 w3-padding-xlarge">
-    <div id="imagelist" class="home-gallery">
+    <div id="imagelist" class="home-gallery center-align">
         <div id="posts" class="posts br5 first-child">
             <div class="outside-loader"></div>
             <div class="cards">
                 {% if categories %}
                 {% for category in categories %}
-                <div class="post">
-                    <a href="{% url 'category' category_name_slug=category.slug %}">
-                        <h1>{{ category.name }}</h1>
+                <div class="post w3-padding-jumbo w3-padding-128">
+                    <a class="image-list-link" href="{% url 'category' category_name_slug=category.slug %}">
+                        <h4 align="center" style="color:white;">{{ category.name }}</h4>
                         <img src="{{ category.picture_url }}"/>
                     </a>
                 </div>

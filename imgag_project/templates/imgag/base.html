@@ -99,12 +99,13 @@
 
 			<div class="dropdown">
 				<a href="{% url 'categories' %}"><button class="dropbtn2">Categories</button></a>
-				<div class="dropdown-content1">
+				
+				<div class="dropdown-content1 w3-padding-medium">
 						{% get_category_list %}
 				</div>
 			</div>
 			<div id="secondary-nav">
-				<ul class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav navbar-right w3-margin-right">
 					<li class="nav-item">
 						<form onsubmit="submitFn(this, event);" succeedurl="{% url 'search' %}">
 							<div class="search-wrapper">
