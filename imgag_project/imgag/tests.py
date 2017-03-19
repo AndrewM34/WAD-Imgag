@@ -81,6 +81,6 @@ class TestVoteModel(TestCase):
 
 
 		testUser = add_user('ohmycosh', 'ohmycosh@thatdomainsucks.com', 'Jun 1 2005', None)
-
+		login(testcase_user=testUser) # logs in without proper authentication
 
 		response = self.client.get(reverse('post', kwargs={'post_hashid':'ZynyW4L'}))
