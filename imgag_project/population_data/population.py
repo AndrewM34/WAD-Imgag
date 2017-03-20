@@ -522,12 +522,6 @@ bad_ass_uploads = {
 not_so_awesome_people_uploads = {
     "darth_procrastinator": [
         {
-            "path_to_file": os.path.join("population_data", os.path.join("uploads", "OOFRJvr.gifv")),
-            "header": "Guardians of the Front Page",
-            "comments": [],
-            "created_date": "2017-3-20 00:06:34"
-        },
-        {
             "path_to_file": os.path.join("population_data", os.path.join("uploads", "xr3rIfu.jpg")),
             "header": "One thing led to another....",
             "comments": [],
