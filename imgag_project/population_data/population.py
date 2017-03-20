@@ -283,7 +283,7 @@ bad_ass_uploads = {
     ],
     "gorilla_boy": [
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", os.path.join("population_data", os.path("uploads", "90a63r5.jpg")),
+            "path_to_file": os.path.join("population_data", os.path("uploads", os.path.join("population_data", os.path("uploads", "90a63r5.jpg")))),
             "header": "My youngest brother got a new phone and took a selfie. My dad and brother and I liked how it looked.",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
