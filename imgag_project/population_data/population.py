@@ -116,6 +116,36 @@ people_are_awesome_uploads = {
                 }
             ]
         },
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "iiRzW97.gifv")),
+            "header": "Grandpa gets a pair of light up shoes",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "tGWOaPg.png")),
+            "header": "Oookay, I think they're having Satan....",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "b4mnxxz.jpg")),
+            "header": "I pushed my dog out of the seat so I could sleep during a road-trip, my wife took this picture while I slept.",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "A3dtXVj.png")),
+            "header": "My friend caught a fish and wanted to take a picture with it, but was to scared to hold it so...",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "0hsql.jpg")),
+            "header": "She was waiting in line for 5 minutes.",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        }
     ],
     "tomator": [
         {
@@ -177,6 +207,18 @@ people_are_awesome_uploads = {
 
 bad_ass_uploads = {
     "Pyotr": [
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "2Nqqtlc.jpg")),
+            "header": "What humans could look like if they evolved from other animals",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "5jfz9zB.jpg")),
+            "header": "I think that this book series is a bit racist.",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
         {
             "header": "M3 g4ing 14jk 4 b055 m4j c0mr4d3",
             "created_date": "2017-2-24 15:30:05",
@@ -241,6 +283,30 @@ bad_ass_uploads = {
     ],
     "gorilla_boy": [
         {
+            "path_to_file": os.path.join("population_data", os.path("uploads", os.path.join("population_data", os.path("uploads", "90a63r5.jpg")),
+            "header": "My youngest brother got a new phone and took a selfie. My dad and brother and I liked how it looked.",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "69UQXUj.jpg")),
+            "header": "After 20 minutes of reddit this morning, I've come to this realization",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "7Z32IVK.png")),
+            "header": "I can assure you...",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "zoPi7DG.png")),
+            "header": "Something tells me Timmy Turner is near by...",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
+        {
             "header": "Ma hairrow",
             "created_date": "2017-2-24 20:30:15",
             "path_to_file": os.path.join("population_data", os.path.join("uploads", "grod_flash.jpg")),
@@ -285,6 +351,30 @@ bad_ass_uploads = {
 
 not_so_awesome_people_uploads = {
     "darth_procrastinator": [
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "OOFRJvr.gifv")),
+            "header": "Guardians of the Front Page",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "xr3rIfu.jpg")),
+            "header": "One thing led to another....",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "pBliN8h.jpg")),
+            "header": "This guy is walking around campus asking for people's emails so he can send them money",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "h5SiQ.jpg")),
+            "header": "I told two girls at the library to be quiet. About an hour later as they left one of them dropped this on my table",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
         {
             "header": "Me running from responsibilities",
             "created_date": "2017-2-24 17:30:05",
@@ -419,6 +509,18 @@ not_so_awesome_people_uploads = {
 
 crazy_uploads = {
     "tomator": [
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "OhtPJ.gif")),
+            "header": "Every time I get into the shower with my wife",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "aug1ocF.jpg")),
+            "header": "+10 armor +20 frost resistance -10 speed",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
         {
             "header": "This is crazy, right?",
             "created_date": "2017-2-24 18:30:05",
@@ -596,6 +698,30 @@ deep_uploads = {
 i_cri_evritiem_uploads = {
     "gorilla_boy": [
         {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "lsoomRq.png")),
+            "header": "This is Carter. He knocked on my door to ask if he could have a banana then left.",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "bgWINS8.png")),
+            "header": "This dry Chicago winter is really taking a toll on my friend's dog",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "iehcWAH.jpg")),
+            "header": "Obi-Wan died for our sins",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "JhWo6qp.jpg")),
+            "header": "My dog just got out of surgery. I think he might still be high from the anaesthetic.",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
+        {
             "header": "Wgenn Ej fand abaud Harambe",
             "created_date": "2017-2-24 23:30:05",
             "path_to_file": os.path.join("population_data",
@@ -628,6 +754,24 @@ i_cri_evritiem_uploads = {
 
 next_level_shieeet_uploads = {
     "stoned.stone": [
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "KPVrxlQ.png")),
+            "header": "I don't know why, but I digitized that guy's shitty Charmander tattoo",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "b22m35tz2vyx.jpg")),
+            "header": "Personal Pizza.",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
+        {
+            "path_to_file": os.path.join("population_data", os.path("uploads", "wp3vDni.jpg")),
+            "header": "How does this even hap- Oh...OH!",
+            "comments": [],
+            "created_date": "2017-3-20 00:06:34"
+        },
         {
             "header": "How much for gram xD",
             "created_date": "2017-3-11 23:39:05",
