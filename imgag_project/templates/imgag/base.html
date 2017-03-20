@@ -26,57 +26,9 @@
 	<!-- jQuery Plugin -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 	<!-- Preloader -->
-	<script type="text/javascript">
-		//<![CDATA[
-			$(window).on('load', function() { // makes sure the whole site is loaded
-				$('#status').fadeOut(); // will first fade out the loading animation
-				$('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
-				$('body').delay(350).css({'overflow':'visible'});
-			  })
-		//]]>
-	</script>
-	<script type="text/javascript">
-		function searchToggle(obj, evt) {
-			var container = $(obj).closest('.search-wrapper');
-
-			if (!container.hasClass('active')) {
-				container.addClass('active');
-				container.find('.search-input').select();
-				evt.preventDefault();
-			}
-			else if (container.hasClass('active') && $(obj).closest('.input-holder').length == 0) {
-				container.removeClass('active');
-				// clear input
-				container.find('.search-input').val('');
-				// clear and hide result container when we press close
-				container.find('.result-container').fadeOut(100, function() {
-					$(this).empty();
-				});
-			}
-		}
-		function submitFn(obj, evt) {
-			value = $(obj).find('.search-input').val();
-			url = $(obj).attr('succeedurl');
-
-			_html = "";
-			var check = value.trim();
-			value = value.replace(/\s+/g, '_');
-			if (!check.length) {
-				_html = "Bro, you try to search nothing?";
-				$(obj).find('.result-container').html('<span>' + _html + '</span>');
-				$(obj).find('.result-container').fadeIn(100);
-				$(obj).find('.search-input').val("");
-				$(obj).find('.search-input').attr("placeholder", "Type to search");
-			}
-			else {
-				window.location = url + value;
-			}
-			$(obj).find('.result-container').fadeIn(100);
-			evt.preventDefault();
-		}
-	</script>
+	<script type="text/javascript" src="{% static 'js/preloader.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/base.js' %}" ></script>
 </head>
-
 <body class="">
 <!-- Preloader -->
 <div id="preloader">
