@@ -123,12 +123,6 @@ people_are_awesome_uploads = {
             "created_date": "2017-3-20 00:06:34"
         },
         {
-            "path_to_file": os.path.join("population_data", os.path.join("uploads", "b4mnxxz.jpg")),
-            "header": "I pushed my dog out of the seat so I could sleep during a road-trip, my wife took this picture while I slept.",
-            "comments": [],
-            "created_date": "2017-3-20 00:06:34"
-        },
-        {
             "path_to_file": os.path.join("population_data", os.path.join("uploads", "A3dtXVj.png")),
             "header": "My friend caught a fish and wanted to take a picture with it, but was to scared to hold it so...",
             "comments": [],
