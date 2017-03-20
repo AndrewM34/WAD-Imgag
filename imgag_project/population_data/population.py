@@ -117,31 +117,31 @@ people_are_awesome_uploads = {
             ]
         },
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "iiRzW97.gifv")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "iiRzW97.gifv")),
             "header": "Grandpa gets a pair of light up shoes",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
         },
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "tGWOaPg.png")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "tGWOaPg.png")),
             "header": "Oookay, I think they're having Satan....",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
         },
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "b4mnxxz.jpg")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "b4mnxxz.jpg")),
             "header": "I pushed my dog out of the seat so I could sleep during a road-trip, my wife took this picture while I slept.",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
         },
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "A3dtXVj.png")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "A3dtXVj.png")),
             "header": "My friend caught a fish and wanted to take a picture with it, but was to scared to hold it so...",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
         },
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "0hsql.jpg")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "0hsql.jpg")),
             "header": "She was waiting in line for 5 minutes.",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
@@ -390,13 +390,13 @@ people_are_awesome_uploads = {
 bad_ass_uploads = {
     "Pyotr": [
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "2Nqqtlc.jpg")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "2Nqqtlc.jpg")),
             "header": "What humans could look like if they evolved from other animals",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
         },
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "5jfz9zB.jpg")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "5jfz9zB.jpg")),
             "header": "I think that this book series is a bit racist.",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
@@ -465,25 +465,19 @@ bad_ass_uploads = {
     ],
     "gorilla_boy": [
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", os.path.join("population_data", os.path("uploads", "90a63r5.jpg")))),
-            "header": "My youngest brother got a new phone and took a selfie. My dad and brother and I liked how it looked.",
-            "comments": [],
-            "created_date": "2017-3-20 00:06:34"
-        },
-        {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "69UQXUj.jpg")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "69UQXUj.jpg")),
             "header": "After 20 minutes of reddit this morning, I've come to this realization",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
         },
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "7Z32IVK.png")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "7Z32IVK.png")),
             "header": "I can assure you...",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
         },
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "zoPi7DG.png")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "zoPi7DG.png")),
             "header": "Something tells me Timmy Turner is near by...",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
@@ -534,25 +528,25 @@ bad_ass_uploads = {
 not_so_awesome_people_uploads = {
     "darth_procrastinator": [
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "OOFRJvr.gifv")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "OOFRJvr.gifv")),
             "header": "Guardians of the Front Page",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
         },
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "xr3rIfu.jpg")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "xr3rIfu.jpg")),
             "header": "One thing led to another....",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
         },
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "pBliN8h.jpg")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "pBliN8h.jpg")),
             "header": "This guy is walking around campus asking for people's emails so he can send them money",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
         },
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "h5SiQ.jpg")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "h5SiQ.jpg")),
             "header": "I told two girls at the library to be quiet. About an hour later as they left one of them dropped this on my table",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
@@ -692,13 +686,13 @@ not_so_awesome_people_uploads = {
 crazy_uploads = {
     "tomator": [
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "OhtPJ.gif")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "OhtPJ.gif")),
             "header": "Every time I get into the shower with my wife",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
         },
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "aug1ocF.jpg")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "aug1ocF.jpg")),
             "header": "+10 armor +20 frost resistance -10 speed",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
@@ -978,25 +972,25 @@ deep_uploads = {
 i_cri_evritiem_uploads = {
     "gorilla_boy": [
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "lsoomRq.png")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "lsoomRq.png")),
             "header": "This is Carter. He knocked on my door to ask if he could have a banana then left.",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
         },
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "bgWINS8.png")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "bgWINS8.png")),
             "header": "This dry Chicago winter is really taking a toll on my friend's dog",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
         },
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "iehcWAH.jpg")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "iehcWAH.jpg")),
             "header": "Obi-Wan died for our sins",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
         },
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "JhWo6qp.jpg")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "JhWo6qp.jpg")),
             "header": "My dog just got out of surgery. I think he might still be high from the anaesthetic.",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
@@ -1152,19 +1146,19 @@ i_cri_evritiem_uploads = {
 next_level_shieeet_uploads = {
     "stoned.stone": [
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "KPVrxlQ.png")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "KPVrxlQ.png")),
             "header": "I don't know why, but I digitized that guy's shitty Charmander tattoo",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
         },
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "b22m35tz2vyx.jpg")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "b22m35tz2vyx.jpg")),
             "header": "Personal Pizza.",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
         },
         {
-            "path_to_file": os.path.join("population_data", os.path("uploads", "wp3vDni.jpg")),
+            "path_to_file": os.path.join("population_data", os.path.join("uploads", "wp3vDni.jpg")),
             "header": "How does this even hap- Oh...OH!",
             "comments": [],
             "created_date": "2017-3-20 00:06:34"
