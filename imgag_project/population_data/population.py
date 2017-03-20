@@ -674,12 +674,6 @@ not_so_awesome_people_uploads = {
 crazy_uploads = {
     "tomator": [
         {
-            "path_to_file": os.path.join("population_data", os.path.join("uploads", "OhtPJ.gif")),
-            "header": "Every time I get into the shower with my wife",
-            "comments": [],
-            "created_date": "2017-3-20 00:06:34"
-        },
-        {
             "path_to_file": os.path.join("population_data", os.path.join("uploads", "aug1ocF.jpg")),
             "header": "+10 armor +20 frost resistance -10 speed",
             "comments": [],
