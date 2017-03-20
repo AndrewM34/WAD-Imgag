@@ -1,6 +1,6 @@
 var page, nextPage;
 var maxScrollPosition;
-var j;
+
 function ajaxNextPage(json) {
     $("#next_page_loading").remove();
     j = json;
@@ -29,8 +29,9 @@ function ajaxNextPage(json) {
             $("#posts").append(postsAppend);
         });
     $("#next_page").attr("href", "/home/page/" + (page + 1) + "/");
-    if (json.length == 15) {
+    if (json.posts.length == 15) {
         $("#next_page").show();
+        nextPage++;
     }
     maxScrollPosition = 0.90 * $(document).height();
     }
@@ -41,13 +42,12 @@ function loadNextPageYesNoMaybe(e, currentScrollPosition) {
         e.preventDefault();
         return true;
     }
-    return currentScrollPosition >= maxScrollPosition;
+    return $(window).scrollTop() + $(window).height() >= maxScrollPosition;
 }
 
 function getNextPage(e) {
     if (page < nextPage) {
-        var currentScrollPosition = $(window).scrollTop() + $(window).height();
-        if (loadNextPageYesNoMaybe(e, currentScrollPosition)) {
+        if (loadNextPageYesNoMaybe(e)) {
             page++;
             $("#posts").append('<img id="next_page_loading" src="/static/images/loading/ajax-loader.gif"' +
                                     'class="img-responsive center-block" />');
