@@ -117,12 +117,6 @@ people_are_awesome_uploads = {
             ]
         },
         {
-            "path_to_file": os.path.join("population_data", os.path.join("uploads", "iiRzW97.gifv")),
-            "header": "Grandpa gets a pair of light up shoes",
-            "comments": [],
-            "created_date": "2017-3-20 00:06:34"
-        },
-        {
             "path_to_file": os.path.join("population_data", os.path.join("uploads", "tGWOaPg.png")),
             "header": "Oookay, I think they're having Satan....",
             "comments": [],
