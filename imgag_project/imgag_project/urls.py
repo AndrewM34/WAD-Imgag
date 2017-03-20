@@ -27,7 +27,7 @@ from imgag.forms import UserForm
 
 class MyRegistrationView(RegistrationView):
     def get_success_url(self, user):
-        return '/accounts/complete'
+        return '/accounts/register/complete'
 
 
 urlpatterns = [
