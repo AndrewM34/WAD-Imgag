@@ -305,3 +305,6 @@ body {
     text-align: center;
     top: 20px;
 }
+.orange-border {
+    border: 1px solid #ff7f00!important;
+}

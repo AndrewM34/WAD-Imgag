@@ -19,6 +19,7 @@ function searchToggle(obj, evt) {
 		});
 	}
 }
+
 // do search
 function submitFn(obj, evt) {
 	// get the search string

@@ -17,13 +17,14 @@
 	<div>
 		{% if result_list %}
 		<h3>Results</h3>
-		<div class="list-group">
+		<div class="list-group w3-round-xlarge" style="background-color:#2c2f34">
 			{% for result in result_list %}
 				<div class="list-group-item">
 					<h4 class="list-group-item-heading">
 						<a href="{{ result.link }}">{{ result.title }}</a>
 					</h4>
 					<p class="list-group-item-text">{{ result.summary }}</p>
+					<li class="divider"></li>
 				</div>
 			{% endfor %}
 		</div>
