@@ -6,11 +6,11 @@
 {% endblock%}
 
 {% block body_block %}
-<div class="container w3-padding-64">
+<div class="container w3-padding-64 w3-padding-jumbo">
     <div id="imagelist" class="home-gallery center-align">
         <div id="posts" class="posts br5 first-child">
             <div class="outside-loader"></div>
-            <div class="cards">
+            
                 {% if posts %}
                     {% for post in posts %}
                     <div class="post">
@@ -37,7 +37,7 @@
                 {% else %}
                     There are no posts yet. :(
                 {% endif %}
-            </div>
+            
         </div>
     </div>
     <div>
