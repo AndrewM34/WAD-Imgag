@@ -26,7 +26,7 @@ body {
     width:110%;
     height:150%;
     position:absolute;
-    background-image: url('load.gif'); /* path to your loading animation */
+    background-image: url('load.gif'); /* path to loading animation */
     background-repeat:no-repeat;
     background-position:center;
     margin:-100px 0 0 -100px; /* is width and height divided by two */
