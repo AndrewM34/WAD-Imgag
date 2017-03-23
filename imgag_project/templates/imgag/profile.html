@@ -22,7 +22,7 @@
             <img src="{{ MEDIA_URL }}{{ userprofile.picture }}" width="280" height="280"
                  alt="Got here = {{user.username}}"/>
             {% else %}
-            <img src="http://lorempixel.com/300/300/" img width="280" height="280" alt="{{user.username}}"/>
+            <img src="http://lorempixel.com/300/300/" width="280" height="280" alt="{{user.username}}"/>
             {% endif %}
             <div id="profile_data" class="w3-padding-16">
                 {% if user.is_authenticated %}
@@ -45,11 +45,12 @@
             </div>
         </div>
 
-        <div class="col s6 w3-padding-64 w3-margin-top" id="dropzone" succeedurl="{% url 'home' %}">
+        <div class="col s6 w3-padding-64 w3-margin-top" id="dropzone">
             <h2>Upload a new awesome post</h2>
             <form action="{% url 'upload' %}" class="dropzone needsclick w3-round-large" id="demoUpload" method="post"
                   enctype="multipart/form-data" name="dragdrop">
                 {% csrf_token %}
+                <input id="succeed_url" type="hidden" value="{% url 'home' %}" />
                 <input type="text" placeholder="Title of the Image" name="header" id="headerTextInput"
                        class="headerTextInput"/> <br/>
                 <select class="orange darken-1" name="category" form="demoUpload" id="dropDownList" required>

@@ -42,7 +42,7 @@ Dropzone.options.demoUpload = {
 		});
 		// after uploading the picture go to succeed url
 		this.on("success", function(){
-			url = document.getElementById("dropzone").getAttribute("succeedurl");
+			url = document.getElementById("succeed_url").getAttribute("value");
 			window.location = url;
 		});
 	}

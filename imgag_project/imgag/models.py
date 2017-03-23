@@ -31,6 +31,7 @@ class OverwriteStorage(FileSystemStorage):
         return name
 
 
+# this function takes care of uploading a file to right directory
 def upload_to(instance, filename):
     path, prefix = instance.get_upload_dir_and_prefix()
     filename, extension = os.path.splitext(filename)
@@ -63,8 +64,8 @@ class UserProfile(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.date_of_birth:
-            print("ejjjjjj")
             self.date_of_birth = pytz.utc.localize(datetime.now())
+        # set default profile picture
         if os.path.basename(self.picture.name) == "default.png":
             imopen = open(os.path.join(settings.MEDIA_ROOT, self.picture.name), "rb")
             django_file = File(imopen)
@@ -73,6 +74,7 @@ class UserProfile(models.Model):
             self.picture.save(filename, django_file, save=False)
         super(UserProfile, self).save(*args, **kwargs)
 
+    # return where to upload new profile picture
     def get_upload_dir_and_prefix(self):
         return os.path.join("profile_images", self.user.username), ""
 
@@ -89,6 +91,7 @@ class Category(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
+        # sets default image for post
         if os.path.basename(self.picture.name) == "default.png":
             imopen = open(os.path.join(settings.MEDIA_ROOT, self.picture.name), "rb")
             django_file = File(imopen)
@@ -96,6 +99,7 @@ class Category(models.Model):
             self.picture.save(filename, django_file, save=False)
         super(Category, self).save(*args, **kwargs)
 
+    # return where to upload new post
     def get_upload_dir_and_prefix(self):
         return os.path.join("category_images", self.slug), ""
 
@@ -122,7 +126,7 @@ class Upload(models.Model):
                                      default=os.path.join("default",
                                                           os.path.join("uploads", "default.png")))
     hashid = HashidAutoField(primary_key=True)
-    created_date = models.DateTimeField(blank=True)
+    created_date = models.DateTimeField()
 
     def save(self, *args, **kwargs):
         if not self.created_date:
@@ -158,7 +162,7 @@ class Comment(models.Model):
     author = models.ForeignKey(UserProfile)
     upload = models.ForeignKey(Upload)
     text = models.CharField(max_length=200)
-    created_date = models.DateTimeField(blank=True)
+    created_date = models.DateTimeField()
 
     def save(self, *args, **kwargs):
         if not self.created_date:
