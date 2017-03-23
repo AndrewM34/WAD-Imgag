@@ -3,6 +3,8 @@
 {% block head_block %}
 <link rel="stylesheet" href="{% static 'css/imgag_profile.css' %}">
 <script type="text/javascript" src="{% static 'js/dropzone.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/datepicker.css' %}">
 <script type="text/javascript" src="{% static 'js/profile.js' %}"></script>
 {% endblock %}
 
@@ -12,7 +14,8 @@
     <div class="row w3-round-large" style="background-color:#34373c">
         <div class="col s5 center-align">
             <div class="page-header">
-                <h1>{{ user.username }} Profile</h1>
+                <h1>{{ user.username }}</h1>
+                <p>{{user.email}}</p>
             </div>
             <br>
             {% if userprofile.picture %}
@@ -28,11 +31,13 @@
                     {% csrf_token %}
 
                     <input class="w3-margin-bottom" style="background-color:#ff7f00" type="file" name="profilePic"
-                           accept="image/*" id="profilePicToBe" dropzone="copy" />
-                    <input name="birth_date" type="date" />
+                           accept="image/*" id="profilePicToBe" dropzone="copy"/>
+
+                    <input id="date_input" name="birth_date" type="text"
+                           placeholder="Your date of birth (dd/mm/yyyy)"/>
 
                     <button class="btn waves-effect waves-light" style="background-color:#ff7f00"
-                            onclick="updateProfilePic(event)" value="Update">Update
+                            type="submit" value="Update">Update
                         <i class="material-icons right">picture_in_picture</i>
                     </button>
                     <p id="noteForUpdatePic"></p>
@@ -41,6 +46,7 @@
         </div>
 
         <div class="col s6 w3-padding-64 w3-margin-top" id="dropzone" succeedurl="{% url 'home' %}">
+            <h2>Upload a new awesome post</h2>
             <form action="{% url 'upload' %}" class="dropzone needsclick w3-round-large" id="demoUpload" method="post"
                   enctype="multipart/form-data" name="dragdrop">
                 {% csrf_token %}
@@ -97,8 +103,6 @@
         {% endfor %}
         {% else %}
         There are no posts yet. :(
-        <p><strong>Email:</strong> {{user.email}}</p>
-        <p><strong>Website:</strong> <a href="{{user.website}}">{{user.website}}</a></p>
         {% endif %}
     </div>
     {% endif %}

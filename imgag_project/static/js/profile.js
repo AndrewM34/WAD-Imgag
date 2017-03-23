@@ -47,16 +47,11 @@ Dropzone.options.demoUpload = {
 		});
 	}
 }
-// checking when updating profile picture on client side
-function updateProfilePic(event){
-	/*event.preventDefault();
-	var file = document.getElementById("profilePicToBe").files;
-	if(file.length == 0){
-		// notify user
-		document.getElementById("noteForUpdatePic").innerHTML = "You need to choose a picture first!";
-	} else {
-		// submit form & change the profile pic
-		document.getElementById("updateProfilePicForm").submit();
-	}*/
+
+function input_date_fix(){
+    $('#date_input').datepicker({
+        format: "dd/mm/yyyy"
+    });
 }
-		 
+
+$("#date_input").ready(input_date_fix);

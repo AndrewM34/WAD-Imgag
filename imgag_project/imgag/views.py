@@ -83,7 +83,6 @@ def show_category(request, category_name_slug, page=None, ajax=None):
                       "-created_date")[offset:offset + POSTS_ON_ONE_PAGE]]
     context_dict = {"category": category.as_json(), "posts": posts_list, "page": page,
                     "user_can_see_nsfw": auth_and_older_than_18(request)}
-    print(context_dict)
     if ajax == "ajax":
         context_dict["ok"] = "ok"
         return HttpResponse(json.dumps(context_dict), content_type="application/json")
@@ -199,7 +198,7 @@ def update_profile_pic(request):
         user.save()
     if 'birth_date' in request.POST:
         try:
-            my_datetime = datetime.strptime(request.POST['birth_date'], "%Y-%m-%d")
+            my_datetime = datetime.strptime(request.POST['birth_date'], "%d/%m/%Y")
             user.date_of_birth = pytz.utc.localize(my_datetime)
             print("*************************")
             print(my_datetime)

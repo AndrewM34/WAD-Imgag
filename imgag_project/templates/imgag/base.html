@@ -1,109 +1,113 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> {% load staticfiles %} {% load imgag_template_tags %}
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load imgag_template_tags %}
+<html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title> Imgag - you meme us
-	</title>
-	<meta name="viewport" content="width=1138">
-	<meta name="keywords" content="images, funny, image host, image sharing, reaction gif, viral images, current events, cute, visual storytelling, gif">
-	<meta name="description" content="Imgag is quite possibly the greatest image sharing website ever conceived. It's users may share images and videos, and rate them according to their greatness. By using an ingenious algorithm (score = upvotes - downvotes) we can assure our users they will only see the BEST images and videos from across the world.">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> Imgag - you meme us
+    </title>
+    <meta name="viewport" content="width=1138">
+    <meta name="keywords"
+          content="images, funny, image host, image sharing, reaction gif, viral images, current events, cute, visual storytelling, gif">
+    <meta name="description"
+          content="Imgag is quite possibly the greatest image sharing website ever conceived. It's users may share images and videos, and rate them according to their greatness. By using an ingenious algorithm (score = upvotes - downvotes) we can assure our users they will only see the BEST images and videos from across the world.">
 
-	<meta name="copyright" content="Copyright 2017 Imgag, Inc.">
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge;">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <meta name="copyright" content="Copyright 2017 Imgag, Inc.">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge;">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-	<link rel="icon" href="{% static 'imgag/favicon.svg' %}">
-	<link rel="stylesheet" type="text/css" href="//s.imgur.com/min/global.css?1489087397" />
-	<link rel="stylesheet" type="text/css" href="//s.imgur.com/min/gallery.css?1489087397" />
-	<link rel="stylesheet" type="text/css" href="{% static 'css/imgag.css' %}" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
-	<link rel="prefetch" href="http://tpc.googlesyndication.com/safeframe/1-0-6/html/container.html"> {% block head_block %}{% endblock%}
+    <link rel="icon" href="{% static 'imgag/favicon.svg' %}">
+    <link rel="stylesheet" type="text/css" href="//s.imgur.com/min/global.css?1489087397"/>
+    <link rel="stylesheet" type="text/css" href="//s.imgur.com/min/gallery.css?1489087397"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/imgag.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+    <link rel="prefetch" href="http://tpc.googlesyndication.com/safeframe/1-0-6/html/container.html">
+    {% block head_block %}{% endblock%}
 
-	<!-- jQuery Plugin -->
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
-	<!-- Preloader -->
-	<script type="text/javascript" src="{% static 'js/preloader.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/base.js' %}" ></script>
+    <!-- Preloader -->
+    <script type="text/javascript" src="{% static 'js/preloader.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
 </head>
 <body class="">
 <!-- Preloader -->
 <div id="preloader">
     <div id="status">&nbsp;</div>
 </div>
-	<div id="drop-layer"></div>
-	<div id="topbar">
-		<div class="header-center">
-			<div class="dropdown">
-				<a href="{% url 'home' %}">
-					<button class="dropbtn"></button>
-				</a>
-				<div class="dropdown-content1 w3-round-large">
-					<a href="{% url 'about' %}">About Imgag</a>
-					<a href="{% url 'faq' %}">Need help?</a>
-				</div>
-			</div>
+<div id="drop-layer"></div>
+<div id="topbar">
+    <div class="header-center">
+        <div class="dropdown">
+            <a href="{% url 'home' %}">
+                <button class="dropbtn"></button>
+            </a>
+            <div class="dropdown-content1 w3-round-large">
+                <a href="{% url 'about' %}">About Imgag</a>
+                <a href="{% url 'faq' %}">Need help?</a>
+            </div>
+        </div>
 
 
+        <div class="dropdown">
+            <a href="{% url 'categories' %}">
+                <button class="dropbtn2">Categories</button>
+            </a>
 
-			<div class="dropdown">
-				<a href="{% url 'categories' %}"><button class="dropbtn2">Categories</button></a>
-				
-				<div class="dropdown-content1 w3-padding-medium w3-round-xlarge" style="background-color:#141518">
-						{% get_category_list %}
-				</div>
-			</div>
-			<div id="secondary-nav">
-				<ul class="nav navbar-nav navbar-right w3-margin-right">
-					<li class="nav-item">
-						<form onsubmit="submitFn(this, event);" succeedurl="{% url 'search' %}">
-							<div class="search-wrapper">
-								<div class="input-holder">
-									<input type="text" class="search-input" placeholder="Type to search" name="value" id="query" />
-									<button class="search-icon" onclick="searchToggle(this, event);"><span></span>
-									</button>
-								</div>
-								<span class="close" onclick="searchToggle(this, event);"></span>
-								<div class="result-container">
+            <div class="dropdown-content1 w3-padding-medium w3-round-xlarge" style="background-color:#141518">
+                {% get_category_list %}
+            </div>
+        </div>
+        <div id="secondary-nav">
+            <ul class="nav navbar-nav navbar-right w3-margin-right">
+                <li class="nav-item">
+                    <form onsubmit="submitFn(this, event);" succeedurl="{% url 'search' %}">
+                        <div class="search-wrapper">
+                            <div class="input-holder">
+                                <input type="text" class="search-input" placeholder="Type to search" name="value"
+                                       id="query"/>
+                                <button class="search-icon" onclick="searchToggle(this, event);"><span></span>
+                                </button>
+                            </div>
+                            <span class="close" onclick="searchToggle(this, event);"></span>
+                            <div class="result-container">
 
-								</div>
-							</div>
-						</form>
-					</li>
-					{% if user.is_authenticated %}
-					<li class="nav-item">
-						<a class="nav-link" href="{% url 'account' %}">Profile</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{% url 'logout' %}?next=/home/">Logout</a>
-					</li>
-					{% else %}
-					<li class="nav-item">
+                            </div>
+                        </div>
+                    </form>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account' %}">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}?next=/home/">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
 
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{% url 'register' %}">Sign Up</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{% url 'login' %}?next={{ request.path }}">Sign In</a>
-					</li>
-					{% endif %}
-				</ul>
-			</div>
-			<!-- #secondary-nav -->
-		</div>
-		<!-- .header-center -->
-	</div>
-	<!-- #topbar -->
-	<div id="cta-container-placeholder"></div>
-	<div id="cta-lightbox-placeholder"></div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}?next={{ request.path }}">Sign In</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <!-- #secondary-nav -->
+    </div>
+    <!-- .header-center -->
+</div>
+<!-- #topbar -->
+<div id="cta-container-placeholder"></div>
+<div id="cta-lightbox-placeholder"></div>
 
-	<main>
-		{% block body_block %} {% endblock %}
-	</main>
+<main>
+    {% block body_block %} {% endblock %}
+</main>
 
 </body>
 
