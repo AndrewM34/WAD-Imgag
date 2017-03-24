@@ -5,3 +5,7 @@ Imgag is quite possibly the greatest image sharing website ever conceived. It's 
 In the unlikely event our algorithm does not show the best images possible, we also offer categories, so Imgag's users may see exactly what they desire.  
 
 Users are incentivised to upload incredible images indefinitely, as they will see their score increase as people rate their uploaded images.
+
+NOTE:
+    -remigrate.py will delete the DB and make migrations along with running migrate therefore creating new clean DB
+    -populate_imgag.py is a population script that will fill the DB with few users and their uploads and comments
