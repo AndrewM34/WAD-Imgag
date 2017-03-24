@@ -6,11 +6,10 @@
 {% endblock%}
 
 {% block body_block %}
-<div class="container w3-padding-64 w3-padding-jumbo">
-    <div id="imagelist" class="home-gallery center-align">
-        <div id="posts" class="posts br5 first-child">
+<div class="container w3-padding-64">
+    <div id="imagelist" class="home-gallery">
+        <div id="posts" class="posts br5 first-child center-align">
             <div class="outside-loader"></div>
-            
                 {% if posts %}
                     {% for post in posts %}
                     <div class="post">
